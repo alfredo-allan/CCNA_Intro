@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cisco Cyber Docs · Todos os Módulos CCNAv7</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* ========== CISCO CYBER DOCS - VARIABLES ========== */
+    :root {
+      --bg-main: #121212;
+      --card-bg: #1e1e1e;
+      --text-main: #ffffff;
+      --text-dim: #b0b0b0;
+      --cisco-green: #66bf53;
+      --cisco-green-dark: #4a9e38;
+      --accent-blue: #0d6efd;
+      --accent-red: #dc3545;
+      --accent-yellow: #ffc107;
+      --border-dim: #2c2c2c;
+      --terminal-bg: #0a0a0a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar-glass {
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--cisco-green);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--cisco-green) !important;
+    }
+
+    .navbar-brand i {
+      font-size: 1.8rem;
+      margin-right: 8px;
+    }
+
+    .btn-cisco-outline {
+      border: 1px solid var(--cisco-green);
+      color: var(--cisco-green);
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .btn-cisco-outline:hover {
+      background: var(--cisco-green);
+      color: #000;
+    }
+
+    /* ========== PAGE HEADER ========== */
+    .page-header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--border-dim);
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, var(--cisco-green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .page-subtitle {
+      color: var(--text-dim);
+      font-size: 1.1rem;
+    }
+
+    /* ========== STATS BAR ========== */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-dim);
+      border-radius: 16px;
+      padding: 1rem 2rem;
+      text-align: center;
+      min-width: 120px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--cisco-green);
+      transform: translateY(-3px);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--cisco-green);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ========== MODULES GRID ========== */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    /* Module Card */
+    .module-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-dim);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cisco-green);
+      box-shadow: 0 8px 24px rgba(102, 191, 83, 0.1);
+    }
+
+    .module-header {
+      background: rgba(102, 191, 83, 0.05);
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border-dim);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .module-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--cisco-green);
+      background: rgba(102, 191, 83, 0.15);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    .module-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      flex: 1;
+    }
+
+    .module-badge {
+      background: var(--cisco-green);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+    }
+
+    /* Module Categories */
+    .module-categories {
+      padding: 0.75rem 1rem;
+    }
+
+    .category {
+      margin-bottom: 0.75rem;
+      border-left: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .category:hover {
+      border-left-color: var(--cisco-green);
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cisco-green);
+      cursor: pointer;
+    }
+
+    .category-header i:first-child {
+      width: 20px;
+      color: var(--cisco-green);
+    }
+
+    .toggle-icon {
+      transition: transform 0.3s ease;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .category-items {
+      list-style: none;
+      padding-left: 1.75rem;
+      margin: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .category-items.collapsed {
+      display: none;
+    }
+
+    .category-items li {
+      padding: 0.35rem 0;
+      font-size: 0.8rem;
+    }
+
+    .category-items li a {
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .category-items li a i {
+      font-size: 0.65rem;
+      color: var(--cisco-green);
+    }
+
+    .category-items li a:hover {
+      color: var(--cisco-green);
+    }
+
+    .module-footer {
+      padding: 0.75rem 1rem 1rem;
+      border-top: 1px solid var(--border-dim);
+      margin-top: 0.5rem;
+    }
+
+    .link-module {
+      color: var(--cisco-green);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.2s ease;
+    }
+
+    .link-module:hover {
+      gap: 0.75rem;
+      color: var(--cisco-green-dark);
+    }
+
+    /* Progress Bar */
+    .progress-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+
+    .progress-badge i {
+      font-size: 0.7rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border-dim);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    /* Scroll */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-main);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--cisco-green);
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-bar {
+        gap: 1rem;
+      }
+      .stat-card {
+        padding: 0.75rem 1rem;
+        min-width: 80px;
+      }
+      .stat-value {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar-glass">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-skull"></i> Cyber<span style="color: white">Docs</span>
+      </a>
+      <a href="index.html" class="btn btn-cisco-outline btn-sm">
+        <i class="fas fa-arrow-left me-1"></i> Voltar
+      </a>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main>
+    <div class="container">
+
+      <!-- Header -->
+      <div class="page-header">
+        <h1 class="page-title">
+          <i class="fas fa-cubes me-2" style="color: var(--cisco-green)"></i>
+          Todos os Módulos CCNAv7
+        </h1>
+        <p class="page-subtitle">
+          Introduction to Networks (ITN) · Documentação completa com casos reais e análises técnicas
+        </p>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-card">
+          <div class="stat-value">17</div>
+          <div class="stat-label">Módulos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">120+</div>
+          <div class="stat-label">Tópicos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">30+</div>
+          <div class="stat-label">Laboratórios</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">6</div>
+          <div class="stat-label">Checkpoints</div>
+        </div>
+      </div>
+
+      <!-- Modules Grid -->
+      <div class="modules-grid">
+
+        <!-- MÓDULO 1 -->
+        <div class="module-card" data-module="1">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 01</span>
+            <span class="module-badge">17 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            As redes de hoje
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-flag"></i> Introdução</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 1.0.1 Por que fazer este módulo?</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 1.0.2 O que vou aprender?</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-globe"></i> Redes afetam nossas vidas</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 1.1.1 Redes de hoje em dia</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 1.1.2 Componentes de rede</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 1.1.3 Dispositivos finais</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-network-wired"></i> Componentes de rede</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 1.2.1 Periféricos de rede</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 1.2.2 Placas de interface</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge">
+              <i class="fas fa-circle" style="color: var(--cisco-green); font-size: 0.5rem;"></i>
+              0% concluído
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 2 -->
+        <div class="module-card" data-module="2">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 02</span>
+            <span class="module-badge">26 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Switch básico e configuração de dispositivo final
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-terminal"></i> Acesso ao Cisco IOS</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 2.1.1 Modos de acesso</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 2.1.2 Linhas de console</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-keyboard"></i> Navegação IOS</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 2.2.1 Hierarquia de modos</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 2.2.2 Help contextual</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge">
+              <i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i>
+              0% concluído
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 3 -->
+        <div class="module-card" data-module="3">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 03</span>
+            <span class="module-badge">32 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Protocolos e modelos
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-gavel"></i> As regras</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 3.1.1 Protocolos de rede</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 3.1.2 Porque protocolos?</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-layer-group"></i> Modelos OSI e TCP/IP</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 3.5.1 Modelo OSI</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 3.5.2 Modelo TCP/IP</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-box"></i> Encapsulamento de dados</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 3.6.1 Segmentação</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 3.6.2 Encapsulamento</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 4 -->
+        <div class="module-card" data-module="4">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 04</span>
+            <span class="module-badge">20 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Camada física
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-microchip"></i> Características da camada física</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 4.2.1 Sinalização</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 4.2.2 Codificação</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-plug"></i> Cabeamento de cobre</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 4.3.1 UTP</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 4.3.2 STP</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 5 -->
+        <div class="module-card" data-module="5">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 05</span>
+            <span class="module-badge">11 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Sistemas de números
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-database"></i> Binário</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 5.1.1 Conversão binário</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 5.1.2 Posicionamento de bits</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-code"></i> Hexadecimal</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 5.2.1 Conversão hexa</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 5.2.2 Aplicações</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 6 -->
+        <div class="module-card" data-module="6">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 06</span>
+            <span class="module-badge">11 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Camada de Enlace de dados
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-link"></i> Finalidade da camada</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 6.1.1 Subcamadas LLC/MAC</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 6.1.2 Controle de acesso</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 7 -->
+        <div class="module-card" data-module="7">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 07</span>
+            <span class="module-badge">20 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Switching Ethernet
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-exchange-alt"></i> Quadros Ethernet</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 7.1.1 Estrutura do quadro</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 7.1.2 MAC address</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 8 -->
+        <div class="module-card" data-module="8">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 08</span>
+            <span class="module-badge">25 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Camada de rede
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-globe"></i> Características IPv4</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 8.1.1 Cabeçalho IPv4</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 8.1.2 Fragmentação</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fab fa-ipv6"></i> Pacote IPv6</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 8.3.1 Cabeçalho IPv6</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 8.3.2 Vantagens</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 9 -->
+        <div class="module-card" data-module="9">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 09</span>
+            <span class="module-badge">12 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Resolução de endereços
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-address-card"></i> ARP</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 9.2.1 Funcionamento do ARP</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 9.2.2 Tabela ARP</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 10 -->
+        <div class="module-card" data-module="10">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 10</span>
+            <span class="module-badge">12 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Configuração básica do roteador
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-microchip"></i> Configurar interfaces</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 10.2.1 Interface IP</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 10.2.2 Verificação</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 11 -->
+        <div class="module-card" data-module="11">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 11</span>
+            <span class="module-badge">32 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Endereçamento IPv4
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-chart-line"></i> Sub-redes</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 11.5.1 Cálculo de sub-rede</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 11.6.1 Sub-rede /16 e /8</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 12 -->
+        <div class="module-card" data-module="12">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 12</span>
+            <span class="module-badge">25 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Endereçamento IPv6
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fab fa-ipv6"></i> Representação IPv6</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 12.2.1 Notação</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 12.2.2 Regras de compressão</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 13 -->
+        <div class="module-card" data-module="13">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 13</span>
+            <span class="module-badge">12 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            ICMP
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-ping"></i> Ping e Traceroute</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 13.2.1 Teste de ping</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 13.2.2 Traceroute</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 14 -->
+        <div class="module-card" data-module="14">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 14</span>
+            <span class="module-badge">35 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Camada de transporte
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-exchange-alt"></i> TCP vs UDP</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 14.2.1 TCP confiável</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 14.3.1 UDP não confiável</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 15 -->
+        <div class="module-card" data-module="15">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 15</span>
+            <span class="module-badge">23 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Camada de aplicação
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-envelope"></i> Protocolos de e-mail e web</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 15.3.1 HTTP/HTTPS</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 15.3.2 SMTP/POP3/IMAP</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 16 -->
+        <div class="module-card" data-module="16">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 16</span>
+            <span class="module-badge">18 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Fundamentos de segurança de rede
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-shield-alt"></i> Ameaças e vulnerabilidades</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 16.1.1 Tipos de ameaças</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 16.1.2 Vulnerabilidades</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 17 -->
+        <div class="module-card" data-module="17">
+          <div class="module-header">
+            <span class="module-number">MÓDULO 17</span>
+            <span class="module-badge">27 tópicos</span>
+          </div>
+          <div class="module-title" style="padding: 0 1rem 0.5rem;">
+            Criação de uma rede pequena
+          </div>
+          <div class="module-categories">
+            <div class="category">
+              <div class="category-header" onclick="toggleCategory(this)">
+                <span><i class="fas fa-project-diagram"></i> Dispositivos e protocolos</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="category-items">
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 17.1.1 Equipamentos</a></li>
+                <li><a href="#"><i class="fas fa-chevron-right"></i> 17.2.1 Protocolos comuns</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="module-footer">
+            <a href="#" class="link-module">Acessar módulo <i class="fas fa-arrow-right"></i></a>
+            <div class="progress-badge"><i class="fas fa-circle" style="color: var(--text-dim); font-size: 0.5rem;"></i> 0% concluído</div>
+          </div>
+        </div>
+
+      </div> <!-- fim modules-grid -->
+
+      <!-- Terminal Message -->
+      <div class="terminal-message" style="background: var(--terminal-bg); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--cisco-green);">
+        <div style="font-family: monospace; color: var(--cisco-green);">
+          <i class="fas fa-terminal me-2"></i> $> echo "Documentação em andamento..."
+        </div>
+        <div style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">
+          + Conteúdos sendo adicionados diariamente com casos reais, análises de impacto e laboratórios práticos.
+        </div>
+      </div>
+
+    </div> <!-- fim container -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-md-start">
+          <i class="fas fa-skull me-2" style="color: var(--cisco-green);"></i>
+          <strong>Cisco Cyber Docs</strong> · Documentação CCNAv7 ITN
+        </div>
+        <div class="col-md-6 text-md-end">
+          <span>☠️ Conteúdo técnico com identidade visual enterprise</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Função para toggle das categorias (abrir/fechar lista de tópicos)
+    function toggleCategory(headerElement) {
+      const categoryDiv = headerElement.closest('.category');
+      const itemsList = categoryDiv.querySelector('.category-items');
+      const icon = headerElement.querySelector('.toggle-icon');
+
+      if (itemsList.classList.contains('collapsed')) {
+        itemsList.classList.remove('collapsed');
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      } else {
+        itemsList.classList.add('collapsed');
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      }
+    }
+
+    // Inicializar: categorias fechadas no mobile, abertas no desktop
+    function initCategories() {
+      const isMobile = window.innerWidth <= 768;
+      const allCategories = document.querySelectorAll('.category-items');
+      const allIcons = document.querySelectorAll('.toggle-icon');
+
+      allCategories.forEach((list, index) => {
+        if (isMobile) {
+          list.classList.add('collapsed');
+          if (allIcons[index]) {
+            allIcons[index].classList.remove('fa-chevron-up');
+            allIcons[index].classList.add('fa-chevron-down');
+          }
+        } else {
+          list.classList.remove('collapsed');
+          if (allIcons[index]) {
+            allIcons[index].classList.remove('fa-chevron-down');
+            allIcons[index].classList.add('fa-chevron-up');
+          }
+        }
+      });
+    }
+
+    window.addEventListener('load', initCategories);
+    window.addEventListener('resize', initCategories);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
