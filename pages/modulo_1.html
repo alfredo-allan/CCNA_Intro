@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Docs · Módulo 1 | As redes de hoje</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
+
+  <style>
+    /* ========== CISCO CYBER DOCS - VARIABLES ========== */
+    :root {
+      --bg-main: #121212;
+      --card-bg: #1e1e1e;
+      --text-main: #ffffff;
+      --text-dim: #b0b0b0;
+      --cisco-green: #66bf53;
+      --cisco-green-dark: #4a9e38;
+      --accent-blue: #0d6efd;
+      --accent-red: #dc3545;
+      --accent-yellow: #ffc107;
+      --border-dim: #2c2c2c;
+      --terminal-bg: #0a0a0a;
+      --success-bg: rgba(102, 191, 83, 0.1);
+      --warning-bg: rgba(255, 193, 7, 0.1);
+      --danger-bg: rgba(220, 53, 69, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar-glass {
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--cisco-green);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--cisco-green) !important;
+    }
+
+    .navbar-brand i {
+      font-size: 1.8rem;
+      margin-right: 8px;
+    }
+
+    .btn-cisco-outline {
+      border: 1px solid var(--cisco-green);
+      color: var(--cisco-green);
+      background: transparent;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .btn-cisco-outline:hover {
+      background: var(--cisco-green);
+      color: #000;
+    }
+
+    /* ========== PROGRESS BAR ========== */
+    .module-progress {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-dim);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .progress-bar-custom {
+      height: 8px;
+      background: var(--border-dim);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 11%;
+      height: 100%;
+      background: var(--cisco-green);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    /* ========== CONTENT CARDS ========== */
+    .content-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-dim);
+      transition: all 0.3s ease;
+    }
+
+    .content-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--cisco-green);
+      box-shadow: 0 8px 24px rgba(102, 191, 83, 0.1);
+    }
+
+    .cisco-title {
+      font-weight: 700;
+      font-size: 1.75rem;
+      border-left: 4px solid var(--cisco-green);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cisco-subtitle {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--cisco-green);
+      margin: 1.25rem 0 1rem 0;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: rgba(102, 191, 83, 0.15);
+      color: var(--cisco-green);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
+    /* ========== TABLES ========== */
+    .table-cisco {
+      background: var(--card-bg);
+      color: var(--text-main);
+      border-color: var(--border-dim);
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    .table-cisco thead th {
+      background: rgba(102, 191, 83, 0.1);
+      border-bottom: 2px solid var(--cisco-green);
+      color: var(--cisco-green);
+      padding: 0.75rem;
+    }
+
+    .table-cisco tbody td {
+      padding: 0.75rem;
+      border-color: var(--border-dim);
+    }
+
+    .table-cisco tbody tr:hover {
+      background: rgba(102, 191, 83, 0.05);
+    }
+
+    /* ========== ALERT CARDS ========== */
+    .alert-cisco {
+      background: var(--success-bg);
+      border-left: 4px solid var(--cisco-green);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .alert-warning {
+      background: var(--warning-bg);
+      border-left-color: var(--accent-yellow);
+    }
+
+    .alert-danger {
+      background: var(--danger-bg);
+      border-left-color: var(--accent-red);
+    }
+
+    /* ========== QUIZ CARDS ========== */
+    .quiz-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-dim);
+    }
+
+    .quiz-question {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .quiz-option:hover {
+      background: rgba(102, 191, 83, 0.1);
+    }
+
+    .quiz-option input {
+      accent-color: var(--cisco-green);
+      width: 18px;
+      height: 18px;
+    }
+
+    .quiz-option label {
+      margin: 0;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .quiz-answer {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .quiz-answer.correct {
+      background: var(--success-bg);
+      border-left: 3px solid var(--cisco-green);
+      display: block;
+    }
+
+    .quiz-answer.incorrect {
+      background: var(--danger-bg);
+      border-left: 3px solid var(--accent-red);
+      display: block;
+    }
+
+    .btn-check-answer {
+      background: var(--cisco-green);
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-check-answer:hover {
+      opacity: 0.85;
+    }
+
+    /* ========== SKULL SEPARATOR ========== */
+    .skull-separator {
+      text-align: center;
+      color: var(--cisco-green);
+      font-size: 1.2rem;
+      margin: 2rem 0;
+      opacity: 0.5;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border-dim);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .content-card {
+        padding: 1.25rem;
+      }
+      .cisco-title {
+        font-size: 1.35rem;
+      }
+      .table-cisco {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ========== SCROLL ========== */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-main);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--cisco-green);
+      border-radius: 4px;
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar-glass">
+    <div class="container">
+      <a class="navbar-brand" href="modulos.html">
+        <i class="fas fa-skull"></i> Cyber<span style="color: white">Docs</span>
+      </a>
+      <div>
+        <a href="modulos.html" class="btn-cisco-outline me-2">
+          <i class="fas fa-arrow-left me-1"></i> Módulos
+        </a>
+       
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main>
+    <div class="container py-4">
+
+      <!-- Header do Módulo -->
+      <div class="text-center mb-4">
+        <span class="section-badge"><i class="fas fa-cube me-1"></i> Módulo 1</span>
+        <h1 class="display-5 fw-bold">As redes de hoje</h1>
+        <p class="text-dim">Introduction to Networks (ITN) · Cisco CCNAv7</p>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="module-progress">
+        <div class="progress-label">
+          <span><i class="fas fa-chart-line me-1"></i> Progresso do Módulo</span>
+          <span>11% completo</span>
+        </div>
+        <div class="progress-bar-custom">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="progress-label mt-2">
+          <span><i class="fas fa-check-circle me-1"></i> 2 / 18 tópicos concluídos</span>
+          <span><i class="fas fa-clock me-1"></i> Próximo: 1.2 Componentes de rede</span>
+        </div>
+      </div>
+
+      <!-- Índice Rápido -->
+      <div class="content-card mb-4">
+        <h3 class="cisco-subtitle"><i class="fas fa-list me-2"></i> Navegação rápida</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li><a href="#secao-1-0" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.0 Introdução</a></li>
+              <li><a href="#secao-1-1" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.1 Redes afetam nossas vidas</a></li>
+              <li><a href="#secao-1-2" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.2 Componentes de rede</a></li>
+              <li><a href="#secao-1-3" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.3 Representações e topologias</a></li>
+              <li><a href="#secao-1-4" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.4 Tipos comuns de redes</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li><a href="#secao-1-5" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.5 Conexões com a Internet</a></li>
+              <li><a href="#secao-1-6" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.6 Redes confiáveis</a></li>
+              <li><a href="#secao-1-7" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.7 Tendências das redes</a></li>
+              <li><a href="#secao-1-8" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.8 Segurança de redes</a></li>
+              <li><a href="#secao-1-9" class="text-dim" style="text-decoration: none;"><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green);"></i>1.9 O profissional de TI</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== SEÇÃO 1.0 - INTRODUÇÃO ========== -->
+      <section id="secao-1-0" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-flag me-1"></i> 1.0</span>
+          <h2 class="cisco-title">Introdução ao Módulo 1</h2>
+          <p>Entre todas as coisas essenciais para a existência humana, a necessidade de interagir com os outros está logo abaixo das nossas necessidades básicas. A comunicação é quase tão importante para nós quanto nossa dependência de ar, água, comida e abrigo.</p>
+          <p>Neste módulo, você aprenderá como as redes modernas transformaram nossa sociedade, os componentes que as compõem e como elas continuam evoluindo para atender às demandas do mundo conectado.</p>
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-graduation-cap me-2"></i>
+            <strong>Ao final deste módulo, você será capaz de:</strong>
+            <ul class="mt-2 mb-0">
+              <li>Explicar como as redes afetam nosso dia a dia</li>
+              <li>Identificar os componentes básicos de uma rede</li>
+              <li>Descrever os diferentes tipos de redes</li>
+              <li>Explicar as tendências atuais em redes</li>
+            </ul>
+          </div>
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.1 - REDES AFETAM NOSSAS VIDAS ========== -->
+      <section id="secao-1-1" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-globe me-1"></i> 1.1</span>
+          <h2 class="cisco-title">Redes afetam nossas vidas</h2>
+          
+          <!-- Subseção 1.1.1 -->
+          <h3 class="cisco-subtitle">1.1.1 Redes Conecte-nos</h3>
+          <p>No mundo de hoje, com o uso de redes, estamos conectados como nunca estivemos. Pessoas que têm ideias podem se comunicar instantaneamente com as demais para torná-las uma realidade. Novos acontecimentos e descobertas são conhecidos no mundo inteiro em questão de segundos. Indivíduos podem até mesmo se conectar e jogar com seus amigos separados por oceanos e continentes.</p>
+          
+          <div class="row mt-4">
+            <div class="col-md-4">
+              <div class="text-center p-3" style="background: rgba(102,191,83,0.05); border-radius: 12px;">
+                <i class="fas fa-chalkboard-user fa-2x" style="color: var(--cisco-green);"></i>
+                <p class="mt-2 mb-0 small"><strong>Educação</strong><br>Aprendizado remoto</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-3" style="background: rgba(102,191,83,0.05); border-radius: 12px;">
+                <i class="fas fa-chart-line fa-2x" style="color: var(--cisco-green);"></i>
+                <p class="mt-2 mb-0 small"><strong>Negócios</strong><br>Comércio global</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-3" style="background: rgba(102,191,83,0.05); border-radius: 12px;">
+                <i class="fas fa-heart fa-2x" style="color: var(--cisco-green);"></i>
+                <p class="mt-2 mb-0 small"><strong>Social</strong><br>Comunidades globais</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subseção 1.1.3 -->
+          <h3 class="cisco-subtitle mt-4">1.1.3 Não Há Limites</h3>
+          <p>Os avanços nas tecnologias de redes são talvez as mudanças mais significativas no mundo hoje. Eles estão ajudando a criar um mundo em que fronteiras nacionais, distâncias geográficas e limitações físicas se tornem menos relevantes, apresentando obstáculos cada vez menores.</p>
+          <p>A internet mudou a maneira pela qual nossas interações sociais, comerciais, políticas e pessoais ocorrem. A natureza imediata das comunicações pela Internet incentiva a criação de <strong>comunidades globais</strong>.</p>
+          
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-cloud me-2"></i>
+            <strong>Cloud Computing:</strong> A criação da nuvem nos permite armazenar documentos e imagens e acessá-los em qualquer lugar, a qualquer hora. Portanto, quer estejamos em um trem, em um parque ou em pé no topo de uma montanha, podemos acessar facilmente nossos dados e aplicativos em qualquer dispositivo.
+          </div>
+
+          <!-- Caso Real -->
+          <div class="alert-warning alert-cisco mt-3">
+            <i class="fas fa-skull me-2"></i>
+            <strong>Caso Real:</strong> Em 2020, durante a pandemia, a demanda por redes cresceu 40% globalmente. Empresas como Zoom e Microsoft Teams tiveram que escalar sua infraestrutura em semanas para suportar milhões de novos usuários simultâneos, mostrando a importância crítica das redes modernas.
+          </div>
+
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.2 - COMPONENTES DE REDE ========== -->
+      <section id="secao-1-2" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-microchip me-1"></i> 1.2</span>
+          <h2 class="cisco-title">Componentes de rede</h2>
+
+          <!-- Subseção 1.2.1 - Funções do Host -->
+          <h3 class="cisco-subtitle">1.2.1 Funções do Host</h3>
+          <p>Todos os computadores que estão conectados a uma rede e participam diretamente da comunicação em rede são classificados como <strong>hosts</strong>. Os hosts podem ser chamados de <strong>dispositivos finais</strong>.</p>
+          <p>Um <strong>endereço IP</strong> (Internet Protocol) identifica o host e a rede à qual o host está conectado.</p>
+
+          <!-- Tabela de Servidores -->
+          <h3 class="cisco-subtitle mt-3">Tipos comuns de software de servidor</h3>
+          <div class="table-responsive">
+            <table class="table-cisco">
+              <thead>
+                <tr><th>Tipo</th><th>Descrição</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><i class="fas fa-envelope me-2" style="color: var(--cisco-green);"></i> E-mail</td><td>O servidor executa o software do servidor de e-mail. Clientes usam software cliente de e-mail, como o Microsoft Outlook, para acessar o e-mail no servidor.</td></tr>
+                <tr><td><i class="fas fa-globe me-2" style="color: var(--cisco-green);"></i> Web</td><td>O servidor web executa o software do servidor web. Os clientes usam software de navegador, como Chrome ou Firefox, para acessar páginas da web no servidor.</td></tr>
+                <tr><td><i class="fas fa-file me-2" style="color: var(--cisco-green);"></i> Arquivo</td><td>O servidor de arquivos armazena arquivos corporativos e de usuário em um local central. Os dispositivos clientes acessam esses arquivos com software cliente, como o Explorador de arquivos do Windows.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Subseção 1.2.2 - Ponto a Ponto -->
+          <h3 class="cisco-subtitle">1.2.2 Redes Ponto a Ponto (Peer-to-Peer)</h3>
+          <p>Em pequenas empresas e em casas, muitos computadores funcionam como servidores e clientes na rede. Esse tipo de rede é chamado de <strong>rede ponto a ponto</strong>.</p>
+          
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="alert-cisco">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Vantagens:</strong>
+                <ul class="mt-2 mb-0">
+                  <li>Fácil de configurar</li>
+                  <li>Menos complexo</li>
+                  <li>Menor custo</li>
+                  <li>Ideal para tarefas simples</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-danger alert-cisco">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Desvantagens:</strong>
+                <ul class="mt-2 mb-0">
+                  <li>Nenhuma administração centralizada</li>
+                  <li>Não é tão segura</li>
+                  <li>Não é escalável</li>
+                  <li>Performance pode ser lenta</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subseção 1.2.3 - Dispositivos Finais -->
+          <h3 class="cisco-subtitle">1.2.3 Dispositivos Finais</h3>
+          <p>Os dispositivos de rede com os quais as pessoas estão mais familiarizadas são <strong>dispositivos finais</strong>. Para distinguir um dispositivo final de outro, cada dispositivo final em uma rede tem um endereço. Quando um dispositivo final inicia a comunicação, ele usa o endereço do dispositivo final de destino para especificar onde entregar a mensagem.</p>
+
+          <!-- Subseção 1.2.4 - Dispositivos Intermediários -->
+          <h3 class="cisco-subtitle">1.2.4 Dispositivos Intermediários</h3>
+          <p>Dispositivos intermediários conectam os dispositivos finais individuais à rede. Eles podem conectar várias redes individuais para formar uma internetwork.</p>
+          
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <div class="text-center p-2"><i class="fas fa-wifi fa-2x" style="color: var(--cisco-green);"></i><br>Roteador sem fio</div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-2"><i class="fas fa-exchange-alt fa-2x" style="color: var(--cisco-green);"></i><br>Switch LAN</div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-2"><i class="fas fa-shield-alt fa-2x" style="color: var(--cisco-green);"></i><br>Firewall</div>
+            </div>
+          </div>
+
+          <p class="mt-3"><strong>Funções dos dispositivos intermediários:</strong></p>
+          <ul>
+            <li>Regenerar e retransmitir sinais de comunicação</li>
+            <li>Manter informação sobre caminhos pela rede</li>
+            <li>Notificar sobre erros e falhas de comunicação</li>
+            <li>Direcionar dados por caminhos alternativos</li>
+            <li>Classificar e direcionar mensagens por prioridade</li>
+            <li>Permitir ou negar fluxo de dados com base em segurança</li>
+          </ul>
+
+          <!-- Subseção 1.2.5 - Meios de Rede -->
+          <h3 class="cisco-subtitle">1.2.5 Meios de Rede</h3>
+          <p>A comunicação transmite através de uma rede na <strong>mídia</strong>. A mídia fornece o canal pelo qual a mensagem viaja da origem ao destino.</p>
+          
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <div class="text-center p-3" style="background: rgba(102,191,83,0.05); border-radius: 12px;">
+                <i class="fas fa-plug fa-2x" style="color: var(--cisco-green);"></i>
+                <p class="mt-2 mb-0"><strong>Cobre</strong><br>Impulsos elétricos</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-3" style="background: rgba(102,191,83,0.05); border-radius: 12px;">
+                <i class="fas fa-fiber fa-2x" style="color: var(--cisco-green);"></i>
+                <p class="mt-2 mb-0"><strong>Fibra Óptica</strong><br>Pulsos de luz</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-3" style="background: rgba(102,191,83,0.05); border-radius: 12px;">
+                <i class="fas fa-broadcast-tower fa-2x" style="color: var(--cisco-green);"></i>
+                <p class="mt-2 mb-0"><strong>Sem Fio</strong><br>Ondas eletromagnéticas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.3 - REPRESENTAÇÕES E TOPOLOGIAS ========== -->
+      <section id="secao-1-3" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-project-diagram me-1"></i> 1.3</span>
+          <h2 class="cisco-title">Representações e topologias de rede</h2>
+          <p><strong>Topologia</strong> se refere ao arranjo físico ou lógico dos dispositivos em uma rede.</p>
+          <ul>
+            <li><strong>Topologia Física:</strong> Disposição real dos cabos e dispositivos</li>
+            <li><strong>Topologia Lógica:</strong> Caminho que os dados percorrem na rede</li>
+          </ul>
+          
+          <div class="alert-cisco">
+            <i class="fas fa-chart-network me-2"></i>
+            <strong>Saiba mais:</strong> As topologias comuns incluem estrela, barramento, anel e malha. A topologia em estrela é a mais comum em redes Ethernet modernas, onde todos os dispositivos se conectam a um switch central.
+          </div>
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.4 - TIPOS COMUNS DE REDES ========== -->
+      <section id="secao-1-4" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-network-wired me-1"></i> 1.4</span>
+          <h2 class="cisco-title">Tipos comuns de redes</h2>
+          
+          <div class="table-responsive">
+            <table class="table-cisco">
+              <thead>
+                <tr><th>Tipo</th><th>Sigla</th><th>Características</th><th>Exemplo</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>LAN</strong></td><td>Local Area Network</td><td>Área geográfica pequena (escritório, escola)</td><td>Rede de um escritório</td></tr>
+                <tr><td><strong>WAN</strong></td><td>Wide Area Network</td><td>Área geográfica grande (países, continentes)</td><td>Internet</td></tr>
+                <tr><td><strong>MAN</strong></td><td>Metropolitan Area Network</td><td>Área metropolitana (cidade)</td><td>Rede de uma prefeitura</td></tr>
+                <tr><td><strong>PAN</strong></td><td>Personal Area Network</td><td>Área pessoal (poucos metros)</td><td>Bluetooth entre dispositivos</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Questão sobre tipos de rede -->
+          <div class="quiz-card mt-4" id="quiz-rede-tipo">
+            <div class="quiz-question">
+              <i class="fas fa-question-circle me-2" style="color: var(--cisco-green);"></i>
+              Um funcionário de uma filial está gerando um orçamento para um cliente. Para realizar a tarefa, o funcionário precisa acessar informações confidenciais de preços nos servidores internos na Sede. Que tipo de rede o funcionário acessaria?
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-rede" id="q-rede-a" value="intranet">
+              <label for="q-rede-a">Uma Intranet</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-rede" id="q-rede-b" value="internet">
+              <label for="q-rede-b">A Internet</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-rede" id="q-rede-c" value="extranet">
+              <label for="q-rede-c">Uma Extranet</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-rede" id="q-rede-d" value="lan">
+              <label for="q-rede-d">Uma rede local</label>
+            </div>
+            <button class="btn-check-answer" onclick="checkAnswer('q-rede', 'intranet', 'quiz-resposta-rede')">Verificar resposta</button>
+            <div id="quiz-resposta-rede" class="quiz-answer"></div>
+          </div>
+
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.5 - CONEXÕES COM A INTERNET ========== -->
+      <section id="secao-1-5" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-satellite-dish me-1"></i> 1.5</span>
+          <h2 class="cisco-title">Conexões com a Internet</h2>
+          <p>As opções de conexão com a Internet variam dependendo da localização e disponibilidade:</p>
+          <ul>
+            <li><strong>Cabo de fibra óptica</strong> - Maior velocidade e confiabilidade</li>
+            <li><strong>DSL (Digital Subscriber Line)</strong> - Utiliza linhas telefônicas existentes</li>
+            <li><strong>Cabo coaxial</strong> - Utiliza infraestrutura de TV a cabo</li>
+            <li><strong>Satélite</strong> - Útil para áreas rurais remotas</li>
+            <li><strong>Celular/4G/5G</strong> - Conexão móvel de alta velocidade</li>
+          </ul>
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.6 - REDES CONFIÁVEIS ========== -->
+      <section id="secao-1-6" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-shield-alt me-1"></i> 1.6</span>
+          <h2 class="cisco-title">Redes confiáveis</h2>
+          <p>Uma rede confiável deve atender a quatro requisitos fundamentais:</p>
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <div class="text-center p-2"><i class="fas fa-lock fa-2x" style="color: var(--cisco-green);"></i><br><strong>Tolerância a falhas</strong></div>
+            </div>
+            <div class="col-md-3">
+              <div class="text-center p-2"><i class="fas fa-chart-line fa-2x" style="color: var(--cisco-green);"></i><br><strong>Escalabilidade</strong></div>
+            </div>
+            <div class="col-md-3">
+              <div class="text-center p-2"><i class="fas fa-tachometer-alt fa-2x" style="color: var(--cisco-green);"></i><br><strong>Qualidade de Serviço (QoS)</strong></div>
+            </div>
+            <div class="col-md-3">
+              <div class="text-center p-2"><i class="fas fa-shield-virus fa-2x" style="color: var(--cisco-green);"></i><br><strong>Segurança</strong></div>
+            </div>
+          </div>
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.7 - TENDÊNCIAS DAS REDES ========== -->
+      <section id="secao-1-7" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-chart-line me-1"></i> 1.7</span>
+          <h2 class="cisco-title">Tendências das redes</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-microchip me-2"></i>
+                <strong>BYOD (Bring Your Own Device)</strong>
+                <p class="mt-1 small">Permite que funcionários usem seus próprios dispositivos no ambiente corporativo.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-cloud me-2"></i>
+                <strong>Computação em Nuvem</strong>
+                <p class="mt-1 small">Armazenamento e acesso a dados e aplicativos via Internet.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-robot me-2"></i>
+                <strong>IoT (Internet das Coisas)</strong>
+                <p class="mt-1 small">Dispositivos do cotidiano conectados à Internet.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-chalkboard me-2"></i>
+                <strong>Colaboração Online</strong>
+                <p class="mt-1 small">Videoconferências, compartilhamento de documentos em tempo real.</p>
+              </div>
+            </div>
+          </div>
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.8 - SEGURANÇA DE REDES ========== -->
+      <section id="secao-1-8" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-lock me-1"></i> 1.8</span>
+          <h2 class="cisco-title">Segurança de redes</h2>
+          <p>A segurança de rede é um dos desafios mais críticos atualmente. As principais ameaças incluem:</p>
+          <ul>
+            <li><strong>Malware</strong> - Vírus, worms, trojans</li>
+            <li><strong>Ataques de negação de serviço (DDoS)</strong> - Sobrecarga de recursos</li>
+            <li><strong>Engenharia social</strong> - Manipulação de pessoas</li>
+            <li><strong>Acesso não autorizado</strong> - Invasão de sistemas</li>
+          </ul>
+          
+          <div class="alert-danger alert-cisco mt-3">
+            <i class="fas fa-skull me-2"></i>
+            <strong>Caso Real - Ataque DDoS (2016):</strong> O ataque ao provedor DNS Dyn utilizou dispositivos IoT infectados (câmeras, DVRs) e derrubou serviços como Twitter, Netflix e Spotify em toda a costa leste dos EUA.
+          </div>
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.9 - O PROFISSIONAL DE TI ========== -->
+      <section id="secao-1-9" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-user-tie me-1"></i> 1.9</span>
+          <h2 class="cisco-title">O profissional de TI</h2>
+          <p>As carreiras em TI e redes estão em alta demanda. Algumas áreas de atuação:</p>
+          <ul>
+            <li><strong>Administrador de redes</strong> - Gerencia infraestrutura de rede</li>
+            <li><strong>Analista de segurança</strong> - Protege sistemas contra ameaças</li>
+            <li><strong>Engenheiro de suporte</strong> - Resolve problemas técnicos</li>
+            <li><strong>Arquiteto de soluções</strong> - Projeta redes empresariais</li>
+          </ul>
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-certificate me-2"></i>
+            <strong>Certificações Cisco:</strong> CCNA, CCNP, CCIE são reconhecidas mundialmente e abrem portas para carreiras de sucesso em redes.
+          </div>
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+      <!-- ========== SEÇÃO 1.10 - MÓDULO PRÁTICO E QUIZ ========== -->
+      <section id="secao-1-10" class="reveal">
+        <div class="content-card">
+          <span class="section-badge"><i class="fas fa-question-circle me-1"></i> 1.10</span>
+          <h2 class="cisco-title">Verificação de Conhecimentos</h2>
+          <p>Teste seus conhecimentos sobre o Módulo 1 respondendo às questões abaixo.</p>
+
+          <!-- Questão 1 - UDP -->
+          <div class="quiz-card" id="quiz-udp">
+            <div class="quiz-question">
+              <i class="fas fa-question-circle me-2" style="color: var(--cisco-green);"></i>
+              Em que duas situações o UDP seria melhor que o TCP como o protocolo de transporte preferido? (Escolha duas.)
+            </div>
+            <div class="quiz-option">
+              <input type="checkbox" name="q-udp" id="q-udp-a" value="velocidade">
+              <label for="q-udp-a">Quando um mecanismo de entrega mais rápido é necessário</label>
+            </div>
+            <div class="quiz-option">
+              <input type="checkbox" name="q-udp" id="q-udp-b" value="garantia">
+              <label for="q-udp-b">Quando aplicações precisam garantir que o pacote seja entregue intacto, em sequência e não duplicado</label>
+            </div>
+            <div class="quiz-option">
+              <input type="checkbox" name="q-udp" id="q-udp-c" value="overhead">
+              <label for="q-udp-c">Quando a sobrecarga de entregas não é um problema</label>
+            </div>
+            <div class="quiz-option">
+              <input type="checkbox" name="q-udp" id="q-udp-d" value="garantia">
+              <label for="q-udp-d">Quando as aplicações não precisam garantir a entrega dos dados</label>
+            </div>
+            <button class="btn-check-answer" onclick="checkUDPAnswer()">Verificar resposta</button>
+            <div id="quiz-resposta-udp" class="quiz-answer"></div>
+          </div>
+
+          <!-- Questão 2 - Comando show -->
+          <div class="quiz-card" id="quiz-show">
+            <div class="quiz-question">
+              <i class="fas fa-terminal me-2" style="color: var(--cisco-green);"></i>
+              Um técnico de rede está solucionando um problema e precisa verificar os endereços IP de todas as interfaces em um roteador. Qual é o melhor comando a ser usado para realizar a tarefa?
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-show" id="q-show-a" value="show-ip">
+              <label for="q-show-a">show ip interface brief</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-show" id="q-show-b" value="nslookup">
+              <label for="q-show-b">nslookup</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-show" id="q-show-c" value="ipconfig">
+              <label for="q-show-c">ipconfig getifaddr en0</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-show" id="q-show-d" value="chown">
+              <label for="q-show-d">chown in route</label>
+            </div>
+            <button class="btn-check-answer" onclick="checkRadioAnswer('q-show', 'show-ip', 'quiz-resposta-show')">Verificar resposta</button>
+            <div id="quiz-resposta-show" class="quiz-answer"></div>
+          </div>
+
+          <!-- Questão 3 - Atenuação -->
+          <div class="quiz-card" id="quiz-atenuacao">
+            <div class="quiz-question">
+              <i class="fas fa-waveform me-2" style="color: var(--cisco-green);"></i>
+              O que significa o termo "atenuação" na comunicação de dados?
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-atenuacao" id="q-atenuacao-a" value="perda">
+              <label for="q-atenuacao-a">Perda de intensidade do sinal à medida que a distância aumenta</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-atenuacao" id="q-atenuacao-b" value="tempo">
+              <label for="q-atenuacao-b">Tempo para um sinal chegar ao seu destino</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-atenuacao" id="q-atenuacao-c" value="vazamento">
+              <label for="q-atenuacao-c">Vazamento de sinais de um par de cabos para outro</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-atenuacao" id="q-atenuacao-d" value="reforco">
+              <label for="q-atenuacao-d">Reforço de um sinal por um dispositivo de rede</label>
+            </div>
+            <button class="btn-check-answer" onclick="checkRadioAnswer('q-atenuacao', 'perda', 'quiz-resposta-atenuacao')">Verificar resposta</button>
+            <div id="quiz-resposta-atenuacao" class="quiz-answer"></div>
+          </div>
+
+          <!-- Questão 4 - TCP -->
+          <div class="quiz-card" id="quiz-tcp">
+            <div class="quiz-question">
+              <i class="fas fa-exchange-alt me-2" style="color: var(--cisco-green);"></i>
+              Que informações são usadas pelo protocolo TCP para reagrupar e reordenar os segmentos recebidos?
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-tcp" id="q-tcp-a" value="portas">
+              <label for="q-tcp-a">Números de portas</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-tcp" id="q-tcp-b" value="sequencia">
+              <label for="q-tcp-b">Números de sequência</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-tcp" id="q-tcp-c" value="confirmacao">
+              <label for="q-tcp-c">Números de confirmação</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-tcp" id="q-tcp-d" value="fragmento">
+              <label for="q-tcp-d">Números de fragmento</label>
+            </div>
+            <button class="btn-check-answer" onclick="checkRadioAnswer('q-tcp', 'sequencia', 'quiz-resposta-tcp')">Verificar resposta</button>
+            <div id="quiz-resposta-tcp" class="quiz-answer"></div>
+          </div>
+
+          <!-- Questão 5 - Encapsulamento -->
+          <div class="quiz-card" id="quiz-encapsulamento">
+            <div class="quiz-question">
+              <i class="fas fa-box me-2" style="color: var(--cisco-green);"></i>
+              Qual processo envolve colocar uma PDU dentro de outra PDU?
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-encap" id="q-encap-a" value="encapsulamento">
+              <label for="q-encap-a">Encapsulamento</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-encap" id="q-encap-b" value="codificacao">
+              <label for="q-encap-b">Codificação</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-encap" id="q-encap-c" value="segmentacao">
+              <label for="q-encap-c">Segmentação</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-encap" id="q-encap-d" value="fluxo">
+              <label for="q-encap-d">Controle de fluxo</label>
+            </div>
+            <button class="btn-check-answer" onclick="checkRadioAnswer('q-encap', 'encapsulamento', 'quiz-resposta-encap')">Verificar resposta</button>
+            <div id="quiz-resposta-encap" class="quiz-answer"></div>
+          </div>
+
+          <!-- Questão 6 - DNS MX -->
+          <div class="quiz-card" id="quiz-dns">
+            <div class="quiz-question">
+              <i class="fas fa-dns me-2" style="color: var(--cisco-green);"></i>
+              Que tipo de informação está contida em um registro DNS MX?
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-dns" id="q-dns-a" value="alias">
+              <label for="q-dns-a">O FQDN do alias usado para identificar um serviço</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-dns" id="q-dns-b" value="ip">
+              <label for="q-dns-b">O endereço IP de uma entrada FQDN</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-dns" id="q-dns-c" value="email">
+              <label for="q-dns-c">O nome de domínio mapeado para servidores de troca de e-mail</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-dns" id="q-dns-d" value="autoritativo">
+              <label for="q-dns-d">O endereço IP de um servidor de nomes autoritativo</label>
+            </div>
+            <button class="btn-check-answer" onclick="checkRadioAnswer('q-dns', 'email', 'quiz-resposta-dns')">Verificar resposta</button>
+            <div id="quiz-resposta-dns" class="quiz-answer"></div>
+          </div>
+
+          <!-- Questão 7 - IP Privado -->
+          <div class="quiz-card" id="quiz-ip">
+            <div class="quiz-question">
+              <i class="fas fa-ip me-2" style="color: var(--cisco-green);"></i>
+              Uma escola secundária em Nova York (escola A) está usando tecnologia de videoconferência para o dispositivo final na escola B e a resposta é 192.168.25.10. Nenhuma escola está usando este IP, mas não funcionará. Por quê?
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-ip" id="q-ip-a" value="loopback">
+              <label for="q-ip-a">Este é um endereço de loopback</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-ip" id="q-ip-b" value="link-local">
+              <label for="q-ip-b">Este é um endereço local do link</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-ip" id="q-ip-c" value="privado">
+              <label for="q-ip-c">Este é um endereço IP privado</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-ip" id="q-ip-d" value="conflito">
+              <label for="q-ip-d">Há um conflito de endereço IP</label>
+            </div>
+            <button class="btn-check-answer" onclick="checkRadioAnswer('q-ip', 'privado', 'quiz-resposta-ip')">Verificar resposta</button>
+            <div id="quiz-resposta-ip" class="quiz-answer"></div>
+          </div>
+
+          <!-- Questão 8 - Roteador -->
+          <div class="quiz-card" id="quiz-roteador">
+            <div class="quiz-question">
+              <i class="fas fa-router me-2" style="color: var(--cisco-green);"></i>
+              Qual dispositivo desempenha a função de determinar o caminho que as mensagens devem fazer pelas redes internas?
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-roteador" id="q-roteador-a" value="roteador">
+              <label for="q-roteador-a">Um roteador</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-roteador" id="q-roteador-b" value="firewall">
+              <label for="q-roteador-b">Um firewall</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-roteador" id="q-roteador-c" value="web">
+              <label for="q-roteador-c">Um servidor Web</label>
+            </div>
+            <div class="quiz-option">
+              <input type="radio" name="q-roteador" id="q-roteador-d" value="modem">
+              <label for="q-roteador-d">Um modem DSL</label>
+            </div>
+            <button class="btn-check-answer" onclick="checkRadioAnswer('q-roteador', 'roteador', 'quiz-resposta-roteador')">Verificar resposta</button>
+            <div id="quiz-resposta-roteador" class="quiz-answer"></div>
+          </div>
+
+          <div class="skull-separator">☠️</div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-md-start">
+          <i class="fas fa-skull me-2" style="color: var(--cisco-green);"></i>
+          <strong>Cisco Cyber Docs</strong> · Módulo 1 - As redes de hoje
+        </div>
+        <div class="col-md-6 text-md-end">
+          <span>☠️ Baseado no currículo CCNAv7 Introduction to Networks</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Função para verificar questão UDP (múltipla escolha)
+    function checkUDPAnswer() {
+      const selected = [];
+      if (document.getElementById('q-udp-a').checked) selected.push('velocidade');
+      if (document.getElementById('q-udp-b').checked) selected.push('garantia');
+      if (document.getElementById('q-udp-c').checked) selected.push('overhead');
+      if (document.getElementById('q-udp-d').checked) selected.push('garantia2');
+      
+      const correct = ['velocidade', 'garantia2'];
+      const isCorrect = selected.length === 2 && selected.every(v => correct.includes(v));
+      
+      const answerDiv = document.getElementById('quiz-resposta-udp');
+      if (isCorrect) {
+        answerDiv.className = 'quiz-answer correct';
+        answerDiv.innerHTML = '<i class="fas fa-check-circle me-2"></i> Correto! UDP é melhor quando velocidade é prioridade ou quando a aplicação não precisa garantir entrega.';
+      } else {
+        answerDiv.className = 'quiz-answer incorrect';
+        answerDiv.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. A resposta correta é: "quando um mecanismo de entrega mais rápido é necessário" e "quando as aplicações não precisam garantir a entrega dos dados".';
+      }
+    }
+
+    // Função para verificar questão de rádio (múltipla escolha única)
+    function checkRadioAnswer(radioName, correctValue, resultDivId) {
+      const radios = document.getElementsByName(radioName);
+      let selectedValue = null;
+      
+      for (const radio of radios) {
+        if (radio.checked) {
+          selectedValue = radio.value;
+          break;
+        }
+      }
+      
+      const answerDiv = document.getElementById(resultDivId);
+      
+      if (!selectedValue) {
+        answerDiv.className = 'quiz-answer incorrect';
+        answerDiv.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Por favor, selecione uma resposta.';
+        return;
+      }
+      
+      if (selectedValue === correctValue) {
+        answerDiv.className = 'quiz-answer correct';
+        answerDiv.innerHTML = '<i class="fas fa-check-circle me-2"></i> Correto!';
+      } else {
+        answerDiv.className = 'quiz-answer incorrect';
+        answerDiv.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. Tente novamente!';
+      }
+    }
+
+    // Função para verificar questão da rede
+    function checkAnswer(radioName, correctValue, resultDivId) {
+      checkRadioAnswer(radioName, correctValue, resultDivId);
+    }
+
+    // Função para verificar questão de rede (tipo)
+    function checkNetworkType() {
+      checkRadioAnswer('q-rede', 'intranet', 'quiz-resposta-rede');
+    }
+
+    // Animação Reveal com Anime.js
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    function checkReveal() {
+      const windowHeight = window.innerHeight;
+      revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('revealed');
+        }
+      });
+    }
+    
+    window.addEventListener('load', checkReveal);
+    window.addEventListener('scroll', checkReveal);
+    
+    // Atalho para resposta da rede
+    window.checkAnswer = checkAnswer;
+  </script>
+</body>
+</html>
