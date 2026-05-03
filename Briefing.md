@@ -1,119 +1,194 @@
-# 🌐 BRIEFING TÉCNICO: Projeto NET-ACAD CCNA1
+# 🎯 BRIEFING CCNA MODULE GENERATOR
+
+## 📌 Contexto
+
+* **CSS Global:** `global.css` (já refatorado)
+* **Framework:** Bootstrap 5 + FontAwesome
+* **Animações:** Anime.js (opcional)
 
 ---
 
-## 1. 🎯 VISÃO GERAL DO PROJETO
-
-* **PROJETO:** Documentação Interativa CCNA v7.0 (ITN)
-* **BASE DE CONHECIMENTO:** 🌐 NET-ACAD | Introdução a Redes
-* **PÚBLICO-ALVO:** Estudantes de Engenharia, TI e Aspirantes a Certificação CCNA
-* **TOM VISUAL:** Industrial/Tech (Identidade Cisco Enterprise)
-* **ESTRUTURA:** 17 módulos (conforme currículo oficial CCNA1)
-* **LOGOTIPO:** NETCORE (Sugerido para diferenciar do CyberSec)
-
----
-
-## 2. 🎨 IDENTIDADE VISUAL (Ajustes de Acento)
-
-Mantemos o CSS consolidado (`styles.css`), com foco nos seguintes elementos:
-
-### 🎯 Cores de Status (Interface de Redes)
-
-```css
---cisco-green: #66bf53;   /* Link Up / Success */
---accent-blue: #0d6efd;   /* Configuração / Cisco IOS */
---accent-yellow: #ffc107; /* STP Blocking / Warning */
---accent-red: #dc3545;    /* Link Down / Critical */
-```
-
----
-
-## 3. 🧱 COMPONENTES ESPECÍFICOS PARA REDES
-
-O `styles.css` deve suportar as seguintes classes:
-
-| Classe           | Uso               | Descrição                                           |
-| ---------------- | ----------------- | --------------------------------------------------- |
-| `.ios-terminal`  | Comandos Cisco    | Card preto, texto verde ou branco, prompt `Router#` |
-| `.packet-stack`  | Camada OSI/TCP-IP | Grid vertical mostrando o encapsulamento da PDU     |
-| `.topology-card` | Diagramas de Rede | Fundo sutil com grid (blueprint)                    |
-| `.ipv6-badge`    | Endereçamento     | Destaque para endereços hexadecimais                |
-| `.config-step`   | Passo a passo     | Lista numerada com borda lateral                    |
-
----
-
-## 4. 🗺️ ESTRUTURA DE MÓDULOS (CCNA 1 - ITN)
-
-1. Redes Atuais
-2. Configuração de Switch e Dispositivos Finais
-3. Protocolos e Modelos (OSI/TCP-IP)
-4. Camada Física
-5. Sistemas de Numeração (Binário/Hex)
-6. Camada de Enlace de Dados
-7. Comutação Ethernet
-8. Camada de Rede
-9. Resolução de Endereço (ARP)
-10. Configuração Básica de Roteador
-11. Endereçamento IPv4 (Subnetting)
-12. Endereçamento IPv6
-13. ICMP
-14. Camada de Transporte (TCP/UDP)
-15. Camada de Aplicação
-16. Fundamentos de Segurança de Rede
-17. Construir uma Pequena Rede
-
----
-
-## 5. 🏗️ TEMPLATE DE SEÇÃO (Exemplo CCNA)
+## 🧩 Estrutura Obrigatória por Módulo
 
 ```html
-<section id="tcp-vs-udp">
-  <h2 class="cisco-title display-6 mb-4">14.1 TCP e UDP</h2>
-  
-  <div class="content-card">
-    <h3 class="cisco-subtitle">Comparação de Protocolos</h3>
-    <p>Diferenças fundamentais entre entrega confiável e entrega rápida.</p>
-    
-    <div class="table-responsive">
-      <table class="table table-cisco">
-        <thead>
-          <tr><th>Característica</th><th>TCP</th><th>UDP</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Conexão</td><td>Orientado a Conexão</td><td>Sem Conexão</td></tr>
-          <tr><td>Confiabilidade</td><td>Garantida (Reenvio)</td><td>Melhor Esforço</td></tr>
-        </tbody>
-      </table>
-    </div>
-    
-    <div class="terminal-card">
-      <small class="text-muted">// Verificando conexões ativas no roteador</small>
-      <pre><code>Router# show ip sockets</code></pre>
-    </div>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NET-ACAD · Módulo X | [Título]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+    <!-- NAVBAR (fixa) -->
+    <nav class="navbar-glass">
+        <div class="container">
+            <a class="navbar-brand" href="modulos.html">
+                <i class="fas fa-skull"></i>
+                Cyber<span style="color: white">Docs</span>
+            </a>
+            <a href="../index.html" class="btn-cisco-outline">
+                <i class="fas fa-arrow-left me-1"></i> Módulos
+            </a>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        <!-- HEADER DO MÓDULO -->
+        <div class="text-center mb-4">
+            <span class="section-badge">
+                <i class="fas fa-cube me-1"></i> Módulo X
+            </span>
+            <h1 class="display-6 fw-bold">[Título do Módulo]</h1>
+            <p class="text-dim">Introduction to Networks (ITN) · Cisco CCNAv7</p>
+        </div>
+
+        <!-- ÍNDICE RÁPIDO (opcional, por seção) -->
+        <div class="content-card mb-4">
+            <h3 class="cisco-subtitle">
+                <i class="fas fa-list me-2"></i> Navegação rápida
+            </h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li><a href="#secao-X-Y" class="text-dim">
+                            <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>X.Y Título
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEÇÕES DO MÓDULO -->
+        <div id="secao-X-Y" class="content-card">
+            <span class="section-badge">X.Y Subtítulo</span>
+            <h2 class="cisco-title">Título Principal</h2>
+            <p>Conteúdo teórico...</p>
+            
+            <!-- Tabela comparativa -->
+            <div class="table-responsive">
+                <table class="table table-cisco">
+                    <thead>
+                        <tr><th>Coluna 1</th><th>Coluna 2</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Dado 1</td><td>Dado 2</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Terminal Cisco -->
+            <div class="ios-terminal">
+                <pre><code>Router# show running-config</code></pre>
+            </div>
+            
+            <!-- Alertas -->
+            <div class="alert-cisco">
+                <i class="fas fa-info-circle me-2"></i> Informação importante
+            </div>
+            
+            <!-- Imagem com fallback -->
+            <img src="images/moduloX/exemplo.png" class="content-img w-100"
+                 alt="Descrição" onerror="this.style.display='none'">
+        </div>
+
+        <!-- QUIZ INTERATIVO (padronizado) -->
+        <div class="content-card">
+            <h3 class="cisco-subtitle">
+                <i class="fas fa-quiz me-2"></i> Verifique seu aprendizado
+            </h3>
+            <p><strong>[Pergunta]</strong></p>
+            <div class="quiz-option" onclick="document.getElementById('q1').checked = true">
+                <input type="radio" name="quiz" id="q1" value="correta">
+                <label>Opção correta</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q2').checked = true">
+                <input type="radio" name="quiz" id="q2" value="errada">
+                <label>Opção errada</label>
+            </div>
+            <button class="btn-check-answer mt-2" onclick="checkQuiz()">
+                Verificar resposta
+            </button>
+            <div id="quizResposta" class="quiz-answer mt-2" style="display: none"></div>
+        </div>
+    </main>
+
+    <!-- FOOTER PADRÃO -->
+    <footer class="cisco-footer">
+        <div class="container text-center">
+            <i class="fas fa-skull me-2" style="color: var(--cisco-green)"></i>
+            <strong>Cisco Cyber Docs</strong> · Módulo X - [Título]
+        </div>
+    </footer>
+
+    <!-- SCRIPT PADRÃO DE QUIZ -->
+    <script>
+        function checkQuiz() {
+            const radios = document.getElementsByName('quiz');
+            let selected = null;
+            for (let r of radios) if (r.checked) { selected = r.value; break; }
+            const div = document.getElementById('quizResposta');
+            div.style.display = 'block';
+            if (selected === 'correta') {
+                div.className = 'quiz-answer correct';
+                div.innerHTML = '<i class="fas fa-check-circle me-2"></i> Correto! [Explicação]';
+            } else if (selected) {
+                div.className = 'quiz-answer incorrect';
+                div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. [Explicação]';
+            } else {
+                div.className = 'quiz-answer incorrect';
+                div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.';
+            }
+        }
+    </script>
+</body>
+</html>
 ```
 
 ---
 
-## 6. 🔧 COMANDO PARA O CHAT (Otimizado)
+## 🎨 Classes CSS Disponíveis (`global.css`)
 
-> "Continuando o projeto de documentação NET-ACAD CCNA com o estilo consolidado.
-> Contexto: Módulo [X] do curso Introdução a Redes.
-> Classes: `.ios-terminal` para comandos, `.table-cisco` para comparativos, `.content-card` para teoria.
-> Preciso criar a seção [TÓPICO] com foco em [DETALHE TÉCNICO]."
+| Classe                   | Uso                           |
+| ------------------------ | ----------------------------- |
+| `.content-card`          | Card principal de conteúdo    |
+| `.cisco-title`           | Título com borda verde        |
+| `.cisco-subtitle`        | Subtítulo em verde            |
+| `.section-badge`         | Badge de seção (Módulo X.Y)   |
+| `.table-cisco`           | Tabela estilizada             |
+| `.ios-terminal`          | Terminal de comandos Cisco    |
+| `.alert-cisco`           | Alerta informativo            |
+| `.content-img`           | Imagem com borda e hover      |
+| `.quiz-option`           | Opção de quiz interativo      |
+| `.btn-check-answer`      | Botão de verificar quiz       |
+| `.quiz-answer.correct`   | Resposta correta (verde)      |
+| `.quiz-answer.incorrect` | Resposta incorreta (vermelha) |
+| `.cisco-footer`          | Rodapé padrão                 |
+| `.navbar-glass`          | Navbar fixa com blur          |
+| `.btn-cisco-outline`     | Botão outline verde           |
+| `.display-6`             | Título principal do módulo    |
+| `.text-dim`              | Texto secundário/cinza        |
+| `.ipv6-badge`            | Badge para IPv6               |
+| `.packet-stack`          | Pilha de protocolos           |
+| `.config-step`           | Passo a passo numerado        |
 
 ---
 
-## ✅ OBSERVAÇÕES FINAIS
+## ✅ Checklist para cada página de módulo
 
-* Estrutura pensada para documentação técnica escalável
-* Compatível com renderização em GitHub / GitLab / Docs estáticos
-* Pronto para integração com frameworks como **Next.js**, **VuePress** ou **Docusaurus**
-* Segue padrão visual inspirado em documentação enterprise
-
----
-
-**Versão:** 1.0
-**Formato:** Markdown (.md)
-**Objetivo:** Base estruturada para documentação interativa CCNA
+* [ ] Usar `global.css` (**NÃO incluir `<style>` interno**)
+* [ ] Navbar com `.navbar-glass` + link voltar
+* [ ] Header com `.section-badge` + `.display-6` + `.text-dim`
+* [ ] Índice rápido (opcional, com links `#secao-X-Y`)
+* [ ] Seções com `id="secao-X-Y"` e classe `.content-card`
+* [ ] Subtítulos com `.cisco-subtitle`
+* [ ] Tabelas com `.table-cisco` + `.table-responsive`
+* [ ] Comandos Cisco dentro de `.ios-terminal`
+* [ ] Alertas com `.alert-cisco`
+* [ ] Imagens com `.content-img` e `onerror`
+* [ ] Quiz padronizado com radio buttons + função `checkQuiz()`
+* [ ] Footer com `.cisco-footer`
+* [ ] Script de quiz customizado para cada pergunta

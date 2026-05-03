@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------- */
-/* CISCO CYBER DOCS - GLOBAL STYLESHEET v2.0                       */
+/* CISCO CYBER DOCS - GLOBAL STYLESHEET v2.0 (REFATORADO)          */
 /* Cybersecurity + CCNA | Dark Theme | Enterprise Grade           */
 /* --------------------------------------------------------------- */
 
@@ -11,6 +11,11 @@
   --text-main: #ffffff;
   --text-secondary: #b0b0b0;
   --border-dim: #2c2c2c;
+
+  /* Cores de Status */
+  --success-bg: rgba(102, 191, 83, 0.1);
+  --warning-bg: rgba(255, 193, 7, 0.1);
+  --danger-bg: rgba(220, 53, 69, 0.1);
 
   /* Cores de Ação (Cisco + Status) */
   --cisco-green: #66bf53;
@@ -75,6 +80,7 @@ h6 {
 
 .cisco-title {
   font-weight: 700;
+  font-size: 1.75rem;
   border-left: 4px solid var(--cisco-green);
   padding-left: 1rem;
   margin: 1.5rem 0 1.5rem 0;
@@ -82,22 +88,37 @@ h6 {
 
 .cisco-subtitle {
   font-weight: 600;
+  font-size: 1.25rem;
   color: var(--cisco-green);
   margin: 1.25rem 0 1rem 0;
-  font-size: 1.35rem;
 }
 
 .text-dim {
   color: var(--text-secondary);
 }
 
-/* ==================== 4. NAVBAR (GLASSMORPHISM) ==================== */
+.section-badge {
+  display: inline-block;
+  background: rgba(102, 191, 83, 0.15);
+  color: var(--cisco-green);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+/* ==================== 4. NAVBAR ==================== */
 .navbar-glass {
-  background: rgba(18, 18, 18, 0.85);
+  background: rgba(18, 18, 18, 0.95);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(102, 191, 83, 0.2);
+  border-bottom: 1px solid var(--cisco-green);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   min-height: var(--navbar-height);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar-brand {
@@ -126,12 +147,45 @@ h6 {
   transform: translateY(-1px);
 }
 
-/* ==================== 5. CARDS E CONTAINERS ==================== */
+/* ==================== 5. BOTÕES ==================== */
+.btn-cisco-outline {
+  border: 1px solid var(--cisco-green);
+  color: var(--cisco-green);
+  background: transparent;
+  transition: var(--transition-default);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-cisco-outline:hover {
+  background: var(--cisco-green);
+  color: #000;
+}
+
+.btn-check-answer {
+  background: var(--cisco-green);
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-sm);
+  font-weight: 600;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-check-answer:hover {
+  opacity: 0.85;
+}
+
+/* ==================== 6. CARDS E CONTAINERS ==================== */
 .content-card {
   background: var(--card-bg);
   border-radius: var(--border-radius-lg);
-  padding: 1.8rem;
-  margin-bottom: 1.8rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
   border: 1px solid var(--border-dim);
   transition: var(--transition-default);
 }
@@ -150,7 +204,186 @@ h6 {
   padding: 1.5rem;
 }
 
-/* ==================== 6. BADGES E ETIQUETAS ==================== */
+/* Module Card */
+.module-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  transition: var(--transition-default);
+  cursor: pointer;
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cisco-green);
+  box-shadow: 0 8px 24px rgba(102, 191, 83, 0.1);
+}
+
+.module-header {
+  background: rgba(102, 191, 83, 0.05);
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-dim);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.module-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cisco-green);
+  background: rgba(102, 191, 83, 0.15);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.module-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  flex: 1;
+}
+
+.module-badge {
+  background: var(--cisco-green);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+}
+
+.module-footer {
+  padding: 0.75rem 1rem 1rem;
+  border-top: 1px solid var(--border-dim);
+  margin-top: 0.5rem;
+}
+
+.link-module {
+  color: var(--cisco-green);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.2s ease;
+}
+
+.link-module:hover {
+  gap: 0.75rem;
+  color: var(--cisco-green-dark);
+}
+
+/* Quiz Card */
+.quiz-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-dim);
+}
+
+.quiz-question {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.quiz-option:hover {
+  background: rgba(102, 191, 83, 0.1);
+}
+
+.quiz-option input {
+  accent-color: var(--cisco-green);
+  width: 18px;
+  height: 18px;
+}
+
+.quiz-option label {
+  margin: 0;
+  cursor: pointer;
+  flex: 1;
+}
+
+.quiz-answer {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: var(--border-radius-sm);
+  display: none;
+}
+
+.quiz-answer.correct {
+  background: var(--success-bg);
+  border-left: 3px solid var(--cisco-green);
+  display: block;
+}
+
+.quiz-answer.incorrect {
+  background: var(--danger-bg);
+  border-left: 3px solid var(--accent-red);
+  display: block;
+}
+
+/* Metric Card */
+.metric-card {
+  text-align: center;
+  padding: 1.25rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-dim);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cisco-green);
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--border-radius-lg);
+  padding: 1rem 2rem;
+  text-align: center;
+  min-width: 120px;
+  transition: var(--transition-default);
+}
+
+.stat-card:hover {
+  border-color: var(--cisco-green);
+  transform: translateY(-3px);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cisco-green);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==================== 7. BADGES E ETIQUETAS ==================== */
 .badge-cisco {
   background-color: var(--cisco-green);
   color: #000000;
@@ -158,6 +391,7 @@ h6 {
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
+  display: inline-block;
 }
 
 .badge-status-up {
@@ -181,26 +415,25 @@ h6 {
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.8rem;
+  display: inline-block;
 }
 
-/* Responsive Badges */
-@media (max-width: 768px) {
-  .badge-cisco,
-  .badge-status-up,
-  .badge-status-down {
-    width: 100%;
-    margin-bottom: 10px;
-    text-align: center;
-    display: inline-block;
-  }
+.progress-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
 }
 
-/* ==================== 7. TABELAS (Estilo Enterprise) ==================== */
+/* ==================== 8. TABELAS ==================== */
 .table-cisco {
   background-color: var(--card-bg);
   color: var(--text-main);
   border-color: var(--border-dim);
-  margin-bottom: 1.5rem;
+  width: 100%;
+  margin: 1rem 0;
 }
 
 .table-cisco thead th {
@@ -221,7 +454,7 @@ h6 {
   background-color: rgba(102, 191, 83, 0.05);
 }
 
-/* ==================== 8. TERMINAL CISCO (IOS Style) ==================== */
+/* ==================== 9. TERMINAL CISCO ==================== */
 .ios-terminal {
   background: #0a0a0a;
   border-left: 4px solid var(--cisco-green);
@@ -233,7 +466,8 @@ h6 {
   overflow-x: auto;
 }
 
-.ios-terminal pre {
+.ios-terminal pre,
+.ios-terminal code {
   margin: 0;
   color: #6fcf97;
   background: transparent;
@@ -241,17 +475,12 @@ h6 {
   padding: 0;
 }
 
-.ios-terminal code {
-  color: #6fcf97;
-  background: transparent;
-}
-
 .prompt-root {
   color: var(--cisco-green);
   font-weight: bold;
 }
 
-/* ==================== 9. COMPONENTES DE REDE ==================== */
+/* ==================== 10. COMPONENTES DE REDE ==================== */
 .packet-stack {
   background: var(--card-bg);
   border-radius: var(--border-radius-md);
@@ -315,7 +544,330 @@ h6 {
   padding-left: 0;
 }
 
-/* ==================== 10. ANIMAÇÕES (Anime.js Ready) ==================== */
+/* Category Styles */
+.module-categories {
+  padding: 0.75rem 1rem;
+}
+
+.category {
+  margin-bottom: 0.75rem;
+  border-left: 2px solid transparent;
+  transition: var(--transition-default);
+}
+
+.category:hover {
+  border-left-color: var(--cisco-green);
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cisco-green);
+  cursor: pointer;
+}
+
+.category-header i:first-child {
+  width: 20px;
+  color: var(--cisco-green);
+}
+
+.toggle-icon {
+  transition: transform 0.3s ease;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.category-items {
+  list-style: none;
+  padding-left: 1.75rem;
+  margin: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.category-items.collapsed {
+  display: none;
+}
+
+.category-items li {
+  padding: 0.35rem 0;
+  font-size: 0.8rem;
+}
+
+.category-items li a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.category-items li a i {
+  font-size: 0.65rem;
+  color: var(--cisco-green);
+}
+
+.category-items li a:hover {
+  color: var(--cisco-green);
+}
+
+/* ==================== 11. ALERTAS ==================== */
+.alert-cisco {
+  background: var(--success-bg);
+  border-left: 4px solid var(--cisco-green);
+  border-radius: var(--border-radius-sm);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.alert-warning {
+  background: var(--warning-bg);
+  border-left-color: var(--accent-yellow);
+}
+
+.alert-danger {
+  background: var(--danger-bg);
+  border-left-color: var(--accent-red);
+}
+
+/* ==================== 12. PROGRESS BAR ==================== */
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.progress-bar-custom {
+  height: 8px;
+  background: var(--border-dim);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--cisco-green);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* ==================== 13. SEARCH COMPONENT ==================== */
+.cybersec-search-input-wrapper {
+  position: relative;
+  padding: 1.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.cybersec-search-input {
+  width: 100%;
+  background: #0a0a0a;
+  border: 2px solid #333;
+  border-radius: var(--border-radius-sm);
+  padding: 1rem 1rem 1rem 3rem;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  transition: var(--transition-default);
+}
+
+.cybersec-search-input:focus {
+  outline: none;
+  border-color: var(--cisco-green);
+  box-shadow: 0 0 15px rgba(102, 191, 83, 0.3);
+  background: #111;
+}
+
+.cybersec-search-input::placeholder {
+  color: #666;
+  font-style: italic;
+}
+
+.cybersec-search-icon {
+  position: absolute;
+  left: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cisco-green);
+  font-size: 1rem;
+  z-index: 1;
+}
+
+.cybersec-search-stats {
+  padding: 0.5rem 1.5rem;
+  background: #111;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.cybersec-search-results {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #0a0a0a;
+}
+
+.cybersec-result-item {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: var(--border-radius-sm);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: var(--transition-default);
+  cursor: pointer;
+}
+
+.cybersec-result-item:hover {
+  border-color: var(--cisco-green);
+  transform: translateX(5px);
+  background: #1a1a1a;
+  box-shadow: 0 5px 15px rgba(102, 191, 83, 0.2);
+}
+
+.cybersec-result-module {
+  display: inline-block;
+  background: rgba(102, 191, 83, 0.15);
+  color: var(--cisco-green);
+  padding: 0.2rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.cybersec-result-title {
+  color: #fff;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.cybersec-result-snippet {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.cybersec-result-snippet mark {
+  background: rgba(102, 191, 83, 0.3);
+  color: var(--cisco-green);
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.cybersec-result-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.cybersec-no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-style: italic;
+}
+
+.cybersec-loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--cisco-green);
+}
+
+.cybersec-search-footer {
+  padding: 0.8rem 1.5rem;
+  background: #111;
+  border-top: 1px solid #333;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.7rem;
+  color: #666;
+}
+
+/* ==================== 14. GRIDS E LAYOUTS ==================== */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+/* ==================== 15. PAGE HEADER ==================== */
+.page-header {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border-dim);
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff, var(--cisco-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.page-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* ==================== 16. FOOTER ==================== */
+.cisco-footer,
+.footer {
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-dim);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  color: var(--text-secondary);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ==================== 17. SEPARATORS ==================== */
+.skull-separator {
+  text-align: center;
+  color: var(--cisco-green);
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  opacity: 0.5;
+}
+
+.skull-separator i {
+  margin: 0 0.5rem;
+}
+
+/* ==================== 18. ANIMAÇÕES ==================== */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -343,7 +895,7 @@ h6 {
   animation: pulse-green 2s infinite;
 }
 
-/* ==================== 11. SCROLL E NAVEGAÇÃO ==================== */
+/* ==================== 19. SCROLL ==================== */
 section {
   scroll-margin-top: calc(var(--navbar-height) + 20px);
 }
@@ -366,7 +918,7 @@ section {
   background: var(--cisco-green-dark);
 }
 
-/* ==================== 12. UTILITÁRIOS RESPONSIVOS ==================== */
+/* ==================== 20. UTILITÁRIOS RESPONSIVOS ==================== */
 @media (max-width: 768px) {
   .content-card {
     padding: 1.25rem;
@@ -388,6 +940,31 @@ section {
   .table-cisco {
     font-size: 0.85rem;
   }
+
+  .modules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-bar {
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 0.75rem 1rem;
+    min-width: 80px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .badge-cisco,
+  .badge-status-up,
+  .badge-status-down {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
 }
 
 @media (max-width: 576px) {
@@ -405,65 +982,12 @@ section {
   }
 }
 
-/* ==================== 13. COMPONENTES ADICIONAIS ==================== */
-/* Box de Alerta */
-.alert-cisco {
-  background: rgba(102, 191, 83, 0.1);
-  border-left: 4px solid var(--cisco-green);
-  border-radius: var(--border-radius-sm);
-  padding: 1rem;
-  margin: 1rem 0;
-}
-
-/* Grid de Métricas */
-.metric-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.metric-card {
-  text-align: center;
-  padding: 1.25rem;
-  background: var(--card-bg);
-  border-radius: var(--border-radius-md);
-  border: 1px solid var(--border-dim);
-}
-
-.metric-value {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--cisco-green);
-}
-
-/* Separador Skull */
-.skull-separator {
-  text-align: center;
-  color: var(--cisco-green);
-  font-size: 1.2rem;
-  margin: 1.5rem 0;
-  opacity: 0.5;
-}
-
-.skull-separator i {
-  margin: 0 0.5rem;
-}
-
-/* Footer */
-.cisco-footer {
-  background: var(--card-bg);
-  border-top: 1px solid var(--border-dim);
-  padding: 2rem 0;
-  margin-top: 3rem;
-  color: var(--text-secondary);
-}
-
-/* Print Styles */
+/* ==================== 21. PRINT STYLES ==================== */
 @media print {
   .navbar-glass,
   .skull-separator,
-  .cisco-footer {
+  .cisco-footer,
+  .footer {
     display: none;
   }
 
@@ -478,3 +1002,170 @@ section {
   }
 }
 
+.navbar-glass {
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cisco-green);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--cisco-green) !important;
+}
+
+.btn-cisco-outline {
+  border: 1px solid var(--cisco-green);
+  color: var(--cisco-green);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-cisco-outline:hover {
+  background: var(--cisco-green);
+  color: #000;
+}
+
+.progress-fill {
+  width: 32%;
+  height: 100%;
+  background: var(--cisco-green);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.content-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-dim);
+  transition: all 0.3s ease;
+}
+
+.content-card:hover {
+  border-color: var(--cisco-green);
+  box-shadow: 0 8px 24px rgba(102, 191, 83, 0.1);
+}
+
+.cisco-title {
+  font-weight: 700;
+  font-size: 1.75rem;
+  border-left: 4px solid var(--cisco-green);
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cisco-subtitle {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--cisco-green);
+  margin: 1.25rem 0 1rem 0;
+}
+
+.section-badge {
+  background: rgba(102, 191, 83, 0.15);
+  color: var(--cisco-green);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.table-cisco {
+  background: var(--card-bg);
+  color: var(--text-main);
+  border-color: var(--border-dim);
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.table-cisco thead th {
+  background: rgba(102, 191, 83, 0.1);
+  border-bottom: 2px solid var(--cisco-green);
+  color: var(--cisco-green);
+}
+
+.alert-cisco {
+  background: var(--success-bg);
+  border-left: 4px solid var(--cisco-green);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.footer {
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-dim);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+img.content-img {
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border-dim);
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+img.content-img:hover {
+  transform: scale(1.01);
+}
+@media (max-width: 768px) {
+  .content-card {
+    padding: 1.25rem;
+  }
+  .cisco-title {
+    font-size: 1.35rem;
+  }
+}
+.table-cisco tbody td {
+  padding: 0.75rem;
+  border-color: var(--border-dim);
+  background-color: #1e1e1e !important;
+  color: white !important;
+}
+.quiz-option {
+  cursor: pointer;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+.quiz-option:hover {
+  background: rgba(102, 191, 83, 0.1);
+}
+.btn-check-answer {
+  background: var(--cisco-green);
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.quiz-answer.correct {
+  background: var(--success-bg);
+  border-left: 3px solid var(--cisco-green);
+  padding: 0.75rem;
+  border-radius: 8px;
+  display: block;
+}
+.quiz-answer.incorrect {
+  background: var(--danger-bg);
+  border-left: 3px solid #dc3545;
+  padding: 0.75rem;
+  border-radius: 8px;
+  display: block;
+}
