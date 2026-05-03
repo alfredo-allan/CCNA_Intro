@@ -968,6 +968,407 @@ Desktop  Downloads  lab.support.files  second drive
           <button class="btn-cisco-outline" onclick="showAllCommands()"><i class="fas fa-eye me-1"></i> Mostrar tudo</button>
         </div> -->
       </div>
+      <!-- ================= SEÇÃO 2.3 ================= -->
+      <div id="secao-2-3-1" class="content-card">
+        <span class="section-badge">2.3 A Estrutura de Comandos</span>
+
+        <!-- 2.3.1 Estrutura Básica de Comandos do IOS -->
+        <h2 class="cisco-title">2.3.1 Estrutura Básica de Comandos do IOS</h2>
+        <p>
+          Um administrador de rede deve conhecer a estrutura básica de comandos do IOS para poder usar a CLI para a configuração do
+          dispositivo.
+        </p>
+        <p>
+          Um dispositivo Cisco IOS é compatível com muitos comandos. Cada comando do IOS possui um formato ou
+          <strong>sintaxe</strong> específica e pode ser executado apenas no modo apropriado. A sintaxe geral de um comando é o
+          <strong>comando</strong> seguido por quaisquer <strong>palavras-chave</strong> e <strong>argumentos</strong> apropriados.
+        </p>
+
+        <div class="bg-dark p-3 rounded mb-3" style="background: #0d1117 !important">
+          <p class="mb-2 text-dim"><i class="fas fa-code me-2"></i> Exemplo de sintaxe:</p>
+          <code class="d-block text-success">Switch&gt; show ip protocols</code>
+          <div class="row mt-2 text-center">
+            <div class="col-4"><small class="text-dim">Prompt</small><br /><code class="text-info">Switch&gt;</code></div>
+            <div class="col-4"><small class="text-dim">Comando</small><br /><code class="text-info">show</code></div>
+            <div class="col-4"><small class="text-dim">Palavras-chave</small><br /><code class="text-info">ip protocols</code></div>
+          </div>
+        </div>
+
+        <div class="bg-dark p-3 rounded mb-3" style="background: #0d1117 !important">
+          <code class="d-block text-success">Switch&gt; ping 192.168.10.5</code>
+          <div class="row mt-2 text-center">
+            <div class="col-4"><small class="text-dim">Prompt</small><br /><code class="text-info">Switch&gt;</code></div>
+            <div class="col-4"><small class="text-dim">Comando</small><br /><code class="text-info">ping</code></div>
+            <div class="col-4"><small class="text-dim">Argumento</small><br /><code class="text-info">192.168.10.5</code></div>
+          </div>
+        </div>
+
+        <div class="alert-cisco">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Definições importantes:</strong>
+          <ul class="mt-2 mb-0">
+            <li><strong>Palavra-chave</strong> - Parâmetro específico definido no sistema operacional (ex: <code>ip protocols</code>)</li>
+            <li>
+              <strong>Argumento</strong> - Não é predefinido; é um valor ou variável definido pelo usuário (ex: <code>192.168.10.5</code>)
+            </li>
+          </ul>
+          <p class="mt-2 mb-0">
+            Após inserir cada comando completo, incluindo palavras-chave e argumentos, pressione a tecla <kbd>Enter</kbd> para enviar o
+            comando ao intérprete de comando.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2.3.2 Verificação de sintaxe do comando IOS -->
+      <div id="secao-2-3-2" class="content-card">
+        <h2 class="cisco-title">2.3.2 Verificação de sintaxe do comando IOS</h2>
+        <p>
+          Um comando pode exigir um ou mais argumentos. Para determinar as palavras-chave e os argumentos necessários para um comando,
+          consulte a
+          <strong>sintaxe de comando</strong>. A sintaxe fornece o padrão, ou formato, que deve ser usado ao inserir um comando.
+        </p>
+
+        <table class="table table-cisco">
+          <thead>
+            <tr>
+              <th>Convenção</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>negrito</strong></td>
+              <td>Comandos e palavras-chave que você digita literalmente</td>
+              <td><code>ping</code>, <code>show</code></td>
+            </tr>
+            <tr>
+              <td><em>itálico</em></td>
+              <td>Argumentos para os quais você fornece valores</td>
+              <td><code>ip-address</code></td>
+            </tr>
+            <tr>
+              <td><code>[x]</code></td>
+              <td>Colchetes indicam um elemento opcional</td>
+              <td><code>[timeout]</code></td>
+            </tr>
+            <tr>
+              <td><code>{x}</code></td>
+              <td>Chaves indicam um elemento necessário</td>
+              <td><code>{enable | disable}</code></td>
+            </tr>
+            <tr>
+              <td><code>[x {y | z}]</code></td>
+              <td>Elemento necessário dentro de um elemento opcional</td>
+              <td><code>[interface {GigabitEthernet | FastEthernet}]</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-book me-2"></i>
+          <strong>Exemplos práticos:</strong>
+          <ul class="mt-2">
+            <li>
+              <code>description string</code> - O comando <code>description</code> seguido de um texto. Ex:
+              <code>description Connects to the main headquarter office switch</code>
+            </li>
+            <li><code>ping ip-address</code> - Ex: <code>ping 10.10.10.5</code></li>
+            <li><code>traceroute ip-address</code> - Ex: <code>traceroute 192.168.254.254</code></li>
+          </ul>
+          <p class="mb-0 mt-2">
+            <strong>Dica:</strong> A <strong>Referência de Comandos do Cisco IOS</strong> é a fonte definitiva de informações para um
+            determinado comando do IOS.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2.3.3 Recursos da Ajuda do IOS -->
+      <div id="secao-2-3-3" class="content-card">
+        <h2 class="cisco-title">2.3.3 Recursos da Ajuda do IOS</h2>
+        <p>
+          O IOS tem duas formas de ajuda disponíveis: <strong>ajuda sensível ao contexto</strong> e
+          <strong>verificação da sintaxe do comando</strong>.
+        </p>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="p-3 rounded mb-3" style="background: rgba(102, 191, 83, 0.1)">
+              <h4><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i> Ajuda Contextual</h4>
+              <p>Permite encontrar rapidamente respostas para:</p>
+              <ul class="mb-0">
+                <li>Quais comandos estão disponíveis em cada modo?</li>
+                <li>Quais comandos começam com caracteres específicos?</li>
+                <li>Quais argumentos estão disponíveis para comandos específicos?</li>
+              </ul>
+              <p class="mt-2 mb-0"><strong>Como acessar:</strong> Digite <code>?</code> na CLI</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 rounded mb-3" style="background: rgba(102, 191, 83, 0.1)">
+              <h4><i class="fas fa-check-double me-2" style="color: var(--cisco-green)"></i> Verificação de Sintaxe</h4>
+              <p>Verifica se um comando válido foi inserido. Quando um comando é inserido, o interpretador:</p>
+              <ul class="mb-0">
+                <li>Se entende → executa a ação e retorna ao prompt</li>
+                <li>Se não entende → fornece feedback do erro</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark p-3 rounded mt-2">
+          <p class="text-dim mb-2"><i class="fas fa-terminal me-2"></i> Exemplo de ajuda contextual:</p>
+          <code class="d-block text-success">Switch&gt; cl?</code>
+          <code class="d-block text-info">clear clock</code>
+          <code class="d-block text-success mt-2">Switch&gt; clock ?</code>
+          <code class="d-block text-info">set Set the time and date</code>
+        </div>
+      </div>
+
+      <!-- 2.3.4 Teclas de Atalho e Comandos -->
+      <div id="secao-2-3-4" class="content-card">
+        <h2 class="cisco-title">2.3.4 Teclas de Atalho e Comandos</h2>
+        <p>A CLI do IOS fornece teclas de atalho e atalhos que facilitam a configuração, o monitoramento e a solução de problemas.</p>
+        <p>
+          Os comandos e as palavras-chave podem ser <strong>abreviados</strong> para o número mínimo de caracteres que identifica uma
+          seleção exclusiva. Por exemplo, o comando <code>configure</code> pode ser reduzido para <code>conf</code>, porque
+          <code>configure</code> é o único comando que começa com <code>conf</code>. Uma versão ainda mais curta, <code>con</code>, não
+          funcionará porque mais de um comando começa com <code>con</code>.
+        </p>
+
+        <h4 class="mt-3">Teclas de Edição da Linha de Comando</h4>
+        <div class="table-responsive">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Tecla/Atalho</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><kbd>Tab</kbd></td>
+                <td>Completa um nome de comando parcialmente digitado</td>
+              </tr>
+              <tr>
+                <td><kbd>Backspace</kbd></td>
+                <td>Apaga o caractere à esquerda do cursor</td>
+              </tr>
+              <tr>
+                <td><kbd>Ctrl+D</kbd></td>
+                <td>Apaga o caractere no cursor</td>
+              </tr>
+              <tr>
+                <td><kbd>Ctrl+K</kbd></td>
+                <td>Apaga todos os caracteres do cursor até o final da linha</td>
+              </tr>
+              <tr>
+                <td><kbd>Esc D</kbd></td>
+                <td>Apaga caracteres do cursor até o final da palavra</td>
+              </tr>
+              <tr>
+                <td><kbd>Ctrl+U</kbd> ou <kbd>Ctrl+X</kbd></td>
+                <td>Apaga do cursor até o início da linha</td>
+              </tr>
+              <tr>
+                <td><kbd>Ctrl+W</kbd></td>
+                <td>Apaga a palavra à esquerda do cursor</td>
+              </tr>
+              <tr>
+                <td><kbd>Ctrl+A</kbd></td>
+                <td>Move o cursor para o início da linha</td>
+              </tr>
+              <tr>
+                <td><kbd>←</kbd> ou <kbd>Ctrl+B</kbd></td>
+                <td>Move o cursor um caractere para a esquerda</td>
+              </tr>
+              <tr>
+                <td><kbd>Esc B</kbd></td>
+                <td>Move o cursor uma palavra para a esquerda</td>
+              </tr>
+              <tr>
+                <td><kbd>Esc F</kbd></td>
+                <td>Move o cursor uma palavra para a direita</td>
+              </tr>
+              <tr>
+                <td><kbd>→</kbd> ou <kbd>Ctrl+F</kbd></td>
+                <td>Move o cursor um caractere para a direita</td>
+              </tr>
+              <tr>
+                <td><kbd>Ctrl+E</kbd></td>
+                <td>Move para o final da linha de comando</td>
+              </tr>
+              <tr>
+                <td><kbd>↑</kbd> ou <kbd>Ctrl+P</kbd></td>
+                <td>Recupera comandos do histórico (mais recentes)</td>
+              </tr>
+              <tr>
+                <td><kbd>↓</kbd> ou <kbd>Ctrl+N</kbd></td>
+                <td>Vai para a próxima linha no histórico</td>
+              </tr>
+              <tr>
+                <td><kbd>Ctrl+R</kbd> / <kbd>Ctrl+I</kbd> / <kbd>Ctrl+L</kbd></td>
+                <td>Exibe novamente o prompt após mensagem do console</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="mt-3">Controle de Exibição de Saída (Prompt --More--)</h4>
+        <p>Quando uma saída produz mais texto do que pode ser exibido, o IOS exibe o prompt <code>--More--</code>:</p>
+        <table class="table table-cisco">
+          <thead>
+            <tr>
+              <th>Tecla</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><kbd>Enter</kbd></td>
+              <td>Exibe a próxima linha</td>
+            </tr>
+            <tr>
+              <td><kbd>Barra de Espaço</kbd></td>
+              <td>Exibe a próxima tela</td>
+            </tr>
+            <tr>
+              <td><strong>Qualquer outra tecla</strong></td>
+              <td>Encerra a sequência de exibição, retornando ao modo EXEC privilegiado</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4 class="mt-3">Teclas de Interrupção/Execução</h4>
+        <table class="table table-cisco">
+          <thead>
+            <tr>
+              <th>Tecla/Comando</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><kbd>Ctrl+C</kbd></td>
+              <td>Finaliza o modo de configuração e retorna ao EXEC privilegiado</td>
+            </tr>
+            <tr>
+              <td><kbd>Ctrl+Z</kbd></td>
+              <td>Finaliza o modo de configuração e retorna ao EXEC privilegiado</td>
+            </tr>
+            <tr>
+              <td><kbd>Ctrl+Shift+6</kbd></td>
+              <td>Aborta pesquisas de DNS, traceroutes, pings, etc.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Observação:</strong> Embora a tecla <kbd>Delete</kbd> exclua normalmente o caractere à direita do prompt, a estrutura de
+          comando do IOS não reconhece a tecla Delete.
+        </div>
+      </div>
+
+      <!-- 2.3.5 Verifique sua compreensão -->
+      <div id="secao-2-3-5" class="content-card">
+        <h2 class="cisco-title">2.3.5 Verifique sua compreensão - Command Structure</h2>
+
+        <div class="quiz-container p-3 rounded" style="background: rgba(102, 191, 83, 0.05)">
+          <p><strong>Pergunta 1:</strong> Qual tecla de atalho completa um nome de comando parcialmente digitado no Cisco IOS?</p>
+          <div class="quiz-option" onclick="document.getElementById('q-cmd-1').checked = true">
+            <input type="radio" name="q-cmd" id="q-cmd-1" value="ctrl-c" /> <label>Ctrl+C</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-cmd-2').checked = true">
+            <input type="radio" name="q-cmd" id="q-cmd-2" value="tab" /> <label>Tab</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-cmd-3').checked = true">
+            <input type="radio" name="q-cmd" id="q-cmd-3" value="enter" /> <label>Enter</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-cmd-4').checked = true">
+            <input type="radio" name="q-cmd" id="q-cmd-4" value="?" /> <label>?</label>
+          </div>
+          <button class="btn-cisco-outline mt-3" onclick="checkCommandQuiz()">Verificar resposta</button>
+          <div id="quiz-cmd-resposta" class="quiz-answer mt-2" style="display: none"></div>
+        </div>
+
+        <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+          <p><strong>Pergunta 2:</strong> O que o símbolo <code>?</code> faz no Cisco IOS CLI?</p>
+          <div class="quiz-option" onclick="document.getElementById('q-cmd2-1').checked = true">
+            <input type="radio" name="q-cmd2" id="q-cmd2-1" value="exit" /> <label>Sai do modo atual</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-cmd2-2').checked = true">
+            <input type="radio" name="q-cmd2" id="q-cmd2-2" value="help" /> <label>Ativa a ajuda sensível ao contexto</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-cmd2-3').checked = true">
+            <input type="radio" name="q-cmd2" id="q-cmd2-3" value="history" /> <label>Exibe o histórico de comandos</label>
+          </div>
+          <button class="btn-cisco-outline mt-3" onclick="checkCommandQuiz2()">Verificar resposta</button>
+          <div id="quiz-cmd2-resposta" class="quiz-answer mt-2" style="display: none"></div>
+        </div>
+      </div>
+
+      <!-- 2.3.6 Packet Tracer - Navegue no IOS -->
+      <div id="secao-2-3-6" class="content-card">
+        <h2 class="cisco-title">2.3.6 Packet Tracer - Navegue no IOS</h2>
+        <div class="alert-cisco">
+          <i class="fas fa-laptop-code me-2"></i>
+          <strong>Atividade prática:</strong> Nesta atividade, você praticará as habilidades necessárias para navegar pelo IOS Cisco,
+          incluindo diferentes modos de acesso do usuário, vários modos de configuração e os comandos comuns usados regularmente. Você
+          também praticará o acesso à ajuda sensível ao contexto, configurando o comando <code>clock</code>.
+        </div>
+        <div class="text-center mt-3">
+          <i class="fas fa-network-wired fa-3x" style="color: var(--cisco-green)"></i>
+          <p class="mt-2"><strong>Packet Tracer - Navegue no IOS</strong></p>
+          <p class="text-dim">Disponível na plataforma NetAcad</p>
+        </div>
+      </div>
+
+      <!-- 2.3.7 Laboratório - Navegue pelo IOS usando Tera Term -->
+      <div id="secao-2-3-7" class="content-card">
+        <h2 class="cisco-title">2.3.7 Laboratório - Navegue pelo IOS usando Tera Term para conectividade de console</h2>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="p-3 rounded mb-3" style="background: rgba(102, 191, 83, 0.1)">
+              <h4><i class="fas fa-microchip me-2"></i> Oportunidade de prática de habilidades</h4>
+              <ul>
+                <li><strong>Parte 1:</strong> Acessar um Switch Cisco por meio da porta do console serial</li>
+                <li><strong>Parte 2:</strong> Exibir e definir configurações básicas de dispositivos</li>
+                <li><strong>Parte 3:</strong> Acessar um roteador Cisco com um cabo de console mini-USB (opcional)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 rounded mb-3" style="background: rgba(102, 191, 83, 0.1)">
+              <h4><i class="fas fa-tools me-2"></i> Opções disponíveis</h4>
+              <ul>
+                <li>
+                  <strong>Packet Tracer - Modo Físico (PTPM)</strong><br />Navegue pelo IOS usando Tera Term para conectividade de console
+                </li>
+                <li><strong>Equipamento de laboratório</strong><br />Utilize hardware real para prática</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-cisco">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          <strong>Importante:</strong> Você pode praticar essas habilidades usando o <strong>Packet Tracer</strong> ou
+          <strong>equipamento de laboratório</strong>, se disponível. A prática com equipamento real proporciona experiência valiosa com
+          conectividade física e configuração de console.
+        </div>
+
+        <!-- Simulação do Tera Term -->
+        <div class="bg-dark p-3 rounded mt-3">
+          <p class="text-dim mb-2"><i class="fas fa-terminal me-2"></i> Simulação de conexão via Tera Term:</p>
+          <code class="d-block text-info">1. Abra o Tera Term</code>
+          <code class="d-block text-info">2. Selecione "Serial" e escolha a porta COM do console</code>
+          <code class="d-block text-info">3. Configure: Velocidade 9600, 8 bits de dados, 1 stop bit, sem paridade</code>
+          <code class="d-block text-info">4. Conecte-se ao switch/roteador</code>
+          <code class="d-block text-success mt-2">5. Comece a configurar!</code>
+        </div>
+      </div>
     </main>
 
     <!-- FOOTER PADRÃO -->
@@ -1055,6 +1456,65 @@ Desktop  Downloads  lab.support.files  second drive
 7. end → Volta ao modo EXEC privilegiado`
 
         alert(commands)
+      }
+    </script>
+    <script>
+      function checkCommandQuiz() {
+        const radios = document.getElementsByName('q-cmd')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-cmd-resposta')
+        div.style.display = 'block'
+        if (selected === 'tab') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! A tecla <kbd>Tab</kbd> completa comandos parcialmente digitados no IOS.'
+        } else if (selected === 'ctrl-c') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. <kbd>Ctrl+C</kbd> finaliza o modo de configuração e retorna ao EXEC privilegiado.'
+        } else if (selected === 'enter') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. <kbd>Enter</kbd> envia o comando para execução.'
+        } else if (selected === '?') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. O símbolo <code>?</code> ativa a ajuda sensível ao contexto.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+
+      function checkCommandQuiz2() {
+        const radios = document.getElementsByName('q-cmd2')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-cmd2-resposta')
+        div.style.display = 'block'
+        if (selected === 'help') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! O símbolo <code>?</code> ativa a ajuda sensível ao contexto no IOS.'
+        } else if (selected === 'exit') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. <code>exit</code> sai do modo atual.'
+        } else if (selected === 'history') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. <code>history</code> exibe o histórico de comandos.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
       }
     </script>
   </body>
