@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NET-ACAD · Módulo 2 | Acesso ao Cisco IOS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <!-- NENHUM CSS INTERNO ADICIONADO - CONFORME BRIEFING -->
+  </head>
+  <style>
+    .text-dim {
+      text-decoration: none !important;
+    }
+  </style>
+  <body>
+    <!-- NAVBAR FIXA (classe navbar-glass) -->
+    <nav class="navbar-glass">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">
+          <i class="fas fa-skull"></i>
+          Cyber<span style="color: white">Docs</span>
+        </a>
+        <a href="../index.html" class="btn-cisco-outline"> <i class="fas fa-arrow-left me-1"></i> Módulos </a>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <!-- HEADER DO MÓDULO -->
+      <div class="text-center mb-4">
+        <span class="section-badge"> <i class="fas fa-cube me-1"></i> Módulo 2 </span>
+        <h1 class="display-6 fw-bold">Acesso ao Cisco IOS</h1>
+        <p class="text-dim">Introduction to Networks (ITN) · Cisco CCNAv7</p>
+      </div>
+
+      <!-- ÍNDICE RÁPIDO -->
+      <div class="content-card mb-4">
+        <h3 class="cisco-subtitle"><i class="fas fa-list me-2"></i> Navegação rápida</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-2-1-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.1.1 Sistemas Operacionais</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-1-2" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.1.2 GUI</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-1-3" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.1.3 Objetivo de um SO</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-1-4" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.1.4 Métodos de Acesso</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-1-5" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.1.5 Programas de Emulação de Terminal</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-1-6" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.1.6 Verifique sua compreensão - Cisco IOS
+                  Access</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-2-2-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.2.1 Modos de comando do IOS</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-2-2" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.2.2 Estrutura de ajuda do IOS</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-2-3" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.2.3 Comandos de navegação</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-2-4" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.2.4 Notação</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-2-5" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.2.5 Comandos de teclas de atalho</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-2-6" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.2.6 Verifique sua compreensão - IOS
+                  Navigation</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-2-3-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.3.1 Conceitos básicos de comandos do IOS</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-3-2" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.3.2 Comandos do modo EXEC</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-3-3" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.3.3 Sintaxe de comando</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-3-4" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.3.4 Comandos e parâmetros</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-3-5" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.3.5 Verifique sua compreensão - Command
+                  Structure</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-2-4-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.4.1 Nomes de dispositivos</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-4-2" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.4.2 Senhas</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-4-3" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.4.3 Usando banners</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-4-4" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.4.4 Verifique sua compreensão - Basic Device
+                  Configuration</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-2-5-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.5.1 Arquivos de configuração</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-5-2" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.5.2 Comandos de configuração</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-5-3" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.5.3 Verifique sua compreensão - Save
+                  Configurations</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-2-6-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.6.1 Portas e interfaces</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-6-2" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.6.2 Endereços IP</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-6-3" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.6.3 Verifique sua compreensão - Ports and
+                  Addresses</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-2-7-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.7.1 Configuração de interfaces</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-7-2" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.7.2 Configuração de endereços IP</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-7-3" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.7.3 Verificação de configuração</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-7-4" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.7.4 Verifique sua compreensão - Configure IP
+                  Addresses</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-2-8-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.8.1 Protocolo ICMP</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-8-2" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.8.2 Comandos ping e traceroute</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-2-9-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.9.1 Laboratório - Configuração básica do
+                  switch</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-9-2" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.9.2 Prática - Configuração de dispositivos
+                  finais</a
+                >
+              </li>
+              <li>
+                <a href="#secao-2-9-3" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.9.3 Quiz - Módulo 2</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================ -->
+      <!-- SEÇÃO 2.1.1 Sistemas Operacionais                                -->
+      <!-- ================================================================ -->
+      <div id="secao-2-1-1" class="content-card">
+        <span class="section-badge">2.1.1</span>
+        <h2 class="cisco-title">Sistemas Operacionais</h2>
+        <p>
+          Todos os dispositivos finais e de rede exigem um sistema operacional (SO). A parte do sistema operacional que interage diretamente
+          com o hardware do computador é conhecida como <strong>kernel</strong>. A parte que tem interface com aplicações e o usuário é
+          conhecida como <strong>shell</strong>. O usuário pode interagir com a shell por meio de uma <strong>CLI</strong> (Interface de
+          linha de Comando) ou uma <strong>GUI</strong> (Interface Gráfica do Usuário).
+        </p>
+
+        <!-- Representação visual com ícones (substituindo imagem) -->
+        <div class="packet-stack text-center my-4 p-4" style="background: var(--bg-card); border-radius: 16px">
+          <div class="d-flex flex-column align-items-center gap-3">
+            <div class="d-flex align-items-center gap-3 flex-wrap justify-content-center">
+              <span class="badge bg-dark p-3 fs-6"><i class="fas fa-terminal me-2"></i> Shell (CLI/GUI)</span>
+              <i class="fas fa-arrow-down fa-2x text-dim"></i>
+              <span class="badge bg-secondary p-3 fs-6"><i class="fas fa-microchip me-2"></i> Kernel</span>
+              <i class="fas fa-arrow-down fa-2x text-dim"></i>
+              <span class="badge bg-dark p-3 fs-6"><i class="fas fa-server me-2"></i> Hardware</span>
+            </div>
+            <div class="alert-cisco w-100 mt-3">
+              <i class="fas fa-info-circle me-2"></i>
+              <strong>Shell</strong> → Interface do usuário (CLI ou GUI) · <strong>Kernel</strong> → Comunicação hardware/software ·
+              <strong>Hardware</strong> → Parte física do computador
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Cisco representando CLI -->
+        <div class="ios-terminal mt-3">
+          <pre><code>[analyst@secOps ~]$ ls
+Desktop  Downloads  lab.support.files  second drive
+[analyst@secOps ~]$ <span class="text-success">_</span></code></pre>
+        </div>
+        <p class="mt-2 text-dim">
+          Ao usar uma CLI, o usuário interage diretamente com o sistema em um ambiente baseado em texto. A CLI requer pouca sobrecarga, mas
+          exige conhecimento da estrutura de comandos.
+        </p>
+      </div>
+
+      <!-- ================================================================ -->
+      <!-- SEÇÃO 2.1.2 GUI                                                  -->
+      <!-- ================================================================ -->
+      <div id="secao-2-1-2" class="content-card">
+        <span class="section-badge">2.1.2</span>
+        <h2 class="cisco-title">GUI (Interface Gráfica do Usuário)</h2>
+        <p>
+          Uma GUI como Windows, macOS, Linux KDE, Apple iOS ou Android permite que o usuário interaja com o sistema usando um ambiente de
+          ícones gráficos, menus e janelas. A GUI é mais fácil de usar e requer menos conhecimento da estrutura de comando subjacente. Por
+          esse motivo, a maioria dos usuários depende de ambientes da GUI.
+        </p>
+
+        <!-- Representação com ícones de GUIs populares (substituindo imagem) -->
+        <div class="d-flex flex-wrap justify-content-center gap-4 my-4 p-3" style="background: var(--bg-elevated); border-radius: 20px">
+          <div class="text-center"><i class="fab fa-windows fa-3x" style="color: #00a4ef"></i><br /><span class="small">Windows</span></div>
+          <div class="text-center"><i class="fab fa-apple fa-3x" style="color: #555"></i><br /><span class="small">macOS</span></div>
+          <div class="text-center"><i class="fab fa-linux fa-3x" style="color: #f0c674"></i><br /><span class="small">Linux KDE</span></div>
+          <div class="text-center"><i class="fab fa-android fa-3x" style="color: #3ddc84"></i><br /><span class="small">Android</span></div>
+          <div class="text-center"><i class="fab fa-apple fa-3x" style="color: #999"></i><br /><span class="small">iOS</span></div>
+        </div>
+
+        <div class="alert-cisco mb-3">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          Nem sempre as GUIs podem fornecer todos os recursos disponíveis com a CLI. GUIs também podem falhar, congelar ou não funcionar
+          como especificado.
+        </div>
+        <p>
+          Os dispositivos de rede geralmente são acessados por meio de uma <strong>CLI</strong>. A CLI consome menos recursos e é muito
+          estável, em comparação com uma GUI. A família de sistemas operacionais de rede usados em muitos dispositivos Cisco é denominada
+          <strong>Cisco Internetwork Operating System (IOS)</strong>. Outros sistemas operacionais Cisco incluem IOS XE, IOS XR e NX-OS.
+        </p>
+        <div class="alert-cisco">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Observação:</strong> O sistema operacional em roteadores domésticos geralmente é chamado firmware. O método mais comum
+          para configurar um roteador residencial é usando uma GUI pelo navegador.
+        </div>
+      </div>
+
+      <!-- ================================================================ -->
+      <!-- SEÇÃO 2.1.3 Objetivo de um SO                                     -->
+      <!-- ================================================================ -->
+      <div id="secao-2-1-3" class="content-card">
+        <span class="section-badge">2.1.3</span>
+        <h2 class="cisco-title">Objetivo de um SO</h2>
+        <p>
+          Os sistemas operacionais de rede são semelhantes a um sistema operacional de PCs. Por meio de uma GUI, um sistema operacional de
+          PC permite que o usuário faça o seguinte:
+        </p>
+        <ul class="text-dim">
+          <li><i class="fas fa-mouse me-2 text-success"></i> Utilizar um mouse para fazer seleções e executar programas</li>
+          <li><i class="fas fa-keyboard me-2 text-success"></i> Inserir texto e comandos baseados em texto</li>
+          <li><i class="fas fa-desktop me-2 text-success"></i> Exibir a saída em um monitor</li>
+        </ul>
+        <p>Um sistema operacional de rede baseado em <strong>CLI</strong> (Cisco IOS) permite que um técnico de rede faça o seguinte:</p>
+        <ul class="text-dim">
+          <li><i class="fas fa-keyboard me-2 text-success"></i> Usar um teclado para executar programas de rede baseados na CLI</li>
+          <li><i class="fas fa-terminal me-2 text-success"></i> Inserir texto e comandos baseados em texto</li>
+          <li><i class="fas fa-display me-2 text-success"></i> Exibir a saída em um monitor</li>
+        </ul>
+        <p>
+          Os dispositivos de rede Cisco executam determinadas versões do Cisco IOS. A versão do IOS depende do tipo de dispositivo usado e
+          dos recursos necessários.
+        </p>
+
+        <!-- Tabela de versões de software (baseada no print da Cisco Download) -->
+        <div class="table-responsive mt-3">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Software/Firmware</th>
+                <th>Release Date</th>
+                <th>DRAM/FLASH</th>
+                <th><i class="fas fa-download me-1"></i> Arquivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-check-circle text-success me-1"></i> LAN BASE</td>
+                <td>09-Oct-2017</td>
+                <td>64/32</td>
+                <td><code>c2960-lanbasek9-mz.122-55.SE12.bin</code></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-globe me-1 text-info"></i> LAN BASE WITH WEB BASED DEV MGR</td>
+                <td>09-Oct-2017</td>
+                <td>64/32</td>
+                <td><code>c2960-lanbasek9-tar.122-55.SE12.tar</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex flex-wrap gap-2 mt-2">
+          <span class="ipv6-badge"><i class="fas fa-tag me-1"></i> 12.2.55-SE12(MD)</span>
+          <span class="ipv6-badge"><i class="fas fa-star me-1"></i> Suggested Release</span>
+          <span class="ipv6-badge"><i class="fas fa-cloud-arrow-up me-1"></i> Latest Release 15.0.2-SE11</span>
+        </div>
+      </div>
+
+      <!-- ================================================================ -->
+      <!-- SEÇÃO 2.1.4 Métodos de Acesso                                     -->
+      <!-- ================================================================ -->
+      <div id="secao-2-1-4" class="content-card">
+        <span class="section-badge">2.1.4</span>
+        <h2 class="cisco-title">Métodos de Acesso</h2>
+        <p>
+          Um switch encaminhará o tráfego por padrão e não precisa ser explicitamente configurado para operar. Independentemente do
+          comportamento padrão, todos os switches devem ser configurados e protegidos.
+        </p>
+
+        <div class="table-responsive">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Método</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-plug me-2 text-success"></i> <strong>Console</strong></td>
+                <td>
+                  Porta de gerenciamento físico que fornece acesso <strong>fora de banda</strong>. O dispositivo fica acessível mesmo sem
+                  serviços de rede configurados. Necessário cabo de console especial e software de emulação de terminal.
+                </td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-lock me-2 text-success"></i> <strong>Secure Shell (SSH)</strong></td>
+                <td>
+                  Método <strong>recomendado</strong> e dentro da banda para estabelecer conexão CLI segura e criptografada através de uma
+                  rede. Requer serviços de rede ativos e interface com endereço IP.
+                </td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-exclamation-triangle me-2 text-warning"></i> <strong>Telnet</strong></td>
+                <td>
+                  Método inseguro em banda. Não fornece criptografia; senhas e comandos são enviados em texto plano.
+                  <strong>Melhor prática: usar SSH em vez de Telnet</strong>. Usar apenas em laboratório.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Nota:</strong> Alguns dispositivos (roteadores) possuem porta auxiliar (AUX) herdada para conexão remota via modem. A
+          porta AUX também é do tipo fora de banda.
+        </div>
+      </div>
+
+      <!-- ================================================================ -->
+      <!-- SEÇÃO 2.1.5 Programas de Emulação de Terminal                      -->
+      <!-- ================================================================ -->
+      <div id="secao-2-1-5" class="content-card">
+        <span class="section-badge">2.1.5</span>
+        <h2 class="cisco-title">Programas de Emulação de Terminal</h2>
+        <p>
+          Existem vários programas de emulação de terminal que você pode usar para conectar-se a um dispositivo de rede por uma conexão
+          serial por uma porta do console ou por uma conexão SSH/Telnet. Esses programas permitem que você aumente sua produtividade
+          ajustando tamanhos de janela, alterando tamanhos de fontes e alterando esquemas de cores.
+        </p>
+
+        <!-- Cards dos três principais emuladores (substituindo imagens) -->
+        <div class="row g-4 my-3">
+          <!-- PuTTY Card -->
+          <div class="col-md-4">
+            <div class="content-card text-center h-100 p-3">
+              <i class="fab fa-windows fa-3x mb-2" style="color: #306998"></i>
+              <h4 class="cisco-subtitle">PuTTY</h4>
+              <div class="ios-terminal text-start mt-2 small">
+                <pre><code>PuTTY Configuration
+  Host Name: ______
+  Port: 22
+  Connection type: SSH
+  Saved Sessions: Default</code></pre>
+              </div>
+              <span class="badge bg-dark mt-2"><i class="fas fa-key me-1"></i> SSH / Telnet / Serial</span>
+            </div>
+          </div>
+          <!-- Tera Term Card -->
+          <div class="col-md-4">
+            <div class="content-card text-center h-100 p-3">
+              <i class="fas fa-terminal fa-3x mb-2" style="color: #4caf50"></i>
+              <h4 class="cisco-subtitle">Tera Term</h4>
+              <div class="ios-terminal text-start mt-2 small">
+                <pre><code>COM3 - Tera Term VT
+  TCP/IP · Host: ____
+  TCP port#: 22
+  SSH version: SSH2
+  Serial · Port: COM3</code></pre>
+              </div>
+              <span class="badge bg-dark mt-2"><i class="fas fa-plug me-1"></i> Serial / SSH</span>
+            </div>
+          </div>
+          <!-- SecureCRT Card -->
+          <div class="col-md-4">
+            <div class="content-card text-center h-100 p-3">
+              <i class="fas fa-shield-halted fa-3x mb-2" style="color: #e67e22"></i>
+              <h4 class="cisco-subtitle">SecureCRT</h4>
+              <div class="ios-terminal text-start mt-2 small">
+                <pre><code>Session Manager
+  Protocol: SSH2
+  Authentication:
+    PublicKey · Password · GSSAPI
+  Open in a tab</code></pre>
+              </div>
+              <span class="badge bg-dark mt-2"><i class="fas fa-lock me-1"></i> SSH2 / Avançado</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparativo de Recursos (Tabela) -->
+        <div class="table-responsive mt-3">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Emulador</th>
+                <th>Protocolos Suportados</th>
+                <th>Características</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fab fa-windows me-1"></i> PuTTY</td>
+                <td>SSH, Telnet, Rlogin, Serial</td>
+                <td>Leve, portátil, configuração de sessões, suporte a chaves públicas</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-terminal me-1"></i> Tera Term</td>
+                <td>SSH2, Telnet, Serial</td>
+                <td>Macros, script em TTL, emulação VT100/VT382</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-shield-halted me-1"></i> SecureCRT</td>
+                <td>SSH2, Telnet, Serial, RDP</td>
+                <td>Gerenciamento de sessões, autenticação multifator, scripts Python/VBS</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Janelas de diálogo representadas com cards (substituindo prints) -->
+        <div class="alert-cisco mt-3 d-flex align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <i class="fas fa-window-restore me-2 fa-lg"></i>
+            <strong>Sessão SSH (PuTTY/Clone):</strong> Protocolo SSH2 · Hostname: 192.168.1.1 · Porta: 22 · Autenticação: PublicKey +
+            Password
+          </div>
+          <div class="flex-grow-1">
+            <i class="fas fa-check-circle text-success me-2"></i>
+            Opções: <span class="badge bg-success">Show quick connect on startup</span>
+            <span class="badge bg-secondary">Save session</span>
+            <span class="badge bg-info">Open in a tab</span>
+          </div>
+        </div>
+        <p class="text-dim mt-2">
+          <i class="fas fa-lightbulb me-2 text-warning"></i> Dica: Esses emuladores permitem ajustar tamanhos de janela, fontes, esquemas de
+          cores e salvar sessões para acesso rápido a roteadores e switches Cisco.
+        </p>
+      </div>
+
+      <!-- ================================================================ -->
+      <!-- QUIZ INTERATIVO (padronizado) sobre o módulo 2.1                -->
+      <!-- ================================================================ -->
+      <div class="content-card">
+        <h3 class="cisco-subtitle"><i class="fas fa-quiz me-2"></i> Verifique seu aprendizado</h3>
+        <p>
+          <strong
+            >Qual é o método de acesso mais seguro e recomendado para estabelecer uma conexão CLI remota a um dispositivo de rede Cisco,
+            considerando boas práticas de segurança?</strong
+          >
+        </p>
+
+        <div class="quiz-option" onclick="document.getElementById('q1').checked = true">
+          <input type="radio" name="quiz" id="q1" value="correta" />
+          <label>SSH (Secure Shell) - fornece criptografia e autenticação segura para acesso remoto</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q2').checked = true">
+          <input type="radio" name="quiz" id="q2" value="errada" />
+          <label>Telnet - por ser mais rápido e leve, ideal para redes corporativas</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q3').checked = true">
+          <input type="radio" name="quiz" id="q3" value="errada" />
+          <label>Console - pois permite acesso remoto sem configuração de rede</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q4').checked = true">
+          <input type="radio" name="quiz" id="q4" value="errada" />
+          <label>GUI do navegador - mais fácil e com todos os recursos da CLI</label>
+        </div>
+
+        <button class="btn-check-answer mt-2" onclick="checkQuiz()">Verificar resposta <i class="fas fa-arrow-right ms-1"></i></button>
+        <div id="quizResposta" class="quiz-answer mt-2" style="display: none"></div>
+      </div>
+      <!-- ================= SEÇÃO 2.2 ================= -->
+      <div id="secao-2-2-1" class="content-card">
+        <span class="section-badge">2.2 Navegação IOS</span>
+
+        <!-- 2.2.1 Modos de Comando Primários -->
+        <h2 class="cisco-title">2.2.1 Modos de Comando Primários</h2>
+        <p>Como recurso de segurança, o software Cisco IOS separa o acesso de gerenciamento nestes dois modos de comando:</p>
+        <ul>
+          <li>
+            <strong>Modo EXEC de usuário</strong> - Este modo possui recursos limitados, mas é útil para operações básicas. Ele permite
+            apenas um número limitado de comandos de monitoramento básicos, mas não permite a execução de nenhum comando que possa alterar a
+            configuração do dispositivo. O modo EXEC usuário é identificado pelo prompt da CLI que termina com o símbolo <code>&gt;</code>.
+          </li>
+          <li>
+            <strong>Modo EXEC privilegiado</strong> - Para executar comandos de configuração, um administrador de rede deve acessar o modo
+            EXEC privilegiado. Modos de configuração mais altos, como o modo de configuração global, só podem ser acessados do modo EXEC
+            privilegiado. O modo EXEC privilegiado pode ser identificado pelo prompt que termina com o <code>#</code> símbolo.
+          </li>
+        </ul>
+
+        <table class="table table-cisco">
+          <thead>
+            <tr>
+              <th>Modo de Comando</th>
+              <th>Descrição</th>
+              <th>Prompt Padrão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Modo EXEC usuário</strong></td>
+              <td>• Acesso limitado a comandos básicos de monitoramento<br />• Modo "view-only"</td>
+              <td><code>Switch&gt;</code> <code>Router&gt;</code></td>
+            </tr>
+            <tr>
+              <td><strong>Modo EXEC privilegiado</strong></td>
+              <td>• Acesso a todos os comandos e recursos<br />• Configuração e gerenciamento</td>
+              <td><code>Switch#</code> <code>Router#</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 2.2.2 Modo de configuração e modos de subconfiguração -->
+      <div id="secao-2-2-2" class="content-card">
+        <h2 class="cisco-title">2.2.2 Modo de configuração e modos de subconfiguração</h2>
+        <p>
+          Para configurar o dispositivo, o usuário deve entrar no <strong>modo de configuração global</strong>, geralmente chamado de modo
+          de configuração global.
+        </p>
+        <p>
+          No modo de config global, são feitas alterações na configuração via CLI que afetam o funcionamento do dispositivo como um todo. O
+          modo de configuração global é identificado por um prompt que termina com
+          <code>(config)#</code> após o nome do dispositivo, como <code>Switch(config)#</code>.
+        </p>
+        <p>
+          Esse modo é acessado antes de outros modos de configuração específicos. No modo de configuração global, o usuário pode inserir
+          diferentes <strong>modos de subconfiguração</strong>. Cada um desses modos permite a configuração de uma parte particular ou
+          função do dispositivo IOS. Dois modos comuns de subconfiguração incluem:
+        </p>
+        <ul>
+          <li>
+            <strong>Modo de configuração de linha</strong> - Usado para configurar o acesso ao console, SSH, Telnet ou AUX. Prompt:
+            <code>Switch(config-line)#</code>
+          </li>
+          <li>
+            <strong>Modo de configuração da interface</strong> - Usado para configurar uma porta de switch ou interface de rede do roteador.
+            Prompt: <code>Switch(config-if)#</code>
+          </li>
+        </ul>
+        <div class="alert-cisco">
+          <i class="fas fa-terminal me-2"></i>
+          <strong>Dica:</strong> Quando a CLI é usada, o modo é identificado pelo prompt da linha de comandos exclusivo para esse modo. Por
+          padrão, todo prompt começa com o nome do dispositivo.
+        </div>
+      </div>
+
+      <!-- 2.2.3 Comandos de navegação -->
+      <div id="secao-2-2-3" class="content-card">
+        <h2 class="cisco-title">2.2.3 Comandos de navegação</h2>
+        <div class="table-responsive">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Comando</th>
+                <th>Função</th>
+                <th>Exemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>enable</code></td>
+                <td>Do modo EXEC usuário para o modo EXEC privilegiado</td>
+                <td><code>Switch&gt; enable</code> → <code>Switch#</code></td>
+              </tr>
+              <tr>
+                <td><code>disable</code></td>
+                <td>Do modo EXEC privilegiado para o modo EXEC usuário</td>
+                <td><code>Switch# disable</code> → <code>Switch&gt;</code></td>
+              </tr>
+              <tr>
+                <td><code>configure terminal</code></td>
+                <td>Do modo EXEC privilegiado para o modo de configuração global</td>
+                <td><code>Switch# configure terminal</code> → <code>Switch(config)#</code></td>
+              </tr>
+              <tr>
+                <td><code>exit</code></td>
+                <td>Sai do modo atual e volta um nível na hierarquia</td>
+                <td><code>Switch(config)# exit</code> → <code>Switch#</code></td>
+              </tr>
+              <tr>
+                <td><code>end</code> ou <code>Ctrl+Z</code></td>
+                <td>Retorna diretamente ao modo EXEC privilegiado</td>
+                <td><code>Switch(config-if)# end</code> → <code>Switch#</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2.2.4 Navegar Entre os Modos do IOS -->
+      <div id="secao-2-2-4" class="content-card">
+        <h2 class="cisco-title">2.2.4 Navegar Entre os Modos do IOS</h2>
+        <p>
+          Vários comandos são usados para entrar e sair dos prompts de comando. Para passar do modo EXEC do usuário para o modo EXEC
+          privilegiado, use o comando <code>enable</code>. Use o comando <code>disable</code> do modo EXEC privilegiado para retornar ao
+          modo EXEC do usuário.
+        </p>
+        <div class="alert-cisco">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Observação:</strong> O modo EXEC privilegiado às vezes é chamado de <em>enable mode</em>.
+        </div>
+        <p>
+          Para entrar e sair do modo de configuração global, use o comando <code>configure terminal</code> no modo EXEC privilegiado. Para
+          retornar ao modo EXEC privilegiado, digite o comando <code>exit</code> no modo de configuração global.
+        </p>
+        <p>
+          Existem muitos modos diferentes de subconfiguração. Por exemplo, para entrar no modo de subconfiguração de linha, use o comando
+          <code>line</code> seguido pelo tipo e número da linha de gerenciamento que deseja acessar.
+        </p>
+
+        <div class="bg-dark p-3 rounded mb-3" style="background: #0d1117 !important">
+          <p class="mb-1 text-dim"><i class="fas fa-code me-2"></i> Exemplo de navegação:</p>
+          <code class="d-block text-success">Switch(config)# line console 0</code>
+          <code class="d-block text-info ms-3">Switch(config-line)# exit</code>
+          <code class="d-block text-success">Switch(config)#</code>
+        </div>
+
+        <p>
+          Para mover de qualquer modo de subconfiguração do modo de configuração global para o modo um passo acima na hierarquia de modos,
+          digite o comando <code>exit</code>.
+        </p>
+        <p>
+          Para passar de qualquer modo de subconfiguração para o modo EXEC privilegiado, insira o comando
+          <code>end</code> ou a combinação de teclas <strong>Ctrl+Z</strong>.
+        </p>
+
+        <div class="bg-dark p-3 rounded mb-3" style="background: #0d1117 !important">
+          <code class="d-block text-success">Switch(config-line)# end</code>
+          <code class="d-block text-info">Switch#</code>
+        </div>
+
+        <p>
+          Você também pode mover diretamente de um modo de subconfiguração para outro. Observe como depois de selecionar uma interface, o
+          prompt de comando muda de <code>(config-line)#</code> para <code>(config-if)#</code>.
+        </p>
+
+        <div class="bg-dark p-3 rounded" style="background: #0d1117 !important">
+          <code class="d-block text-success">Switch(config-line)# interface FastEthernet 0/1</code>
+          <code class="d-block text-info">Switch(config-if)#</code>
+        </div>
+      </div>
+
+      <!-- 2.2.5 Comandos de teclas de atalho -->
+      <div id="secao-2-2-5" class="content-card">
+        <h2 class="cisco-title">2.2.5 Comandos de teclas de atalho</h2>
+        <table class="table table-cisco">
+          <thead>
+            <tr>
+              <th>Tecla/Comando</th>
+              <th>Função</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Ctrl+Z</code></td>
+              <td>Retorna do modo de subconfiguração para o modo EXEC privilegiado</td>
+            </tr>
+            <tr>
+              <td><code>Ctrl+C</code></td>
+              <td>Cancela o comando atual e sai do modo de configuração</td>
+            </tr>
+            <tr>
+              <td><code>Tab</code></td>
+              <td>Completa o comando parcialmente digitado</td>
+            </tr>
+            <tr>
+              <td><code>?</code></td>
+              <td>Exibe ajuda contextual e comandos disponíveis</td>
+            </tr>
+            <tr>
+              <td><code>↑</code> / <code>↓</code></td>
+              <td>Navega pelo histórico de comandos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 2.2.6 Verifique sua compreensão -->
+      <div id="secao-2-2-6" class="content-card">
+        <h2 class="cisco-title">2.2.6 Verifique sua compreensão - IOS Navigation</h2>
+
+        <div class="alert-cisco mb-4">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Observação sobre as atividades do verificador de sintaxe</strong><br />
+          Quando estiver aprendendo a modificar as configurações do dispositivo, convém começar em um ambiente seguro e que não seja de
+          produção antes de experimentá-lo em equipamentos reais. O NetACAD oferece diferentes ferramentas de simulação para ajudar a
+          desenvolver suas habilidades de configuração e solução de problemas. Como estas são ferramentas de simulação, elas geralmente não
+          têm toda a funcionalidade de equipamentos reais. Uma dessas ferramentas é o <strong>Verificador de Sintaxe</strong>. Em cada
+          Verificador de Sintaxe, você recebe um conjunto de instruções para inserir um conjunto específico de comandos. Você não pode
+          progredir no Verificador de Sintaxe a menos que o comando exato e completo seja inserido conforme especificado. Ferramentas de
+          simulação mais avançadas, como o Packet Tracer, permitem que você insira comandos abreviados, assim como faria em equipamentos
+          reais.
+        </div>
+
+        <div class="quiz-container p-3 rounded" style="background: rgba(102, 191, 83, 0.05)">
+          <p>
+            <strong>Pergunta:</strong> Qual comando deve ser usado para sair do modo de configuração de linha e retornar ao modo de
+            configuração global?
+          </p>
+          <div class="quiz-option" onclick="document.getElementById('q-navigation-1').checked = true">
+            <input type="radio" name="q-navigation" id="q-navigation-1" value="end" /> <label>end</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-navigation-2').checked = true">
+            <input type="radio" name="q-navigation" id="q-navigation-2" value="exit" /> <label>exit</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-navigation-3').checked = true">
+            <input type="radio" name="q-navigation" id="q-navigation-3" value="disable" /> <label>disable</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-navigation-4').checked = true">
+            <input type="radio" name="q-navigation" id="q-navigation-4" value="enable" /> <label>enable</label>
+          </div>
+          <button class="btn-cisco-outline mt-3" onclick="checkNavigationQuiz()">Verificar resposta</button>
+          <div id="quiz-navigation-resposta" class="quiz-answer mt-2" style="display: none"></div>
+        </div>
+      </div>
+
+      <!-- 2.2.7 Verificador de sintaxe - Navegar entre modos IOS -->
+      <div id="secao-2-2-7" class="content-card">
+        <h2 class="cisco-title">2.2.7 Verificador de sintaxe - Navegar entre modos IOS</h2>
+        <p>Use a atividade Verificador de sintaxe para navegar entre as linhas de comando do IOS em um switch.</p>
+
+        <!-- Seção 1: Modos básicos -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i> Atividade 1 - Navegação básica entre modos</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <p class="text-dim mb-2">Instruções: Digite os comandos para progredir</p>
+            <code class="d-block">Switch&gt; <span class="text-success">enable</span></code>
+            <code class="d-block text-info mt-2">Switch# <span class="text-warning">Entre no modo de configuração global</span></code>
+            <code class="d-block">Switch# <span class="text-success">configure terminal</span></code>
+            <code class="d-block text-info mt-2"
+              >Switch(config)#
+              <span class="text-warning">Saia do modo de configuração global e retorne ao modo EXEC privilegiado</span></code
+            >
+            <code class="d-block">Switch(config)# <span class="text-success">exit</span></code>
+            <code class="d-block text-info mt-2"
+              >Switch# <span class="text-warning">Digite novamente o modo de configuração global</span></code
+            >
+            <code class="d-block">Switch# <span class="text-success">configure terminal</span></code>
+            <code class="d-block text-info">Switch(config)#</code>
+          </div>
+        </div>
+
+        <!-- Seção 2: Navegação linha console -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-keyboard me-2" style="color: var(--cisco-green)"></i> Atividade 2 - Acessando linha console</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <p class="text-dim mb-2">Instruções: Acesse e configure a linha console</p>
+            <code class="d-block">Switch(config)# <span class="text-success">line console 0</span></code>
+            <code class="d-block text-info mt-2"
+              >Switch(config-line)# <span class="text-warning">Retorne ao modo de configuração global usando exit</span></code
+            >
+            <code class="d-block">Switch(config-line)# <span class="text-success">exit</span></code>
+            <code class="d-block text-info">Switch(config)#</code>
+          </div>
+        </div>
+
+        <!-- Seção 3: Acessando linha VTY -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-network-wired me-2" style="color: var(--cisco-green)"></i> Atividade 3 - Configurando linhas VTY</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <p class="text-dim mb-2">Instruções: Configure as linhas VTY para acesso Telnet/SSH</p>
+            <code class="d-block">Switch(config)# <span class="text-success">line vty 0 15</span></code>
+            <code class="d-block text-info mt-2"
+              >Switch(config-line)# <span class="text-warning">Retorne ao modo de configuração global</span></code
+            >
+            <code class="d-block">Switch(config-line)# <span class="text-success">exit</span></code>
+            <code class="d-block text-info">Switch(config)#</code>
+          </div>
+        </div>
+
+        <!-- Seção 4: Navegação interface VLAN -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-plug me-2" style="color: var(--cisco-green)"></i> Atividade 4 - Configurando interface VLAN</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <p class="text-dim mb-2">Instruções: Configure a interface de gerenciamento VLAN 1</p>
+            <code class="d-block">Switch(config)# <span class="text-success">interface vlan 1</span></code>
+            <code class="d-block text-info mt-2"
+              >Switch(config-if)# <span class="text-warning">Alterne para o modo de subconfiguração do console de linha</span></code
+            >
+            <code class="d-block">Switch(config-if)# <span class="text-success">line console 0</span></code>
+            <code class="d-block text-info mt-2"
+              >Switch(config-line)# <span class="text-warning">Retorne ao modo EXEC privilegiado usando o comando end</span></code
+            >
+            <code class="d-block">Switch(config-line)# <span class="text-success">end</span></code>
+            <code class="d-block text-info">Switch#</code>
+          </div>
+        </div>
+
+        <!-- Seção 5: Navegação completa -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-route me-2" style="color: var(--cisco-green)"></i> Atividade 5 - Navegação completa entre todos os modos</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <p class="text-dim mb-2">Instruções: Pratique a navegação entre todos os modos disponíveis</p>
+            <code class="d-block">Switch(config)# <span class="text-success">interface FastEthernet 0/1</span></code>
+            <code class="d-block text-info">Switch(config-if)#</code>
+            <code class="d-block mt-2">Switch(config-if)# <span class="text-success">exit</span></code>
+            <code class="d-block text-info">Switch(config)#</code>
+            <code class="d-block mt-2">Switch(config)# <span class="text-success">line console 0</span></code>
+            <code class="d-block text-info">Switch(config-line)#</code>
+            <code class="d-block mt-2">Switch(config-line)# <span class="text-success">interface GigabitEthernet 0/1</span></code>
+            <code class="d-block text-info">Switch(config-if)#</code>
+            <code class="d-block mt-2">Switch(config-if)# <span class="text-success">end</span></code>
+            <code class="d-block text-info">Switch#</code>
+          </div>
+        </div>
+
+        <!-- Resumo dos comandos -->
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-list-check me-2"></i>
+          <strong>Resumo dos comandos de navegação aprendidos:</strong>
+          <ul class="mt-2 mb-0">
+            <li><code>enable</code> - Do usuário para privilegiado</li>
+            <li><code>configure terminal</code> - Do privilegiado para configuração global</li>
+            <li><code>line console 0</code> - Acessa o modo de configuração da linha console</li>
+            <li><code>line vty 0 15</code> - Acessa o modo de configuração das linhas VTY</li>
+            <li><code>interface vlan 1</code> - Acessa o modo de configuração da interface VLAN</li>
+            <li><code>interface FastEthernet 0/1</code> - Acessa o modo de configuração da interface física</li>
+            <li><code>exit</code> - Retorna ao modo anterior na hierarquia</li>
+            <li><code>end</code> ou <code>Ctrl+Z</code> - Retorna diretamente ao modo EXEC privilegiado</li>
+          </ul>
+        </div>
+        <!-- 
+        <div class="text-center mt-4">
+          <button class="btn-cisco-outline me-2" onclick="resetSyntaxChecker()"><i class="fas fa-redo-alt me-1"></i> Redefinir</button>
+          <button class="btn-cisco-outline" onclick="showAllCommands()"><i class="fas fa-eye me-1"></i> Mostrar tudo</button>
+        </div> -->
+      </div>
+    </main>
+
+    <!-- FOOTER PADRÃO -->
+    <footer class="cisco-footer">
+      <div class="container text-center">
+        <i class="fas fa-skull me-2" style="color: var(--cisco-green)"></i>
+        <strong>Cisco Cyber Docs</strong> · Módulo 2 - Acesso ao Cisco IOS (2.1)
+      </div>
+    </footer>
+
+    <!-- SCRIPT PADRÃO DE QUIZ customizado para a pergunta do módulo -->
+    <script>
+      function checkQuiz() {
+        const radios = document.getElementsByName('quiz')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quizResposta')
+        div.style.display = 'block'
+
+        if (selected === 'correta') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! O SSH (Secure Shell) é o método recomendado pela Cisco para acesso remoto seguro, pois fornece criptografia forte, autenticação e proteção contra ataques de interceptação. Telnet transmite dados em texto plano e o console é acesso físico out-of-band, não remoto.'
+        } else if (selected === 'errada') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. Reveja a seção 2.1.4 (Métodos de Acesso): O SSH é o método seguro e recomendado. Telnet é inseguro (texto plano), console é acesso físico/local, e GUI nem sempre oferece todos os recursos da CLI para dispositivos de rede.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta antes de verificar.'
+        }
+      }
+    </script>
+    <script>
+      function checkNavigationQuiz() {
+        const radios = document.getElementsByName('q-navigation')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-navigation-resposta')
+        div.style.display = 'block'
+        if (selected === 'exit') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! O comando "exit" sai do modo atual e retorna ao modo anterior na hierarquia.'
+        } else if (selected === 'end') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. O comando "end" retorna diretamente ao modo EXEC privilegiado, não ao modo de configuração global.'
+        } else if (selected === 'disable') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. "disable" é usado para sair do modo EXEC privilegiado para o modo EXEC usuário.'
+        } else if (selected === 'enable') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. "enable" é usado para entrar no modo EXEC privilegiado.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+
+      function resetSyntaxChecker() {
+        alert('Atividade reiniciada! Tente navegar entre os modos novamente.')
+      }
+
+      function showAllCommands() {
+        const commands = `Comandos completos para navegação no IOS:
+
+1. enable → Switch#
+2. configure terminal → Switch(config)# 
+3. interface vlan 1 → Switch(config-if)#
+4. line console 0 → Switch(config-line)#
+5. line vty 0 15 → Switch(config-line)#
+6. exit → Volta um nível na hierarquia
+7. end → Volta ao modo EXEC privilegiado`
+
+        alert(commands)
+      }
+    </script>
+  </body>
+</html>

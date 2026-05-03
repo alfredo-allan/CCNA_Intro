@@ -8,6 +8,11 @@ class CyberSecGlobalSearch {
         name: "Módulo 1",
         title: "Protegendo Redes",
       },
+      {
+        path: "../pages/modulo_2.html",
+        name: "Módulo 2",
+        title: "Acesso ao Cisco IOS",
+      }
     ];
 
     this.searchTimeout = null;
