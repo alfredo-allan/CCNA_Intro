@@ -5,458 +5,476 @@
 
 /* ==================== 1. VARIÁVEIS GLOBAIS ==================== */
 :root {
-    /* Cores Base */
-    --bg-main: #121212;
-    --card-bg: #1e1e1e;
-    --text-main: #ffffff;
-    --text-secondary: #b0b0b0;
-    --border-dim: #2c2c2c;
-    
-    /* Cores de Ação (Cisco + Status) */
-    --cisco-green: #66bf53;
-    --cisco-green-dark: #4a9e38;
-    --accent-blue: #0d6efd;
-    --accent-yellow: #ffc107;
-    --accent-red: #dc3545;
-    --accent-orange: #fd7e14;
-    --accent-purple: #6f42c1;
-    
-    /* Status de Rede */
-    --link-up: #66bf53;
-    --link-down: #dc3545;
-    --stp-blocking: #ffc107;
-    --config-valid: #0d6efd;
-    
-    /* Dimensões */
-    --navbar-height: 70px;
-    --border-radius-sm: 8px;
-    --border-radius-md: 12px;
-    --border-radius-lg: 16px;
-    --transition-default: all 0.3s ease;
+  /* Cores Base */
+  --bg-main: #121212;
+  --card-bg: #1e1e1e;
+  --text-main: #ffffff;
+  --text-secondary: #b0b0b0;
+  --border-dim: #2c2c2c;
+
+  /* Cores de Ação (Cisco + Status) */
+  --cisco-green: #66bf53;
+  --cisco-green-dark: #4a9e38;
+  --accent-blue: #0d6efd;
+  --accent-yellow: #ffc107;
+  --accent-red: #dc3545;
+  --accent-orange: #fd7e14;
+  --accent-purple: #6f42c1;
+
+  /* Status de Rede */
+  --link-up: #66bf53;
+  --link-down: #dc3545;
+  --stp-blocking: #ffc107;
+  --config-valid: #0d6efd;
+
+  /* Dimensões */
+  --navbar-height: 70px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --transition-default: all 0.3s ease;
 }
 
 /* ==================== 2. RESET & BASE ==================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    line-height: 1.6;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* ==================== 3. TIPOGRAFIA ==================== */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
 }
 
 .display-6 {
-    font-size: 1.75rem;
-    font-weight: 700;
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 
 .cisco-title {
-    font-weight: 700;
-    border-left: 4px solid var(--cisco-green);
-    padding-left: 1rem;
-    margin: 1.5rem 0 1.5rem 0;
+  font-weight: 700;
+  border-left: 4px solid var(--cisco-green);
+  padding-left: 1rem;
+  margin: 1.5rem 0 1.5rem 0;
 }
 
 .cisco-subtitle {
-    font-weight: 600;
-    color: var(--cisco-green);
-    margin: 1.25rem 0 1rem 0;
-    font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--cisco-green);
+  margin: 1.25rem 0 1rem 0;
+  font-size: 1.35rem;
 }
 
 .text-dim {
-    color: var(--text-secondary);
+  color: var(--text-secondary);
 }
 
 /* ==================== 4. NAVBAR (GLASSMORPHISM) ==================== */
 .navbar-glass {
-    background: rgba(18, 18, 18, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(102, 191, 83, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    min-height: var(--navbar-height);
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(102, 191, 83, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  min-height: var(--navbar-height);
 }
 
 .navbar-brand {
-    font-weight: 800;
-    font-size: 1.6rem;
-    letter-spacing: -1px;
-    color: var(--cisco-green) !important;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -1px;
+  color: var(--cisco-green) !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .navbar-brand i {
-    font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 .nav-link {
-    font-weight: 500;
-    color: #cccccc !important;
-    transition: var(--transition-default);
-    margin: 0 4px;
+  font-weight: 500;
+  color: #cccccc !important;
+  transition: var(--transition-default);
+  margin: 0 4px;
 }
 
 .nav-link:hover {
-    color: var(--cisco-green) !important;
-    transform: translateY(-1px);
+  color: var(--cisco-green) !important;
+  transform: translateY(-1px);
 }
 
 /* ==================== 5. CARDS E CONTAINERS ==================== */
 .content-card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius-lg);
-    padding: 1.8rem;
-    margin-bottom: 1.8rem;
-    border: 1px solid var(--border-dim);
-    transition: var(--transition-default);
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 1.8rem;
+  margin-bottom: 1.8rem;
+  border: 1px solid var(--border-dim);
+  transition: var(--transition-default);
 }
 
 .content-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-    border-color: rgba(102, 191, 83, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  border-color: rgba(102, 191, 83, 0.3);
 }
 
 .glass-card {
-    background: rgba(30, 30, 30, 0.7);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(102, 191, 83, 0.2);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(102, 191, 83, 0.2);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
 }
 
 /* ==================== 6. BADGES E ETIQUETAS ==================== */
 .badge-cisco {
-    background-color: var(--cisco-green);
-    color: #000000;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
+  background-color: var(--cisco-green);
+  color: #000000;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
 }
 
 .badge-status-up {
-    background-color: var(--link-up);
-    color: #000;
+  background-color: var(--link-up);
+  color: #000;
 }
 
 .badge-status-down {
-    background-color: var(--link-down);
-    color: #fff;
+  background-color: var(--link-down);
+  color: #fff;
 }
 
 .badge-warning {
-    background-color: var(--accent-yellow);
-    color: #000;
+  background-color: var(--accent-yellow);
+  color: #000;
 }
 
 .ipv6-badge {
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-    font-family: 'Courier New', monospace;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  font-family: 'Courier New', monospace;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
 }
 
 /* Responsive Badges */
 @media (max-width: 768px) {
-    .badge-cisco, .badge-status-up, .badge-status-down {
-        width: 100%;
-        margin-bottom: 10px;
-        text-align: center;
-        display: inline-block;
-    }
+  .badge-cisco,
+  .badge-status-up,
+  .badge-status-down {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+    display: inline-block;
+  }
 }
 
 /* ==================== 7. TABELAS (Estilo Enterprise) ==================== */
 .table-cisco {
-    background-color: var(--card-bg);
-    color: var(--text-main);
-    border-color: var(--border-dim);
-    margin-bottom: 1.5rem;
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  border-color: var(--border-dim);
+  margin-bottom: 1.5rem;
 }
 
 .table-cisco thead th {
-    background-color: rgba(102, 191, 83, 0.1);
-    border-bottom: 2px solid var(--cisco-green);
-    font-weight: 600;
-    color: var(--cisco-green);
-    padding: 1rem;
+  background-color: rgba(102, 191, 83, 0.1);
+  border-bottom: 2px solid var(--cisco-green);
+  font-weight: 600;
+  color: var(--cisco-green);
+  padding: 1rem;
 }
 
 .table-cisco tbody td {
-    padding: 0.875rem;
-    border-color: var(--border-dim);
-    vertical-align: middle;
+  padding: 0.875rem;
+  border-color: var(--border-dim);
+  vertical-align: middle;
 }
 
 .table-cisco tbody tr:hover {
-    background-color: rgba(102, 191, 83, 0.05);
+  background-color: rgba(102, 191, 83, 0.05);
 }
 
 /* ==================== 8. TERMINAL CISCO (IOS Style) ==================== */
 .ios-terminal {
-    background: #0a0a0a;
-    border-left: 4px solid var(--cisco-green);
-    border-radius: var(--border-radius-md);
-    padding: 1.25rem;
-    margin: 1.25rem 0;
-    font-family: 'Courier New', 'Fira Code', monospace;
-    font-size: 0.9rem;
-    overflow-x: auto;
+  background: #0a0a0a;
+  border-left: 4px solid var(--cisco-green);
+  border-radius: var(--border-radius-md);
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+  font-family: 'Courier New', 'Fira Code', monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
 }
 
 .ios-terminal pre {
-    margin: 0;
-    color: #6fcf97;
-    background: transparent;
-    border: none;
-    padding: 0;
+  margin: 0;
+  color: #6fcf97;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .ios-terminal code {
-    color: #6fcf97;
-    background: transparent;
+  color: #6fcf97;
+  background: transparent;
 }
 
 .prompt-root {
-    color: var(--cisco-green);
-    font-weight: bold;
+  color: var(--cisco-green);
+  font-weight: bold;
 }
 
 /* ==================== 9. COMPONENTES DE REDE ==================== */
 .packet-stack {
-    background: var(--card-bg);
-    border-radius: var(--border-radius-md);
-    padding: 1rem;
-    margin: 1rem 0;
+  background: var(--card-bg);
+  border-radius: var(--border-radius-md);
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .stack-layer {
-    background: rgba(102, 191, 83, 0.1);
-    border-left: 3px solid var(--cisco-green);
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+  background: rgba(102, 191, 83, 0.1);
+  border-left: 3px solid var(--cisco-green);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .stack-layer-title {
-    font-weight: 700;
-    color: var(--cisco-green);
-    margin-bottom: 0.25rem;
+  font-weight: 700;
+  color: var(--cisco-green);
+  margin-bottom: 0.25rem;
 }
 
 .topology-card {
-    background: repeating-linear-gradient(
-        45deg,
-        rgba(102, 191, 83, 0.03) 0px,
-        rgba(102, 191, 83, 0.03) 2px,
-        transparent 2px,
-        transparent 8px
-    );
-    border: 1px solid var(--border-dim);
-    border-radius: var(--border-radius-lg);
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(102, 191, 83, 0.03) 0px,
+    rgba(102, 191, 83, 0.03) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  border: 1px solid var(--border-dim);
+  border-radius: var(--border-radius-lg);
 }
 
 .config-step {
-    position: relative;
-    padding-left: 2.5rem;
-    margin-bottom: 1rem;
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .config-step::before {
-    content: counter(step);
-    counter-increment: step;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: var(--cisco-green);
-    color: #000;
-    width: 1.75rem;
-    height: 1.75rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.9rem;
+  content: counter(step);
+  counter-increment: step;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--cisco-green);
+  color: #000;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
 }
 
 .config-list {
-    counter-reset: step;
-    list-style: none;
-    padding-left: 0;
+  counter-reset: step;
+  list-style: none;
+  padding-left: 0;
 }
 
 /* ==================== 10. ANIMAÇÕES (Anime.js Ready) ==================== */
 .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes pulse-green {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(102, 191, 83, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 0 8px rgba(102, 191, 83, 0);
-    }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(102, 191, 83, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(102, 191, 83, 0);
+  }
 }
 
 .pulse-animation {
-    animation: pulse-green 2s infinite;
+  animation: pulse-green 2s infinite;
 }
 
 /* ==================== 11. SCROLL E NAVEGAÇÃO ==================== */
 section {
-    scroll-margin-top: calc(var(--navbar-height) + 20px);
+  scroll-margin-top: calc(var(--navbar-height) + 20px);
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-main);
+  background: var(--bg-main);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--cisco-green);
-    border-radius: 5px;
+  background: var(--cisco-green);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--cisco-green-dark);
+  background: var(--cisco-green-dark);
 }
 
 /* ==================== 12. UTILITÁRIOS RESPONSIVOS ==================== */
 @media (max-width: 768px) {
-    .content-card {
-        padding: 1.25rem;
-    }
-    
-    .cisco-title {
-        font-size: 1.5rem;
-    }
-    
-    .display-6 {
-        font-size: 1.35rem;
-    }
-    
-    .ios-terminal {
-        font-size: 0.8rem;
-        padding: 0.75rem;
-    }
-    
-    .table-cisco {
-        font-size: 0.85rem;
-    }
+  .content-card {
+    padding: 1.25rem;
+  }
+
+  .cisco-title {
+    font-size: 1.5rem;
+  }
+
+  .display-6 {
+    font-size: 1.35rem;
+  }
+
+  .ios-terminal {
+    font-size: 0.8rem;
+    padding: 0.75rem;
+  }
+
+  .table-cisco {
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 576px) {
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
-    
-    .content-card {
-        padding: 1rem;
-    }
-    
-    .stack-layer {
-        padding: 0.5rem;
-        font-size: 0.8rem;
-    }
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .content-card {
+    padding: 1rem;
+  }
+
+  .stack-layer {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* ==================== 13. COMPONENTES ADICIONAIS ==================== */
 /* Box de Alerta */
 .alert-cisco {
-    background: rgba(102, 191, 83, 0.1);
-    border-left: 4px solid var(--cisco-green);
-    border-radius: var(--border-radius-sm);
-    padding: 1rem;
-    margin: 1rem 0;
+  background: rgba(102, 191, 83, 0.1);
+  border-left: 4px solid var(--cisco-green);
+  border-radius: var(--border-radius-sm);
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 /* Grid de Métricas */
 .metric-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin: 1.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 
 .metric-card {
-    text-align: center;
-    padding: 1.25rem;
-    background: var(--card-bg);
-    border-radius: var(--border-radius-md);
-    border: 1px solid var(--border-dim);
+  text-align: center;
+  padding: 1.25rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-dim);
 }
 
 .metric-value {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--cisco-green);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cisco-green);
 }
 
 /* Separador Skull */
 .skull-separator {
-    text-align: center;
-    color: var(--cisco-green);
-    font-size: 1.2rem;
-    margin: 1.5rem 0;
-    opacity: 0.5;
+  text-align: center;
+  color: var(--cisco-green);
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+  opacity: 0.5;
 }
 
 .skull-separator i {
-    margin: 0 0.5rem;
+  margin: 0 0.5rem;
 }
 
 /* Footer */
 .cisco-footer {
-    background: var(--card-bg);
-    border-top: 1px solid var(--border-dim);
-    padding: 2rem 0;
-    margin-top: 3rem;
-    color: var(--text-secondary);
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-dim);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  color: var(--text-secondary);
 }
 
 /* Print Styles */
 @media print {
-    .navbar-glass, .skull-separator, .cisco-footer {
-        display: none;
-    }
-    
-    body {
-        background: white;
-        color: black;
-    }
-    
-    .content-card {
-        border: 1px solid #ccc;
-        page-break-inside: avoid;
-    }
+  .navbar-glass,
+  .skull-separator,
+  .cisco-footer {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .content-card {
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
 }
+
