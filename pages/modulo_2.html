@@ -1369,6 +1369,1181 @@ Desktop  Downloads  lab.support.files  second drive
           <code class="d-block text-success mt-2">5. Comece a configurar!</code>
         </div>
       </div>
+      <!-- ================= SEÇÃO 2.4 ================= -->
+      <div id="secao-2-4-1" class="content-card">
+        <span class="section-badge">2.4 Configuração básica de dispositivos</span>
+
+        <!-- 2.4.1 Nomes de Dispositivo -->
+        <h2 class="cisco-title">2.4.1 Nomes de Dispositivo</h2>
+        <p>
+          O primeiro comando de configuração em qualquer dispositivo deve ser dar a ele um <strong>nome de dispositivo exclusivo</strong> ou
+          <strong>nome de host</strong>. Por padrão, todos os dispositivos recebem um nome padrão de fábrica. Por exemplo, um switch Cisco
+          IOS é "Switch".
+        </p>
+        <p>
+          O problema é que, se todos os switches em uma rede forem deixados com seus nomes padrão, seria difícil identificar um dispositivo
+          específico. Por exemplo, como você saberia que está conectado ao dispositivo certo ao acessá-lo remotamente usando SSH? O nome do
+          host fornece a confirmação de que você está conectado ao dispositivo correto.
+        </p>
+
+        <div class="text-center my-3">
+          <div class="d-flex justify-content-center gap-4">
+            <div class="p-2 rounded" style="background: rgba(102, 191, 83, 0.1)">
+              <i class="fas fa-server fa-2x" style="color: var(--cisco-green)"></i>
+              <p class="mt-1"><strong>Sw-Andar-1</strong></p>
+            </div>
+            <div class="p-2 rounded" style="background: rgba(102, 191, 83, 0.1)">
+              <i class="fas fa-server fa-2x" style="color: var(--cisco-green)"></i>
+              <p class="mt-1"><strong>Sw-Andar-2</strong></p>
+            </div>
+            <div class="p-2 rounded" style="background: rgba(102, 191, 83, 0.1)">
+              <i class="fas fa-server fa-2x" style="color: var(--cisco-green)"></i>
+              <p class="mt-1"><strong>Sw-Andar-3</strong></p>
+            </div>
+          </div>
+          <p class="text-dim mt-2">
+            Quando os dispositivos de rede são nomeados, eles são fáceis de identificar para fins de configuração.
+          </p>
+        </div>
+
+        <h3 class="cisco-subtitle">Diretrizes de nomenclatura para hosts:</h3>
+        <ul>
+          <li>Começar com uma letra</li>
+          <li>Não conter espaços</li>
+          <li>Terminar com uma letra ou dígito</li>
+          <li>Usar somente letras, números e traços</li>
+          <li>Ter menos de 64 caracteres</li>
+        </ul>
+
+        <div class="bg-dark p-3 rounded mt-3">
+          <p class="text-dim mb-2"><i class="fas fa-code me-2"></i> Configurando o nome do host:</p>
+          <code class="d-block text-success">Switch# configure terminal</code>
+          <code class="d-block text-info mt-1">Switch(config)# hostname Sw-Floor-1</code>
+          <code class="d-block text-success mt-1">Sw-Floor-1(config)#</code>
+        </div>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Observação:</strong> Para retornar o switch ao prompt padrão, use o comando <code>no hostname</code> no modo de
+          configuração global.
+        </div>
+      </div>
+
+      <!-- 2.4.2 Configurar Senhas - Acesso EXEC do usuário -->
+      <div id="secao-2-4-2" class="content-card">
+        <h2 class="cisco-title">2.4.2 Configurar Senhas - Acesso EXEC do usuário</h2>
+        <p>
+          Para proteger o acesso ao <strong>modo EXEC do usuário</strong>, insira o modo de configuração do console de linha usando o
+          comando de configuração global <code>line console 0</code>. O zero é usado para representar a primeira interface de console (e a
+          única, na maioria dos casos).
+        </p>
+
+        <div class="bg-dark p-3 rounded">
+          <p class="text-dim mb-2"><i class="fas fa-terminal me-2"></i> Configurando senha do console:</p>
+          <code class="d-block text-success">Sw-Floor-1# configure terminal</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config)# line console 0</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# password cisco</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# login</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# end</code>
+          <code class="d-block text-success mt-1">Sw-Floor-1#</code>
+        </div>
+
+        <p class="mt-3">O acesso ao console agora exigirá uma senha antes de permitir o acesso ao modo EXEC do usuário.</p>
+      </div>
+
+      <!-- 2.4.3 Configurar Senhas - Acesso EXEC privilegiado e VTY -->
+      <div id="secao-2-4-3" class="content-card">
+        <h2 class="cisco-title">2.4.3 Configurar Senhas - Acesso Privilegiado e VTY</h2>
+
+        <h3 class="cisco-subtitle">Acesso EXEC Privilegiado</h3>
+        <p>
+          Para ter acesso de administrador a todos os comandos do IOS, incluindo a configuração de um dispositivo, você deve obter acesso
+          privilegiado no modo EXEC. É o método de acesso mais importante porque fornece acesso completo ao dispositivo.
+        </p>
+        <p>Para proteger o acesso EXEC privilegiado, use o comando de configuração global <code>enable secret password</code>.</p>
+
+        <div class="bg-dark p-3 rounded">
+          <code class="d-block text-success">Sw-Floor-1# configure terminal</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config)# enable secret class</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config)# exit</code>
+          <code class="d-block text-success mt-1">Sw-Floor-1#</code>
+        </div>
+
+        <h3 class="cisco-subtitle mt-4">Acesso VTY (Telnet/SSH)</h3>
+        <p>
+          As linhas de terminal virtual (VTY) permitem acesso remoto usando Telnet ou SSH ao dispositivo. Muitos switches Cisco são
+          compatíveis com até 16 linhas VTY numeradas de 0 a 15.
+        </p>
+        <p>Para proteger linhas VTY, entre no modo VTY de linha usando o comando de configuração global <code>line vty 0 15</code>.</p>
+
+        <div class="bg-dark p-3 rounded">
+          <code class="d-block text-success">Sw-Floor-1# configure terminal</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config)# line vty 0 15</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# password cisco</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# login</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# end</code>
+          <code class="d-block text-success mt-1">Sw-Floor-1#</code>
+        </div>
+      </div>
+
+      <!-- 2.4.4 Mensagens de Banner -->
+      <div id="secao-2-4-4" class="content-card">
+        <h2 class="cisco-title">2.4.4 Mensagens de Banner</h2>
+        <p>
+          Embora a exigência de senhas seja uma maneira de manter pessoal não autorizado fora da rede, é vital fornecer um método para
+          declarar que apenas pessoal autorizado deve tentar acessar o dispositivo. Para fazê-lo, adicione um banner à saída do dispositivo.
+        </p>
+
+        <div class="alert-cisco">
+          <i class="fas fa-gavel me-2"></i>
+          <strong>Aspecto legal importante:</strong> Banners podem ser uma parte importante do processo legal caso alguém seja processado
+          por invadir um dispositivo. Alguns sistemas legais não permitem processo, ou mesmo o monitoramento de usuários, a menos que haja
+          uma notificação visível.
+        </div>
+
+        <p class="mt-3">
+          Para criar uma mensagem de banner do dia em um dispositivo de rede, use o comando de configuração global
+          <code>banner motd #mensagem do dia#</code>. O "#" na sintaxe do comando é denominado <strong>caractere de delimitação</strong>.
+          Ele é inserido antes e depois da mensagem. O caractere de delimitação pode ser qualquer caractere, contanto que ele não ocorra na
+          mensagem. Por esse motivo, símbolos como "#" são usados com frequência.
+        </p>
+
+        <div class="bg-dark p-3 rounded">
+          <p class="text-dim mb-2"><i class="fas fa-code me-2"></i> Configurando um banner:</p>
+          <code class="d-block text-success">Sw-Floor-1# configure terminal</code>
+          <code class="d-block text-info mt-1">Sw-Floor-1(config)# banner motd #Authorized Access Only#</code>
+        </div>
+
+        <p class="mt-2">
+          Após a execução do comando, o banner será exibido em todas as tentativas seguintes de acessar o dispositivo até o banner ser
+          removido.
+        </p>
+      </div>
+
+      <!-- 2.4.5 Criptografar Senhas -->
+      <div id="secao-2-4-5" class="content-card">
+        <h2 class="cisco-title">2.4.5 Criptografar Senhas</h2>
+        <p>
+          Por padrão, as senhas configuradas como <code>password cisco</code> aparecem em texto simples no arquivo de configuração. Para
+          criptografar todas as senhas em texto simples, use o comando de configuração global <code>service password-encryption</code>.
+        </p>
+
+        <div class="bg-dark p-3 rounded">
+          <code class="d-block text-success">Sw-Floor-1(config)# service password-encryption</code>
+        </div>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-shield-alt me-2"></i>
+          <strong>Segurança:</strong> O comando <code>service password-encryption</code> aplica criptografia do tipo 7 (fraca) a todas as
+          senhas. Para maior segurança, sempre use <code>enable secret</code> em vez de <code>enable password</code>, pois o primeiro usa
+          criptografia MD5 mais forte.
+        </div>
+      </div>
+
+      <!-- 2.4.6 Verifique sua compreensão -->
+      <div id="secao-2-4-6" class="content-card">
+        <h2 class="cisco-title">2.4.6 Verifique sua compreensão - Basic Device Configuration</h2>
+
+        <div class="quiz-container p-3 rounded" style="background: rgba(102, 191, 83, 0.05)">
+          <p><strong>Pergunta 1:</strong> Qual comando é usado para proteger o acesso ao modo EXEC privilegiado?</p>
+          <div class="quiz-option" onclick="document.getElementById('q-basic-1').checked = true">
+            <input type="radio" name="q-basic" id="q-basic-1" value="password" /> <label>password cisco</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-basic-2').checked = true">
+            <input type="radio" name="q-basic" id="q-basic-2" value="enable" /> <label>enable secret class</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-basic-3').checked = true">
+            <input type="radio" name="q-basic" id="q-basic-3" value="banner" /> <label>banner motd</label>
+          </div>
+          <button class="btn-cisco-outline mt-3" onclick="checkBasicQuiz()">Verificar resposta</button>
+          <div id="quiz-basic-resposta" class="quiz-answer mt-2" style="display: none"></div>
+        </div>
+
+        <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+          <p><strong>Pergunta 2:</strong> Qual comando criptografa todas as senhas em texto simples?</p>
+          <div class="quiz-option" onclick="document.getElementById('q-basic2-1').checked = true">
+            <input type="radio" name="q-basic2" id="q-basic2-1" value="encrypt" /> <label>encrypt password</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-basic2-2').checked = true">
+            <input type="radio" name="q-basic2" id="q-basic2-2" value="service" /> <label>service password-encryption</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-basic2-3').checked = true">
+            <input type="radio" name="q-basic2" id="q-basic2-3" value="secret" /> <label>enable secret</label>
+          </div>
+          <button class="btn-cisco-outline mt-3" onclick="checkBasicQuiz2()">Verificar resposta</button>
+          <div id="quiz-basic2-resposta" class="quiz-answer mt-2" style="display: none"></div>
+        </div>
+      </div>
+
+      <!-- 2.4.7 Verificador de sintaxe - Configuração básica do dispositivo -->
+      <div id="secao-2-4-7" class="content-card">
+        <h2 class="cisco-title">2.4.7 Verificador de sintaxe - Configuração básica do dispositivo</h2>
+        <p>Acesso de gerenciamento seguro a um switch.</p>
+
+        <div class="alert-cisco mb-3">
+          <i class="fas fa-check-circle me-2"></i>
+          <strong>Objetivos da atividade:</strong>
+          <ul class="mt-2 mb-0">
+            <li>Atribuir um nome de dispositivo</li>
+            <li>Acesso seguro ao modo EXEC do usuário</li>
+            <li>Acesso seguro ao modo EXEC privilegiado</li>
+            <li>Acesso VTY seguro</li>
+            <li>Criptografar todas as senhas em texto simples</li>
+            <li>Exibir um banner de login</li>
+          </ul>
+        </div>
+
+        <!-- Passo 1: Nomear o dispositivo -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-tag me-2" style="color: var(--cisco-green)"></i> Passo 1: Atribuir um nome de dispositivo</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <code class="d-block text-info">Switch# configure terminal</code>
+            <code class="d-block text-success mt-1">Switch(config)# hostname Sw-Floor-1</code>
+            <code class="d-block text-info mt-1">Sw-Floor-1(config)#</code>
+          </div>
+        </div>
+
+        <!-- Passo 2: Proteger acesso EXEC do usuário (console) -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-keyboard me-2" style="color: var(--cisco-green)"></i> Passo 2: Acesso seguro ao modo EXEC do usuário</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <code class="d-block text-info">Sw-Floor-1(config)# line console 0</code>
+            <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# password cisco</code>
+            <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# login</code>
+            <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# exit</code>
+          </div>
+        </div>
+
+        <!-- Passo 3: Acesso seguro ao modo EXEC privilegiado -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4>
+            <i class="fas fa-user-shield me-2" style="color: var(--cisco-green)"></i> Passo 3: Acesso seguro ao modo EXEC privilegiado
+          </h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <code class="d-block text-info">Sw-Floor-1(config)# enable secret class</code>
+          </div>
+        </div>
+
+        <!-- Passo 4: Acesso VTY seguro (linhas 0-15) -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-network-wired me-2" style="color: var(--cisco-green)"></i> Passo 4: Acesso VTY seguro</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <code class="d-block text-info">Sw-Floor-1(config)# line vty 0 15</code>
+            <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# password cisco</code>
+            <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# login</code>
+            <code class="d-block text-info mt-1">Sw-Floor-1(config-line)# exit</code>
+          </div>
+        </div>
+
+        <!-- Passo 5: Criptografar senhas -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-lock me-2" style="color: var(--cisco-green)"></i> Passo 5: Criptografar todas as senhas em texto simples</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <code class="d-block text-info">Sw-Floor-1(config)# service password-encryption</code>
+          </div>
+        </div>
+
+        <!-- Passo 6: Criar banner de login -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-flag-checkered me-2" style="color: var(--cisco-green)"></i> Passo 6: Criar banner de login</h4>
+          <div class="bg-dark p-3 rounded font-monospace">
+            <p class="text-dim mb-2">
+              Crie uma mensagem de banner usando o símbolo "#" como delimitador. O banner deve exibir exatamente:
+              <strong>Apenas acesso autorizado</strong>
+            </p>
+            <code class="d-block text-info">Sw-Floor-1(config)# banner motd # Apenas acesso autorizado #</code>
+          </div>
+        </div>
+
+        <!-- Comandos completos em sequência -->
+        <div class="alert-cisco mt-4">
+          <i class="fas fa-list-ol me-2"></i>
+          <strong>Sequência completa de comandos:</strong>
+          <div class="bg-dark p-3 rounded mt-2 font-monospace">
+            <code class="d-block text-success">Switch# configure terminal</code>
+            <code class="d-block text-success">Switch(config)# hostname Sw-Floor-1</code>
+            <code class="d-block text-success">Sw-Floor-1(config)# line console 0</code>
+            <code class="d-block text-success">Sw-Floor-1(config-line)# password cisco</code>
+            <code class="d-block text-success">Sw-Floor-1(config-line)# login</code>
+            <code class="d-block text-success">Sw-Floor-1(config-line)# exit</code>
+            <code class="d-block text-success">Sw-Floor-1(config)# enable secret class</code>
+            <code class="d-block text-success">Sw-Floor-1(config)# line vty 0 15</code>
+            <code class="d-block text-success">Sw-Floor-1(config-line)# password cisco</code>
+            <code class="d-block text-success">Sw-Floor-1(config-line)# login</code>
+            <code class="d-block text-success">Sw-Floor-1(config-line)# exit</code>
+            <code class="d-block text-success">Sw-Floor-1(config)# service password-encryption</code>
+            <code class="d-block text-success">Sw-Floor-1(config)# banner motd # Apenas acesso autorizado #</code>
+            <code class="d-block text-info mt-2"
+              >// Você concluiu com êxito os requisitos básicos para acessar e proteger um dispositivo.</code
+            >
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button class="btn-cisco-outline me-2" onclick="resetBasicConfig()"><i class="fas fa-redo-alt me-1"></i> Redefinir</button>
+          <button class="btn-cisco-outline" onclick="showAllBasicCommands()"><i class="fas fa-eye me-1"></i> Mostrar tudo</button>
+        </div>
+      </div>
+      <!-- ================= SEÇÃO 2.5 ================= -->
+      <div id="secao-2-5-1" class="content-card">
+        <span class="section-badge">2.5 Salvar configurações</span>
+
+        <!-- 2.5.1 Arquivos de configuração -->
+        <h2 class="cisco-title">2.5.1 Arquivos de configuração</h2>
+        <p>
+          Agora você sabe como executar a configuração básica em um switch, incluindo senhas e mensagens de banner. Este tópico mostrará
+          como salvar suas configurações.
+        </p>
+        <p>Há dois arquivos de sistema que armazenam a configuração do dispositivo:</p>
+
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <div class="p-3 rounded h-100" style="background: rgba(102, 191, 83, 0.1); border-left: 3px solid var(--cisco-green)">
+              <i class="fas fa-save fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h4><strong>startup-config</strong></h4>
+              <p>
+                Este é o arquivo de configuração salvo armazenado na <strong>NVRAM</strong>. Ele contém todos os comandos que serão usados
+                pelo dispositivo na inicialização ou reinicialização. A NVRAM não perde seu conteúdo quando o dispositivo está desligado.
+              </p>
+              <div class="bg-dark p-2 rounded mt-2">
+                <code class="text-info">Armazenamento: NVRAM (não volátil)</code>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 rounded h-100" style="background: rgba(102, 191, 83, 0.1); border-left: 3px solid var(--cisco-green)">
+              <i class="fas fa-microchip fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h4><strong>running-config</strong></h4>
+              <p>
+                Armazenado na <strong>memória de acesso aleatório (RAM)</strong>. Ele reflete a configuração atual. A modificação de uma
+                configuração ativa afeta o funcionamento de um dispositivo Cisco imediatamente. A RAM é uma memória volátil. Ela perde todo
+                o seu conteúdo quando o dispositivo é desligado ou reiniciado.
+              </p>
+              <div class="bg-dark p-2 rounded mt-2">
+                <code class="text-info">Armazenamento: RAM (volátil)</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="cisco-subtitle">Visualizando as configurações</h3>
+
+        <div class="bg-dark p-3 rounded mb-3">
+          <p class="text-dim mb-2"><i class="fas fa-code me-2"></i> Para visualizar a configuração em execução:</p>
+          <code class="d-block text-success">Sw-Floor-1# show running-config</code>
+          <code class="d-block text-info mt-1">Building configuration...</code>
+          <code class="d-block text-info">Current configuration : 1351 bytes</code>
+          <code class="d-block text-info">!</code>
+          <code class="d-block text-info">! Last configuration change at 00:01:20 UTC Mon Mar 1 1993</code>
+          <code class="d-block text-info">!</code>
+          <code class="d-block text-info">version 15.0</code>
+          <code class="d-block text-info">no service pad</code>
+          <code class="d-block text-info">service timestamps debug datetime msec</code>
+          <code class="d-block text-info">service timestamps log datetime msec</code>
+          <code class="d-block text-info">service password-encryption</code>
+          <code class="d-block text-info">!</code>
+          <code class="d-block text-info">hostname Sw-Floor-1</code>
+          <code class="d-block text-info">(output omitted)</code>
+        </div>
+
+        <div class="bg-dark p-3 rounded">
+          <p class="text-dim mb-2"><i class="fas fa-code me-2"></i> Para visualizar a configuração de inicialização:</p>
+          <code class="d-block text-success">Sw-Floor-1# show startup-config</code>
+        </div>
+
+        <div class="alert-cisco mt-4">
+          <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-yellow)"></i>
+          <strong>Atenção:</strong> Se a energia do dispositivo for perdida ou se o dispositivo for reiniciado,
+          <strong>todas as alterações na configuração serão perdidas</strong>, a menos que tenham sido salvas.
+        </div>
+      </div>
+
+      <!-- 2.5.2 Comandos de configuração - Salvando configurações -->
+      <div id="secao-2-5-2" class="content-card">
+        <h2 class="cisco-title">2.5.2 Salvando configurações</h2>
+        <p>
+          Para salvar as alterações feitas na configuração em execução no arquivo de configuração de inicialização, use o comando do modo
+          EXEC privilegiado <code>copy running-config startup-config</code>.
+        </p>
+
+        <div class="bg-dark p-3 rounded">
+          <p class="text-dim mb-2"><i class="fas fa-code me-2"></i> Comando para salvar a configuração:</p>
+          <code class="d-block text-success">Sw-Floor-1# copy running-config startup-config</code>
+          <code class="d-block text-info mt-1">Destination filename [startup-config]?</code>
+          <code class="d-block text-success">[Enter]</code>
+          <code class="d-block text-info mt-1">Building configuration...</code>
+          <code class="d-block text-info">[OK]</code>
+        </div>
+
+        <div class="row mt-4 text-center">
+          <div class="col-md-4">
+            <div class="p-3 rounded" style="background: rgba(102, 191, 83, 0.1)">
+              <i class="fas fa-edit fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <p class="mb-0"><strong>running-config</strong><br /><small class="text-dim">(RAM - volátil)</small></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green)"></i>
+            <p class="text-dim">copy running-config startup-config</p>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 rounded" style="background: rgba(102, 191, 83, 0.1)">
+              <i class="fas fa-database fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <p class="mb-0"><strong>startup-config</strong><br /><small class="text-dim">(NVRAM - persistente)</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.5.3 Capturar a configuração em um arquivo texto -->
+      <div id="secao-2-5-3" class="content-card">
+        <h2 class="cisco-title">2.5.3 Capturar a configuração em um arquivo texto</h2>
+        <p>
+          Os arquivos de configuração também podem ser salvos e arquivados em um documento de texto. Essa sequência de etapas assegura que
+          uma cópia funcional do arquivo de configuração esteja disponível para edição ou reutilização posterior.
+        </p>
+        <p>Por exemplo, suponha que um switch tenha sido configurado e a configuração em execução tenha sido salva no dispositivo.</p>
+
+        <div class="alert-cisco mb-4">
+          <i class="fas fa-file-alt me-2"></i>
+          <strong>Benefício:</strong> O arquivo de texto criado pode ser usado como um registro de como o dispositivo está implementado no
+          momento. Talvez seja necessário editar o arquivo antes de usá-lo para restaurar uma configuração salva em um dispositivo.
+        </div>
+
+        <h3 class="cisco-subtitle">Passo a passo para capturar a configuração usando PuTTY</h3>
+
+        <!-- Passo 1 -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4>
+            <i class="fas fa-step-forward me-2" style="color: var(--cisco-green)"></i> Passo 1: Abrir software de emulação de terminal
+          </h4>
+          <p>
+            Abra o software de emulação de terminal, como <strong>PuTTY</strong> ou <strong>Tera Term</strong>, que já está conectado a um
+            switch.
+          </p>
+
+          <div class="text-center my-3">
+            <div class="bg-dark p-3 rounded d-inline-block">
+              <i class="fas fa-terminal fa-3x" style="color: var(--cisco-green)"></i>
+              <i class="fas fa-arrow-right fa-2x mx-2" style="color: var(--text-dim)"></i>
+              <i class="fas fa-network-wired fa-3x" style="color: var(--cisco-green)"></i>
+              <p class="mt-2"><strong>PuTTY / Tera Term → Switch via Console</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-toggle-on me-2" style="color: var(--cisco-green)"></i> Passo 2: Habilitar o log no software do terminal</h4>
+          <p>
+            Habilite o log no software do terminal e atribua um nome e um local para salvar o arquivo de log. A figura abaixo mostra que
+            <strong>All session output</strong> será capturado no arquivo especificado (por exemplo, <strong>MySwitchLogs</strong>).
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded">
+                <p class="text-dim mb-2"><i class="fab fa-windows me-2"></i> Configuração PuTTY - Logging:</p>
+                <ul class="text-info">
+                  <li><i class="fas fa-circle me-2" style="font-size: 0.5rem; vertical-align: middle"></i> Session → Logging</li>
+                  <li>
+                    <i class="fas fa-circle me-2" style="font-size: 0.5rem; vertical-align: middle"></i> Opção:
+                    <strong>All session output</strong>
+                  </li>
+                  <li>
+                    <i class="fas fa-circle me-2" style="font-size: 0.5rem; vertical-align: middle"></i> Log file name:
+                    <strong>MySwitchLogs</strong>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 text-center">
+              <div class="bg-dark p-3 rounded">
+                <i class="fas fa-file-alt fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <p class="mb-0"><strong>Log file:</strong> MySwitchLogs.txt</p>
+                <p class="text-dim small">(pode conter &Y, &M, &D para data, &T para hora, &H para nome do host)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-play me-2" style="color: var(--cisco-green)"></i> Passo 3: Executar o comando show running-config</h4>
+          <p>
+            Execute o comando <code>show running-config</code> ou <code>show startup-config</code> no prompt EXEC privilegiado. O texto
+            exibido na janela do terminal será inserido no arquivo escolhido.
+          </p>
+
+          <div class="bg-dark p-3 rounded">
+            <code class="d-block text-success">Sw-Floor-1# show running-config</code>
+            <code class="d-block text-info mt-1">Building configuration...</code>
+            <code class="d-block text-info">(output omitted)</code>
+          </div>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+          <h4><i class="fas fa-stop me-2" style="color: var(--cisco-green)"></i> Passo 4: Desativar o log no software de terminal</h4>
+          <p>Desative o log no software de terminal escolhendo a opção de log de sessão <strong>None</strong>.</p>
+
+          <div class="bg-dark p-3 rounded text-center">
+            <i class="fas fa-toggle-off fa-3x" style="color: var(--accent-yellow)"></i>
+            <p class="mt-2"><strong>Opção: None</strong><br /><small class="text-dim">Desativa o logging</small></p>
+          </div>
+        </div>
+
+        <h3 class="cisco-subtitle mt-4">Restaurando uma configuração salva</h3>
+        <p>Para restaurar um arquivo de configuração em um dispositivo:</p>
+
+        <div class="bg-dark p-3 rounded">
+          <p class="text-dim mb-2"><strong>Etapa 1.</strong> Entre no modo de configuração global do dispositivo.</p>
+          <p class="text-dim mb-2"><strong>Etapa 2.</strong> Copie e cole o arquivo de texto na janela do terminal conectado ao switch.</p>
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-info-circle me-2"></i>
+            O texto no arquivo será aplicado como comandos na CLI e se tornará a configuração ativa no dispositivo. Este é um método prático
+            de configurar um dispositivo manualmente.
+          </div>
+        </div>
+
+        <!-- PuTTY Configuration Reference -->
+        <div class="alert-cisco mt-4">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Referência PuTTY:</strong>
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <ul class="mb-0">
+                <li><strong>Host Name:</strong> Endereço IP do dispositivo</li>
+                <li><strong>Port:</strong> 22 (SSH) ou 23 (Telnet)</li>
+                <li><strong>Connection type:</strong> SSH, Telnet ou Serial</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="mb-0">
+                <li><strong>Saved Sessions:</strong> Salvar configurações de conexão</li>
+                <li><strong>Load/Save/Delete:</strong> Gerenciar sessões salvas</li>
+                <li><strong>Close window on exit:</strong> Sempre/Nunca/Apenas em clean exit</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.5.4 Verifique sua compreensão -->
+      <div id="secao-2-5-4" class="content-card">
+        <h2 class="cisco-title">2.5.4 Verifique sua compreensão - Save Configurations</h2>
+
+        <div class="quiz-container p-3 rounded" style="background: rgba(102, 191, 83, 0.05)">
+          <p><strong>Pergunta 1:</strong> Qual comando é usado para salvar a configuração em execução na configuração de inicialização?</p>
+          <div class="quiz-option" onclick="document.getElementById('q-save-1').checked = true">
+            <input type="radio" name="q-save" id="q-save-1" value="write" /> <label>write</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-save-2').checked = true">
+            <input type="radio" name="q-save" id="q-save-2" value="copy" /> <label>copy running-config startup-config</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-save-3').checked = true">
+            <input type="radio" name="q-save" id="q-save-3" value="save" /> <label>save config</label>
+          </div>
+          <button class="btn-cisco-outline mt-3" onclick="checkSaveQuiz()">Verificar resposta</button>
+          <div id="quiz-save-resposta" class="quiz-answer mt-2" style="display: none"></div>
+        </div>
+
+        <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+          <p><strong>Pergunta 2:</strong> Onde a configuração running-config é armazenada?</p>
+          <div class="quiz-option" onclick="document.getElementById('q-save2-1').checked = true">
+            <input type="radio" name="q-save2" id="q-save2-1" value="nvsam" /> <label>NVRAM (memória não volátil)</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-save2-2').checked = true">
+            <input type="radio" name="q-save2" id="q-save2-2" value="ram" /> <label>RAM (memória volátil)</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-save2-3').checked = true">
+            <input type="radio" name="q-save2" id="q-save2-3" value="flash" /> <label>Flash (memória flash)</label>
+          </div>
+          <button class="btn-cisco-outline mt-3" onclick="checkSaveQuiz2()">Verificar resposta</button>
+          <div id="quiz-save2-resposta" class="quiz-answer mt-2" style="display: none"></div>
+        </div>
+
+        <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+          <p><strong>Pergunta 3:</strong> O que acontece com a running-config se o switch for desligado sem salvar?</p>
+          <div class="quiz-option" onclick="document.getElementById('q-save3-1').checked = true">
+            <input type="radio" name="q-save3" id="q-save3-1" value="perde" /> <label>As alterações são perdidas</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-save3-2').checked = true">
+            <input type="radio" name="q-save3" id="q-save3-2" value="mantem" /> <label>As alterações são mantidas permanentemente</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q-save3-3').checked = true">
+            <input type="radio" name="q-save3" id="q-save3-3" value="backup" /> <label>Um backup automático é criado</label>
+          </div>
+          <button class="btn-cisco-outline mt-3" onclick="checkSaveQuiz3()">Verificar resposta</button>
+          <div id="quiz-save3-resposta" class="quiz-answer mt-2" style="display: none"></div>
+        </div>
+        <!-- ================= SEÇÃO 2.6 ================= -->
+        <div id="secao-2-6-1" class="content-card">
+          <span class="section-badge">2.6 Portas e Endereços</span>
+
+          <!-- 2.6.1 Endereços IP -->
+          <h2 class="cisco-title">2.6.1 Endereços IP</h2>
+          <p>
+            Parabéns, você executou uma configuração básica do dispositivo! Claro, a diversão ainda não acabou. Se você quiser que seus
+            dispositivos finais se comuniquem entre si, você deve garantir que cada um deles tenha um
+            <strong>endereço IP apropriado</strong>
+            e esteja conectado corretamente. Você aprenderá sobre endereços IP, portas de dispositivo e a mídia usada para conectar
+            dispositivos neste tópico.
+          </p>
+
+          <div class="alert-cisco mb-3">
+            <i class="fas fa-globe me-2"></i>
+            <strong>Importância dos endereços IP:</strong> O uso de endereços IP é o principal meio de permitir que os dispositivos se
+            localizem e estabeleçam comunicação ponto a ponto na Internet. Cada dispositivo final em uma rede deve ser configurado com um
+            endereço IP.
+          </div>
+
+          <h3 class="cisco-subtitle">Exemplos de dispositivos finais:</h3>
+          <div class="row text-center mb-4">
+            <div class="col-md-3">
+              <div class="p-2 rounded" style="background: rgba(102, 191, 83, 0.1)">
+                <i class="fas fa-desktop fa-2x mb-1" style="color: var(--cisco-green)"></i>
+                <p class="small mb-0">Computadores</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="p-2 rounded" style="background: rgba(102, 191, 83, 0.1)">
+                <i class="fas fa-print fa-2x mb-1" style="color: var(--cisco-green)"></i>
+                <p class="small mb-0">Impressoras de rede</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="p-2 rounded" style="background: rgba(102, 191, 83, 0.1)">
+                <i class="fas fa-phone-alt fa-2x mb-1" style="color: var(--cisco-green)"></i>
+                <p class="small mb-0">Telefones VoIP</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="p-2 rounded" style="background: rgba(102, 191, 83, 0.1)">
+                <i class="fas fa-video fa-2x mb-1" style="color: var(--cisco-green)"></i>
+                <p class="small mb-0">Câmeras de segurança</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="cisco-subtitle">Estrutura do Endereço IPv4</h3>
+          <p>
+            A estrutura de um endereço IPv4 é chamada <strong>notação decimal com ponto</strong> e é representada por quatro números
+            decimais entre 0 e 255. Os endereços IPv4 são atribuídos individualmente a dispositivos conectados a uma rede.
+          </p>
+
+          <div class="bg-dark p-3 rounded mb-3">
+            <p class="text-dim mb-2"><i class="fas fa-code me-2"></i> Exemplo de endereço IPv4:</p>
+            <code class="d-block text-success">192.168.1.10</code>
+            <p class="text-dim mt-2">
+              Com o endereço IPv4, uma <strong>máscara de sub-rede</strong> também é necessária. Uma máscara de sub-rede IPv4 é um valor de
+              32 bits que diferencia a parte da rede do endereço da parte do host.
+            </p>
+            <code class="d-block text-success">Máscara de sub-rede: 255.255.255.0</code>
+            <code class="d-block text-success">Gateway padrão: 192.168.1.1</code>
+          </div>
+
+          <div class="alert-cisco mb-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Observação:</strong> O IP neste curso refere-se aos protocolos <strong>IPv4 e IPv6</strong>. O IPv6 é a versão mais
+            recente do IP e está substituindo o IPv4 mais comum.
+          </div>
+
+          <!-- Configuração IPv4 Windows -->
+          <h4 class="mt-3"><i class="fab fa-windows me-2" style="color: var(--cisco-green)"></i> Configuração IPv4 no Windows</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded">
+                <p class="text-dim mb-2">Propriedades do Protocolo de Internet Versão 4 (TCP/IPv4):</p>
+                <div class="ps-3">
+                  <p class="mb-1">
+                    <i class="fas fa-circle me-2" style="font-size: 0.5rem; vertical-align: middle"></i>
+                    <strong>IP address:</strong> 192.168.1.10
+                  </p>
+                  <p class="mb-1">
+                    <i class="fas fa-circle me-2" style="font-size: 0.5rem; vertical-align: middle"></i>
+                    <strong>Subnet mask:</strong> 255.255.255.0
+                  </p>
+                  <p class="mb-1">
+                    <i class="fas fa-circle me-2" style="font-size: 0.5rem; vertical-align: middle"></i>
+                    <strong>Default gateway:</strong> 192.168.1.1
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded">
+                <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i>
+                <p class="mb-0">
+                  O endereço de <strong>gateway padrão</strong> é o endereço IP do roteador que o host usará para acessar redes remotas,
+                  incluindo a Internet.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- IPv6 -->
+          <h3 class="cisco-subtitle mt-4">Endereços IPv6</h3>
+          <p>
+            Os endereços IPv6 têm <strong>128 bits</strong> e são escritos como uma sequência de valores hexadecimais. A cada quatro bits é
+            representado por um único dígito hexadecimal; para um total de 32 valores hexadecimais. Grupos de quatro dígitos hexadecimais
+            são separados por dois pontos (:). Os endereços IPv6 não diferenciam maiúsculas e minúsculas e podem ser escritos tanto em
+            minúsculas como em maiúsculas.
+          </p>
+
+          <div class="bg-dark p-3 rounded">
+            <p class="text-dim mb-2"><i class="fas fa-code me-2"></i> Exemplo de endereço IPv6:</p>
+            <code class="d-block text-success">2001:db8:acad:10::10</code>
+            <p class="text-dim mt-1">Prefixo de sub-rede: 64<br />Gateway padrão: fe80::1</p>
+          </div>
+        </div>
+
+        <!-- 2.6.2 Interfaces e Portas -->
+        <div id="secao-2-6-2" class="content-card">
+          <h2 class="cisco-title">2.6.2 Interfaces e Portas</h2>
+          <p>
+            As comunicações em rede dependem de interfaces do dispositivo de usuário final, interfaces do dispositivo de rede e cabos que as
+            conectam. Cada interface física tem especificações ou padrões que a definem. Um cabo conectado à interface deve ser projetado de
+            acordo com os padrões físicos da interface.
+          </p>
+
+          <h3 class="cisco-subtitle">Tipos de meios físicos de rede</h3>
+          <div class="row text-center mb-4">
+            <div class="col-md-4">
+              <div class="p-3 rounded" style="background: rgba(102, 191, 83, 0.1)">
+                <i class="fas fa-plug fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <h4>Cobre</h4>
+                <p class="text-dim small">Cabos de par trançado (Ethernet)</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-3 rounded" style="background: rgba(102, 191, 83, 0.1)">
+                <i class="fas fa-fiber fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <h4>Fibra óptica</h4>
+                <p class="text-dim small">Pulsos de luz, longa distância</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-3 rounded" style="background: rgba(102, 191, 83, 0.1)">
+                <i class="fas fa-wifi fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <h4>Sem Fio</h4>
+                <p class="text-dim small">Ondas eletromagnéticas</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-chart-line me-2"></i>
+            <strong>Diferenças entre os tipos de mídia:</strong>
+            <ul class="mt-2 mb-0">
+              <li>A distância pela qual o meio físico consegue carregar um sinal com êxito</li>
+              <li>O ambiente no qual o meio físico deve ser instalado</li>
+              <li>A quantidade e a velocidade de dados nas quais eles devem ser transmitidos</li>
+              <li>O custo do meio físico e da instalação</li>
+            </ul>
+          </div>
+
+          <h3 class="cisco-subtitle">Portas do Switch e Interfaces Virtuais</h3>
+          <p>
+            Cada link na Internet não exige apenas um tipo de mídia de rede específico, mas também requer uma
+            <strong>tecnologia de rede específica</strong>. Por exemplo, <strong>Ethernet</strong> é a tecnologia de rede local (LAN) mais
+            comum usada atualmente. As portas Ethernet são encontradas nos dispositivos de usuário final, dispositivos de switch e outros
+            dispositivos de rede.
+          </p>
+
+          <div class="bg-dark p-3 rounded">
+            <p class="text-dim mb-2"><i class="fas fa-server me-2"></i> Switches Cisco IOS de Camada 2:</p>
+            <ul class="text-info">
+              <li>Possuem portas físicas para se conectarem a dispositivos</li>
+              <li>Essas portas NÃO são compatíveis com endereços IP da Camada 3</li>
+              <li>Possuem <strong>interfaces virtuais de switch (SVIs)</strong> - Interface Virtual de Switch</li>
+              <li>Uma SVI é criada no software (não existe hardware físico)</li>
+              <li>A interface virtual permite gerenciar remotamente um switch usando IPv4 e IPv6</li>
+              <li>Todo switch tem uma SVI na configuração padrão: a <strong>interface VLAN1</strong></li>
+            </ul>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Observação importante:</strong> Um switch da camada 2 <strong>não precisa</strong> de um endereço IP. O endereço IP
+            atribuído à SVI é usado para <strong>acesso remoto ao switch</strong>. Um endereço IP não é necessário para o switch executar
+            suas operações básicas.
+          </div>
+        </div>
+
+        <!-- 2.6.3 Verifique sua compreensão -->
+        <div id="secao-2-6-3" class="content-card">
+          <h2 class="cisco-title">2.6.3 Verifique sua compreensão - Ports and Addresses</h2>
+
+          <div class="quiz-container p-3 rounded" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 1:</strong> Qual é o formato de um endereço IPv4?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-port-1').checked = true">
+              <input type="radio" name="q-port" id="q-port-1" value="hex" /> <label>Notação hexadecimal separada por dois pontos</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port-2').checked = true">
+              <input type="radio" name="q-port" id="q-port-2" value="dot" /> <label>Notação decimal com ponto (ex: 192.168.1.10)</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port-3').checked = true">
+              <input type="radio" name="q-port" id="q-port-3" value="binary" /> <label>Notação binária</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkPortQuiz()">Verificar resposta</button>
+            <div id="quiz-port-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+
+          <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 2:</strong> Para que serve a SVI (Interface Virtual de Switch) em um switch Camada 2?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-port2-1').checked = true">
+              <input type="radio" name="q-port2" id="q-port2-1" value="conectar" /> <label>Conectar fisicamente dispositivos finais</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port2-2').checked = true">
+              <input type="radio" name="q-port2" id="q-port2-2" value="gerenciar" /> <label>Permitir gerenciamento remoto via IP</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port2-3').checked = true">
+              <input type="radio" name="q-port2" id="q-port2-3" value="rotear" /> <label>Rotear pacotes entre redes diferentes</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkPortQuiz2()">Verificar resposta</button>
+            <div id="quiz-port2-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+
+          <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 3:</strong> Qual é o endereço do gateway padrão?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-port3-1').checked = true">
+              <input type="radio" name="q-port3" id="q-port3-1" value="switch" /> <label>O endereço IP do switch de acesso</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port3-2').checked = true">
+              <input type="radio" name="q-port3" id="q-port3-2" value="roteador" />
+              <label>O endereço IP do roteador para acesso a redes remotas</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port3-3').checked = true">
+              <input type="radio" name="q-port3" id="q-port3-3" value="servidor" /> <label>O endereço IP do servidor DNS</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkPortQuiz3()">Verificar resposta</button>
+            <div id="quiz-port3-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+
+          <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 4:</strong> Quantos bits tem um endereço IPv6?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-port4-1').checked = true">
+              <input type="radio" name="q-port4" id="q-port4-1" value="32" /> <label>32 bits</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port4-2').checked = true">
+              <input type="radio" name="q-port4" id="q-port4-2" value="64" /> <label>64 bits</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port4-3').checked = true">
+              <input type="radio" name="q-port4" id="q-port4-3" value="128" /> <label>128 bits</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkPortQuiz4()">Verificar resposta</button>
+            <div id="quiz-port4-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+
+          <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 5:</strong> Um switch Camada 2 PRECISA de um endereço IP para funcionar?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-port5-1').checked = true">
+              <input type="radio" name="q-port5" id="q-port5-1" value="sim" /> <label>Sim, é obrigatório</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port5-2').checked = true">
+              <input type="radio" name="q-port5" id="q-port5-2" value="nao" /> <label>Não, é usado apenas para gerenciamento remoto</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-port5-3').checked = true">
+              <input type="radio" name="q-port5" id="q-port5-3" value="depende" /> <label>Depende do modelo do switch</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkPortQuiz5()">Verificar resposta</button>
+            <div id="quiz-port5-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+        </div>
+        <!-- ================= SEÇÃO 2.7 ================= -->
+        <div id="secao-2-7-1" class="content-card">
+          <span class="section-badge">2.7 Configurar Endereços IP</span>
+
+          <!-- 2.7.1 Configuração Manual de Endereço IP para Dispositivos Finais -->
+          <h2 class="cisco-title">2.7.1 Configuração Manual de Endereço IP para Dispositivos Finais</h2>
+          <p>
+            Assim como você precisa dos números de telefone dos seus amigos para enviar mensagens de texto ou ligar para eles, os
+            dispositivos finais da sua rede precisam de um <strong>endereço IP</strong> para que eles possam se comunicar com outros
+            dispositivos na sua rede. Neste tópico, você implementará a conectividade básica configurando o endereçamento IP em switches e
+            PCs.
+          </p>
+          <p>
+            As informações de endereço IPv4 podem ser inseridas nos dispositivos finais <strong>manualmente</strong> ou
+            <strong>automaticamente</strong> usando o <strong>DHCP</strong> (Dynamic Host Configuration Protocol).
+          </p>
+
+          <h3 class="cisco-subtitle">Passo a passo para configurar manualmente no Windows:</h3>
+          <div class="row">
+            <div class="col-md-7">
+              <div class="bg-dark p-3 rounded">
+                <p class="text-dim mb-2"><i class="fab fa-windows me-2"></i> Caminho para configuração:</p>
+                <code class="d-block text-info">Control Panel > Network Sharing Center > Change adapter settings</code>
+                <p class="text-dim mt-2">
+                  1. Escolha o adaptador de rede<br />
+                  2. Clique com botão direito e selecione <strong>Properties</strong><br />
+                  3. Selecione <strong>Internet Protocol Version 4 (TCP/IPv4)</strong><br />
+                  4. Clique em <strong>Properties</strong>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="bg-dark p-3 rounded text-center">
+                <i class="fas fa-network-wired fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <p class="mb-0"><strong>Ethernet Properties</strong></p>
+                <p class="small text-dim">Internet Protocol Version 4 (TCP/IPv4)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-dark p-3 rounded mt-3">
+            <p class="text-dim mb-2"><i class="fas fa-code me-2"></i> Configuração manual de IPv4:</p>
+            <div class="ps-3">
+              <p class="mb-1"><strong>IP address:</strong> 192.168.1.10</p>
+              <p class="mb-1"><strong>Subnet mask:</strong> 255.255.255.0</p>
+              <p class="mb-1"><strong>Default gateway:</strong> 192.168.1.1</p>
+              <p class="mb-1"><strong>Preferred DNS server:</strong> (configuração opcional)</p>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Observação:</strong> As opções de endereçamento e configuração IPv6 são semelhantes ao IPv4.
+          </div>
+        </div>
+
+        <!-- 2.7.2 Configuração Automática de Endereço IP (DHCP) -->
+        <div id="secao-2-7-2" class="content-card">
+          <h2 class="cisco-title">2.7.2 Configuração Automática de Endereço IP para Dispositivos Finais</h2>
+          <p>
+            Os dispositivos finais geralmente usam o <strong>DHCP</strong> para configuração automática de endereço IPv4. O DHCP é a
+            tecnologia usada em quase todas as redes. A melhor maneira de entender por que o DHCP é tão popular é analisando o trabalho
+            extra que seria necessário sem ele.
+          </p>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded">
+                <p class="text-dim mb-2"><i class="fas fa-tachometer-alt me-2"></i> Com DHCP:</p>
+                <ul class="text-info mb-0">
+                  <li>Configuração automática</li>
+                  <li>Sem digitação manual de IPs</li>
+                  <li>Menor chance de erros</li>
+                  <li>Evita duplicação de endereços</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded">
+                <p class="text-dim mb-2"><i class="fas fa-tools me-2"></i> Sem DHCP:</p>
+                <ul class="text-warning mb-0">
+                  <li>Configuração manual em cada dispositivo</li>
+                  <li>Alto risco de erros</li>
+                  <li>Possibilidade de IPs duplicados</li>
+                  <li>Difícil gerenciamento em larga escala</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-dark p-3 rounded mt-3">
+            <p class="text-dim mb-2"><i class="fab fa-windows me-2"></i> Para configurar DHCP no Windows:</p>
+            <code class="d-block">○ <strong>Obtain an IP address automatically</strong></code>
+            <code class="d-block mt-1">○ <strong>Obtain DNS server address automatically</strong></code>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Observação:</strong> Os endereços do servidor DNS são os endereços IPv4 e IPv6 dos servidores DNS (Domain Name System),
+            usados para converter endereços IP em nomes de domínio, como <code>www.cisco.com</code>.
+          </div>
+
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-cloud-upload-alt me-2"></i>
+            <strong>Observação sobre IPv6:</strong> IPv6 usa <strong>DHCPv6</strong> e <strong>SLAAC</strong> (Stateless Address
+            Autoconfiguration) para alocação de endereços dinâmicos.
+          </div>
+        </div>
+
+        <!-- 2.7.3 Verificador de sintaxe - Configuração de IP do PC Windows -->
+        <div id="secao-2-7-3" class="content-card">
+          <h2 class="cisco-title">2.7.3 Verificador de sintaxe - Exibir configuração de IP no Windows</h2>
+          <p>
+            É possível exibir as definições de configuração de IP em um PC com Windows usando o comando <code>ipconfig</code> no prompt de
+            comando. A saída mostrará as informações de endereço IPv4, máscara de sub-rede e gateway recebidas do servidor DHCP.
+          </p>
+
+          <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+            <h4><i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i> Comando ipconfig</h4>
+            <div class="bg-dark p-3 rounded font-monospace">
+              <code class="d-block text-info">C:\&gt; ipconfig</code>
+              <code class="d-block text-success mt-2">Windows IP Configuration</code>
+              <code class="d-block text-success mt-2">Ethernet adapter Local Area Connection:</code>
+              <code class="d-block text-info">Connection-specific DNS Suffix . : cisco.com</code>
+              <code class="d-block text-info">Link-local IPv6 Address . . . . . : fe80::b0ef:ca42:af2c:c6c7%16</code>
+              <code class="d-block text-info">IPv4 Address. . . . . . . . . . . : 192.168.1.10</code>
+              <code class="d-block text-info">Subnet Mask . . . . . . . . . . . : 255.255.255.0</code>
+              <code class="d-block text-info">Default Gateway . . . . . . . . . : 192.168.1.1</code>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-check-circle me-2"></i>
+            Você exibiu com êxito a configuração IP em um PC com Windows.
+          </div>
+        </div>
+
+        <!-- 2.7.4 Configurar Interface Virtual do Switch (SVI) -->
+        <div id="secao-2-7-4" class="content-card">
+          <h2 class="cisco-title">2.7.4 Configurar Interface Virtual do Switch (SVI)</h2>
+          <p>
+            Para gerenciar o switch remotamente via rede, é necessário configurar um endereço IP na
+            <strong>interface virtual do switch (SVI)</strong>. A SVI padrão é a <strong>interface VLAN 1</strong>.
+          </p>
+
+          <div class="bg-dark p-3 rounded">
+            <p class="text-dim mb-2"><i class="fas fa-code me-2"></i> Comandos para configurar a SVI:</p>
+            <code class="d-block text-success">Switch&gt; enable</code>
+            <code class="d-block text-success mt-1">Switch# configure terminal</code>
+            <code class="d-block text-success mt-1">Switch(config)# interface vlan 1</code>
+            <code class="d-block text-success mt-1">Switch(config-if)# ip address 192.168.1.20 255.255.255.0</code>
+            <code class="d-block text-success mt-1">Switch(config-if)# no shutdown</code>
+            <code class="d-block text-success mt-1">Switch(config-if)# end</code>
+          </div>
+        </div>
+
+        <!-- 2.7.5 Verificador de sintaxe - Configurar interface virtual do switch -->
+        <div id="secao-2-7-5" class="content-card">
+          <h2 class="cisco-title">2.7.5 Verificador de sintaxe - Configurar uma interface virtual do switch</h2>
+
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-check-circle me-2"></i>
+            <strong>Objetivo:</strong> Configurar o endereço IPv4 na interface virtual VLAN 1 para gerenciamento remoto do switch.
+          </div>
+
+          <!-- Passo 1 -->
+          <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+            <h4>
+              <i class="fas fa-step-forward me-2" style="color: var(--cisco-green)"></i> Passo 1: Entrar no modo de configuração da
+              interface VLAN 1
+            </h4>
+            <div class="bg-dark p-3 rounded font-monospace">
+              <code class="d-block text-info">Switch(config)# interface vlan 1</code>
+              <code class="d-block text-success mt-1">Switch(config-if)#</code>
+            </div>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="syntax-checker-section mb-4 p-3 rounded" style="background: #0d1117; border-left: 3px solid var(--cisco-green)">
+            <h4>
+              <i class="fas fa-address-card me-2" style="color: var(--cisco-green)"></i> Passo 2: Configurar o endereço IPv4 e a máscara de
+              sub-rede
+            </h4>
+            <div class="bg-dark p-3 rounded font-monospace">
+              <p class="text-dim mb-2">
+                Configure o endereço IPv4 como <strong>192.168.1.20</strong> e a máscara de sub-rede como <strong>255.255.255.0</strong>.
+              </p>
+              <code class="d-block text-info">Switch(config-if)# ip address 192.168.1.20 255.255.255.0</code>
+            </div>
+          </div>
+
+          <!-- Comandos completos -->
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-list-ol me-2"></i>
+            <strong>Sequência completa de comandos para configurar a SVI:</strong>
+            <div class="bg-dark p-3 rounded mt-2 font-monospace">
+              <code class="d-block text-success">Switch&gt; enable</code>
+              <code class="d-block text-success">Switch# configure terminal</code>
+              <code class="d-block text-success">Switch(config)# interface vlan 1</code>
+              <code class="d-block text-success">Switch(config-if)# ip address 192.168.1.20 255.255.255.0</code>
+              <code class="d-block text-success">Switch(config-if)# no shutdown</code>
+              <code class="d-block text-success">Switch(config-if)# exit</code>
+              <code class="d-block text-success">Switch(config)# exit</code>
+              <code class="d-block text-success">Switch# copy running-config startup-config</code>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <button class="btn-cisco-outline me-2" onclick="resetSVI()"><i class="fas fa-redo-alt me-1"></i> Redefinir</button>
+            <button class="btn-cisco-outline" onclick="showAllSVICommands()"><i class="fas fa-eye me-1"></i> Mostrar tudo</button>
+          </div>
+        </div>
+
+        <!-- 2.7.6 Verifique sua compreensão -->
+        <div id="secao-2-7-6" class="content-card">
+          <h2 class="cisco-title">2.7.6 Verifique sua compreensão - Configure IP Addresses</h2>
+
+          <div class="quiz-container p-3 rounded" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 1:</strong> Qual comando é usado para exibir a configuração de IP em um PC com Windows?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-ip-1').checked = true">
+              <input type="radio" name="q-ip" id="q-ip-1" value="ping" /> <label>ping</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip-2').checked = true">
+              <input type="radio" name="q-ip" id="q-ip-2" value="ipconfig" /> <label>ipconfig</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip-3').checked = true">
+              <input type="radio" name="q-ip" id="q-ip-3" value="show" /> <label>show ip interface</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkIPQuiz()">Verificar resposta</button>
+            <div id="quiz-ip-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+
+          <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 2:</strong> Qual tecnologia permite configuração automática de endereços IP em dispositivos finais?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-ip2-1').checked = true">
+              <input type="radio" name="q-ip2" id="q-ip2-1" value="dns" /> <label>DNS</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip2-2').checked = true">
+              <input type="radio" name="q-ip2" id="q-ip2-2" value="dhcp" /> <label>DHCP</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip2-3').checked = true">
+              <input type="radio" name="q-ip2" id="q-ip2-3" value="arp" /> <label>ARP</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkIPQuiz2()">Verificar resposta</button>
+            <div id="quiz-ip2-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+
+          <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 3:</strong> Qual interface é configurada com IP para gerenciamento remoto de um switch?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-ip3-1').checked = true">
+              <input type="radio" name="q-ip3" id="q-ip3-1" value="fast" /> <label>FastEthernet 0/1</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip3-2').checked = true">
+              <input type="radio" name="q-ip3" id="q-ip3-2" value="vlan" /> <label>interface vlan 1 (SVI)</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip3-3').checked = true">
+              <input type="radio" name="q-ip3" id="q-ip3-3" value="console" /> <label>line console 0</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkIPQuiz3()">Verificar resposta</button>
+            <div id="quiz-ip3-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+
+          <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 4:</strong> O que significa a sigla SLAAC?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-ip4-1').checked = true">
+              <input type="radio" name="q-ip4" id="q-ip4-1" value="ipv4" /> <label>Método de configuração automática para IPv4</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip4-2').checked = true">
+              <input type="radio" name="q-ip4" id="q-ip4-2" value="ipv6" /> <label>Stateless Address Autoconfiguration para IPv6</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip4-3').checked = true">
+              <input type="radio" name="q-ip4" id="q-ip4-3" value="servidor" /> <label>Protocolo de servidor DNS</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkIPQuiz4()">Verificar resposta</button>
+            <div id="quiz-ip4-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+
+          <div class="quiz-container p-3 rounded mt-3" style="background: rgba(102, 191, 83, 0.05)">
+            <p><strong>Pergunta 5:</strong> Qual é o comando para ativar uma interface no Cisco IOS?</p>
+            <div class="quiz-option" onclick="document.getElementById('q-ip5-1').checked = true">
+              <input type="radio" name="q-ip5" id="q-ip5-1" value="enable" /> <label>enable</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip5-2').checked = true">
+              <input type="radio" name="q-ip5" id="q-ip5-2" value="activate" /> <label>activate</label>
+            </div>
+            <div class="quiz-option" onclick="document.getElementById('q-ip5-3').checked = true">
+              <input type="radio" name="q-ip5" id="q-ip5-3" value="shutdown" /> <label>no shutdown</label>
+            </div>
+            <button class="btn-cisco-outline mt-3" onclick="checkIPQuiz5()">Verificar resposta</button>
+            <div id="quiz-ip5-resposta" class="quiz-answer mt-2" style="display: none"></div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- FOOTER PADRÃO -->
@@ -1515,6 +2690,425 @@ Desktop  Downloads  lab.support.files  second drive
           div.className = 'quiz-answer incorrect'
           div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
         }
+      }
+    </script>
+    <script>
+      function checkBasicQuiz() {
+        const radios = document.getElementsByName('q-basic')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-basic-resposta')
+        div.style.display = 'block'
+        if (selected === 'enable') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! O comando <code>enable secret class</code> protege o acesso ao modo EXEC privilegiado com criptografia MD5.'
+        } else if (selected === 'password') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. <code>password cisco</code> protege o acesso ao console ou VTY, não o modo privilegiado.'
+        } else if (selected === 'banner') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. <code>banner motd</code> cria uma mensagem de aviso, não protege o acesso privilegiado.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+
+      function checkBasicQuiz2() {
+        const radios = document.getElementsByName('q-basic2')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-basic2-resposta')
+        div.style.display = 'block'
+        if (selected === 'service') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! <code>service password-encryption</code> criptografa todas as senhas em texto simples.'
+        } else if (selected === 'encrypt') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. "encrypt password" não é um comando válido do IOS.'
+        } else if (selected === 'secret') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. <code>enable secret</code> criptografa apenas a senha do modo privilegiado, não todas as senhas.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+
+      function resetBasicConfig() {
+        alert('Atividade reiniciada! Siga os passos para configurar o switch com segurança.')
+      }
+
+      function showAllBasicCommands() {
+        const commands = `COMANDOS COMPLETOS - CONFIGURAÇÃO BÁSICA DO SWITCH:
+
+1. configure terminal
+2. hostname Sw-Floor-1
+3. line console 0
+4. password cisco
+5. login
+6. exit
+7. enable secret class
+8. line vty 0 15
+9. password cisco
+10. login
+11. exit
+12. service password-encryption
+13. banner motd # Apenas acesso autorizado #
+
+Após esses comandos, o switch estará configurado com:
+- Nome: Sw-Floor-1
+- Senha console: cisco
+- Senha privilegiada: class
+- Senha VTY: cisco
+- Todas as senhas criptografadas
+- Banner de aviso legal`
+        alert(commands)
+      }
+    </script>
+    <script>
+      function checkSaveQuiz() {
+        const radios = document.getElementsByName('q-save')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-save-resposta')
+        div.style.display = 'block'
+        if (selected === 'copy') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! O comando <code>copy running-config startup-config</code> salva a configuração atual na NVRAM.'
+        } else if (selected === 'write') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. "write" é um comando antigo (equivalente a copy run start), mas o comando padrão moderno é <code>copy running-config startup-config</code>.'
+        } else if (selected === 'save') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. "save config" não é um comando válido do IOS.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+
+      function checkSaveQuiz2() {
+        const radios = document.getElementsByName('q-save2')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-save2-resposta')
+        div.style.display = 'block'
+        if (selected === 'ram') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! A running-config é armazenada na RAM, que é uma memória volátil.'
+        } else if (selected === 'nvsam') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. A startup-config é armazenada na NVRAM, não a running-config.'
+        } else if (selected === 'flash') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. A memória flash armazena o sistema operacional (IOS), não a configuração.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+
+      function checkSaveQuiz3() {
+        const radios = document.getElementsByName('q-save3')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-save3-resposta')
+        div.style.display = 'block'
+        if (selected === 'perde') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! A RAM é volátil, então as alterações não salvas são perdidas quando o dispositivo é desligado.'
+        } else if (selected === 'mantem') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. As alterações só são mantidas se salvas com <code>copy running-config startup-config</code>.'
+        } else if (selected === 'backup') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. Não há backup automático criado ao desligar.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+    </script>
+    <script>
+      function checkPortQuiz() {
+        const radios = document.getElementsByName('q-port')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-port-resposta')
+        div.style.display = 'block'
+        if (selected === 'dot') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! Endereços IPv4 usam notação decimal com ponto (ex: 192.168.1.10).'
+        } else if (selected === 'hex') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. Notação hexadecimal com dois pontos é usada para IPv6.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+
+      function checkPortQuiz2() {
+        const radios = document.getElementsByName('q-port2')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-port2-resposta')
+        div.style.display = 'block'
+        if (selected === 'gerenciar') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML = '<i class="fas fa-check-circle me-2"></i> Correto! A SVI permite gerenciamento remoto do switch via IP.'
+        } else if (selected === 'conectar') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. Conexões físicas usam portas Ethernet, não SVIs.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+
+      function checkPortQuiz3() {
+        const radios = document.getElementsByName('q-port3')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-port3-resposta')
+        div.style.display = 'block'
+        if (selected === 'roteador') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! O gateway padrão é o IP do roteador para acesso a redes remotas.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. O gateway padrão é o endereço do roteador.'
+        }
+      }
+
+      function checkPortQuiz4() {
+        const radios = document.getElementsByName('q-port4')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-port4-resposta')
+        div.style.display = 'block'
+        if (selected === '128') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML = '<i class="fas fa-check-circle me-2"></i> Correto! Endereços IPv6 têm 128 bits.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. IPv4 tem 32 bits, IPv6 tem 128 bits.'
+        }
+      }
+
+      function checkPortQuiz5() {
+        const radios = document.getElementsByName('q-port5')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-port5-resposta')
+        div.style.display = 'block'
+        if (selected === 'nao') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! Um switch Camada 2 não precisa de IP para funcionar; IP é apenas para gerenciamento.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. O switch opera normalmente sem IP; o IP é opcional para acesso remoto.'
+        }
+      }
+    </script>
+    <script>
+      function checkIPQuiz() {
+        const radios = document.getElementsByName('q-ip')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-ip-resposta')
+        div.style.display = 'block'
+        if (selected === 'ipconfig') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML = '<i class="fas fa-check-circle me-2"></i> Correto! <code>ipconfig</code> exibe a configuração de IP no Windows.'
+        } else if (selected === 'ping') {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. <code>ping</code> testa conectividade, não exibe configuração.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+
+      function checkIPQuiz2() {
+        const radios = document.getElementsByName('q-ip2')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-ip2-resposta')
+        div.style.display = 'block'
+        if (selected === 'dhcp') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! DHCP (Dynamic Host Configuration Protocol) configura endereços IP automaticamente.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. A resposta correta é DHCP.'
+        }
+      }
+
+      function checkIPQuiz3() {
+        const radios = document.getElementsByName('q-ip3')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-ip3-resposta')
+        div.style.display = 'block'
+        if (selected === 'vlan') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! A SVI (interface VLAN 1) é usada para gerenciamento remoto do switch.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. Portas físicas não aceitam configuração de IP em switches Camada 2.'
+        }
+      }
+
+      function checkIPQuiz4() {
+        const radios = document.getElementsByName('q-ip4')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-ip4-resposta')
+        div.style.display = 'block'
+        if (selected === 'ipv6') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! SLAAC (Stateless Address Autoconfiguration) é usado para configuração automática de endereços IPv6.'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. SLAAC é específico para IPv6.'
+        }
+      }
+
+      function checkIPQuiz5() {
+        const radios = document.getElementsByName('q-ip5')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById('quiz-ip5-resposta')
+        div.style.display = 'block'
+        if (selected === 'shutdown') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! <code>no shutdown</code> ativa a interface (o comando <code>shutdown</code> desativa).'
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. O comando para ativar uma interface é <code>no shutdown</code>.'
+        }
+      }
+
+      function resetSVI() {
+        alert('Atividade reiniciada! Configure a interface VLAN 1 com o endereço 192.168.1.20/24.')
+      }
+
+      function showAllSVICommands() {
+        const commands = `COMANDOS COMPLETOS - CONFIGURAÇÃO SVI:
+
+1. enable
+2. configure terminal
+3. interface vlan 1
+4. ip address 192.168.1.20 255.255.255.0
+5. no shutdown
+6. exit
+7. exit
+8. copy running-config startup-config
+
+Comandos de verificação:
+- show ip interface brief
+- show running-config | section vlan`
+        alert(commands)
       }
     </script>
   </body>

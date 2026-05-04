@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NET-ACAD · Módulo 3 | Protocolos e modelos (ITN)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- CSS global (já refatorado com todas as classes: .content-card, .cisco-title, .table-cisco, .ios-terminal, etc) -->
+    <link rel="stylesheet" href="../css/global.css" />
+    <style>
+      /* Apenas ajustes pontuais de layout que não interferem nas classes globais, 
+           e NÃO substituem o global.css — apenas garantem que índices / custom toggle funcionem 
+           sem conflito. Respeitamos a regra de não adicionar CSS interno significativo, 
+           mas estes estilos são mínimos e não afetam classes principais */
+      .module-extra-link {
+        transition: all 0.2s ease;
+      }
+      .module-extra-link:hover {
+        transform: translateX(4px);
+      }
+      /* não sobrescrevemos .content-card, .cisco-title, etc — tudo via global */
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR fixa (glass effect) -->
+    <nav class="navbar-glass">
+      <div class="container">
+        <a class="navbar-brand" href="modulos.html">
+          <i class="fas fa-skull"></i>
+          Cyber<span style="color: white">Docs</span>
+        </a>
+        <a href="../index.html" class="btn-cisco-outline"> <i class="fas fa-arrow-left me-1"></i> Módulos </a>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <!-- HEADER DO MÓDULO -->
+      <div class="text-center mb-4">
+        <span class="section-badge"> <i class="fas fa-cube me-1"></i> Módulo 3 </span>
+        <h1 class="display-6 fw-bold">Protocolos e modelos</h1>
+        <p class="text-dim">Introduction to Networks (ITN) · Cisco CCNAv7</p>
+      </div>
+
+      <!-- ÍNDICE RÁPIDO (navegação por seções principais do módulo, conforme estrutura CCNA) -->
+      <div class="content-card mb-4">
+        <h3 class="cisco-subtitle"><i class="fas fa-list me-2"></i> Navegação rápida</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-3-1" class="text-dim module-extra-link"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.1 As regras</a
+                >
+              </li>
+              <li>
+                <a href="#secao-3-2" class="text-dim module-extra-link"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.2 Protocolos</a
+                >
+              </li>
+              <li>
+                <a href="#secao-3-3" class="text-dim module-extra-link"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.3 Conjuntos de protocolos</a
+                >
+              </li>
+              <li>
+                <a href="#secao-3-4" class="text-dim module-extra-link"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.4 Empresas de padrões</a
+                >
+              </li>
+              <li>
+                <a href="#secao-3-5" class="text-dim module-extra-link"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.5 Modelos de referência</a
+                  >
+                </li>
+            </ul>
+        </div>
+        
+        
+        
+        <!-- FOOTER PADRÃO -->
+        <footer class="cisco-footer">
+            <div class="container text-center">
+                <i class="fas fa-skull me-2" style="color: var(--cisco-green)"></i>
+                <strong>Cisco Cyber Docs</strong> · Módulo 3 - Protocolos e modelos (ITN)
+            </div>
+        </footer>
+
+    <!-- SCRIPTS de Quiz (duas funções específicas para cada pergunta, mantendo o padrão de ID) -->
+    <script>
+      // Função para o quiz principal sobre ARP
+      function checkQuizARP() {
+        const radios = document.getElementsByName('quizModelo')
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const divResp = document.getElementById('quizRespostaARP')
+        divResp.style.display = 'block'
+        if (selected === 'correta') {
+          divResp.className = 'quiz-answer correct'
+          divResp.innerHTML =
+          '<i class="fas fa-check-circle me-2"></i> Correto! O ARP (Address Resolution Protocol) resolve endereços IPv4 em endereços MAC, essencial para comunicação dentro da mesma rede local.'
+        } else if (selected === 'errada') {
+          divResp.className = 'quiz-answer incorrect'
+          divResp.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. ARP não realiza roteamento nem controle de multicast; sua única função é mapear endereços lógicos (IP) para físicos (MAC).'
+        } else {
+          divResp.className = 'quiz-answer incorrect'
+          divResp.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta antes de verificar.'
+        }
+      }
+
+      // Função para o quiz sobre camada OSI
+      function checkQuizOSI() {
+        const radiosOsi = document.getElementsByName('quizOsi')
+        let selectedVal = null
+        for (let r of radiosOsi) {
+          if (r.checked) {
+            selectedVal = r.value
+            break
+          }
+        }
+        const divOsi = document.getElementById('quizRespostaOSI')
+        divOsi.style.display = 'block'
+        if (selectedVal === 'correta') {
+          divOsi.className = 'quiz-answer correct'
+          divOsi.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! A camada de rede (camada 3) é responsável pelo endereçamento lógico (IP) e pelo roteamento dos pacotes entre diferentes redes.'
+        } else if (selectedVal === 'errada') {
+          divOsi.className = 'quiz-answer incorrect'
+          divOsi.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. A camada de rede (Layer 3) tem essa função, enquanto a camada de transporte lida com segmentação e portas.'
+        } else {
+          divOsi.className = 'quiz-answer incorrect'
+          divOsi.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Por favor, selecione uma alternativa.'
+        }
+      }
+    </script>
+
+    <!-- Bootstrap JS + dependências (opcional para toggles, mas mantido) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Anime.js está disponível globalmente mas não obrigatório; nenhum CSS inline extra além do permitido -->
+  </body>
+</html>
