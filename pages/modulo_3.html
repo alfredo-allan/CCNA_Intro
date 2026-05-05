@@ -4,146 +4,1503 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NET-ACAD · Módulo 3 | Protocolos e modelos (ITN)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- CSS global (já refatorado com todas as classes: .content-card, .cisco-title, .table-cisco, .ios-terminal, etc) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- CSS global -->
     <link rel="stylesheet" href="../css/global.css" />
     <style>
-      /* Apenas ajustes pontuais de layout que não interferem nas classes globais, 
-           e NÃO substituem o global.css — apenas garantem que índices / custom toggle funcionem 
-           sem conflito. Respeitamos a regra de não adicionar CSS interno significativo, 
-           mas estes estilos são mínimos e não afetam classes principais */
       .module-extra-link {
         transition: all 0.2s ease;
       }
       .module-extra-link:hover {
         transform: translateX(4px);
       }
-      /* não sobrescrevemos .content-card, .cisco-title, etc — tudo via global */
     </style>
   </head>
   <body>
-    <!-- NAVBAR fixa (glass effect) -->
+    <!-- NAVBAR fixa -->
     <nav class="navbar-glass">
       <div class="container">
         <a class="navbar-brand" href="modulos.html">
           <i class="fas fa-skull"></i>
           Cyber<span style="color: white">Docs</span>
         </a>
-        <a href="../index.html" class="btn-cisco-outline"> <i class="fas fa-arrow-left me-1"></i> Módulos </a>
+        <a href="../index.html" class="btn-cisco-outline">
+          <i class="fas fa-arrow-left me-1"></i> Módulos
+        </a>
       </div>
     </nav>
 
     <main class="container py-4">
       <!-- HEADER DO MÓDULO -->
       <div class="text-center mb-4">
-        <span class="section-badge"> <i class="fas fa-cube me-1"></i> Módulo 3 </span>
+        <span class="section-badge">
+          <i class="fas fa-cube me-1"></i> Módulo 3
+        </span>
         <h1 class="display-6 fw-bold">Protocolos e modelos</h1>
         <p class="text-dim">Introduction to Networks (ITN) · Cisco CCNAv7</p>
       </div>
 
-      <!-- ÍNDICE RÁPIDO (navegação por seções principais do módulo, conforme estrutura CCNA) -->
+      <!-- ÍNDICE RÁPIDO -->
       <div class="content-card mb-4">
-        <h3 class="cisco-subtitle"><i class="fas fa-list me-2"></i> Navegação rápida</h3>
+        <h3 class="cisco-subtitle">
+          <i class="fas fa-list me-2"></i> Navegação rápida
+        </h3>
         <div class="row">
           <div class="col-md-6">
             <ul class="list-unstyled">
               <li>
-                <a href="#secao-3-1" class="text-dim module-extra-link"
-                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.1 As regras</a
-                >
+                <a href="#secao-3-1" class="text-dim module-extra-link">
+                  <i
+                    class="fas fa-chevron-right me-2"
+                    style="color: var(--cisco-green)"
+                  ></i
+                  >3.1 As regras
+                </a>
               </li>
               <li>
-                <a href="#secao-3-2" class="text-dim module-extra-link"
-                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.2 Protocolos</a
-                >
+                <a href="#secao-3-2" class="text-dim module-extra-link">
+                  <i
+                    class="fas fa-chevron-right me-2"
+                    style="color: var(--cisco-green)"
+                  ></i
+                  >3.2 Protocolos
+                </a>
               </li>
               <li>
-                <a href="#secao-3-3" class="text-dim module-extra-link"
-                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.3 Conjuntos de protocolos</a
-                >
+                <a href="#secao-3-3" class="text-dim module-extra-link">
+                  <i
+                    class="fas fa-chevron-right me-2"
+                    style="color: var(--cisco-green)"
+                  ></i
+                  >3.3 Conjuntos de protocolos
+                </a>
               </li>
               <li>
-                <a href="#secao-3-4" class="text-dim module-extra-link"
-                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.4 Empresas de padrões</a
-                >
+                <a href="#secao-3-4" class="text-dim module-extra-link">
+                  <i
+                    class="fas fa-chevron-right me-2"
+                    style="color: var(--cisco-green)"
+                  ></i
+                  >3.4 Empresas de padrões
+                </a>
               </li>
               <li>
-                <a href="#secao-3-5" class="text-dim module-extra-link"
-                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>3.5 Modelos de referência</a
-                  >
-                </li>
+                <a href="#secao-3-5" class="text-dim module-extra-link">
+                  <i
+                    class="fas fa-chevron-right me-2"
+                    style="color: var(--cisco-green)"
+                  ></i
+                  >3.5 Modelos de referência
+                </a>
+              </li>
             </ul>
+          </div>
         </div>
-        
-        
-        
-        <!-- FOOTER PADRÃO -->
-        <footer class="cisco-footer">
-            <div class="container text-center">
-                <i class="fas fa-skull me-2" style="color: var(--cisco-green)"></i>
-                <strong>Cisco Cyber Docs</strong> · Módulo 3 - Protocolos e modelos (ITN)
-            </div>
-        </footer>
+      </div>
+      <!-- ================================================================ -->
+      <!-- SEÇÃO 3.1 - AS REGRAS (COMPLETA)                                -->
+      <!-- ================================================================ -->
+      <div id="secao-3-1" class="content-card">
+        <span class="section-badge">3.1 As regras</span>
+        <h2 class="cisco-title">Fundamentos dos Protocolos de Rede</h2>
 
-    <!-- SCRIPTS de Quiz (duas funções específicas para cada pergunta, mantendo o padrão de ID) -->
+        <!-- 3.1.1 - O que são protocolos? (Contexto inicial) -->
+        <div id="secao-3-1-1" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-handshake me-2"></i>3.1.1 Protocolos de rede
+          </h3>
+          <p>
+            O envio de uma mensagem, seja por comunicação presencial ou por
+            rede, é regido por regras chamadas <strong>protocolos</strong>.
+            Esses protocolos são específicos ao tipo de método de comunicação
+            que está sendo usado. Em nossa comunicação pessoal do dia-a-dia, as
+            regras que usamos para nos comunicar em uma mídia, como uma ligação
+            telefônica, não são necessariamente as mesmas que as regras para o
+            uso de outra mídia, como o envio de uma carta. O processo de envio
+            de uma carta é semelhante à comunicação que ocorre em redes de
+            computadores.
+          </p>
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-lightbulb"></i> <strong>Analogia:</strong> Assim
+            como uma carta precisa de envelope, endereço e selo, uma mensagem de
+            rede precisa de encapsulamento, endereçamento IP/MAC e verificação
+            de integridade.
+          </div>
+        </div>
+
+        <!-- 3.1.2 - Fundamentos das Comunicações -->
+        <div id="secao-3-1-2" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-project-diagram me-2"></i>3.1.2 Fundamentos das
+            Comunicações
+          </h3>
+          <p>
+            As redes variam em tamanho, forma e função. No entanto, apenas ter a
+            conexão física entre os dispositivos não é suficiente. Para que
+            ocorra comunicação, os dispositivos devem saber
+            <strong>"como"</strong> se comunicar. Todos os métodos de
+            comunicação têm três elementos em comum:
+          </p>
+          <div class="row text-center mt-3">
+            <div class="col-md-4 mb-3">
+              <div
+                class="bg-dark p-3 rounded"
+                style="background: #0a1a1f !important"
+              >
+                <i
+                  class="fas fa-user-circle fa-3x"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <h5 class="mt-2">Fonte (Remetente)</h5>
+                <p class="small text-dim">
+                  Dispositivo ou pessoa que envia a mensagem
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div
+                class="bg-dark p-3 rounded"
+                style="background: #0a1a1f !important"
+              >
+                <i
+                  class="fas fa-bullhorn fa-3x"
+                  style="color: var(--accent-blue)"
+                ></i>
+                <h5 class="mt-2">Canal</h5>
+                <p class="small text-dim">
+                  Mídia que transporta a mensagem (cabo, fibra, ondas)
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div
+                class="bg-dark p-3 rounded"
+                style="background: #0a1a1f !important"
+              >
+                <i
+                  class="fas fa-user-check fa-3x"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <h5 class="mt-2">Destino (Receptor)</h5>
+                <p class="small text-dim">Recebe e interpreta a mensagem</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.1.3 - Protocolos de comunicação -->
+        <div id="secao-3-1-3" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-code-branch me-2"></i>3.1.3 Protocolos de
+            comunicação
+          </h3>
+          <div class="d-flex align-items-start gap-3 flex-wrap">
+            <div class="flex-grow-1">
+              <p>
+                Antes da comunicação, devem concordar sobre como se comunicar.
+                Se a comunicação for através de voz, devem primeiro acordar o
+                idioma. Em seguida, quando há uma mensagem para compartilhar,
+                eles devem formatar a mensagem de forma que seja compreensível.
+              </p>
+              <p>
+                Se alguém usa o idioma inglês, mas a estrutura das frases é
+                ruim, a mensagem pode ser facilmente mal interpretada. Cada uma
+                dessas tarefas descreve <strong>protocolos</strong> usados para
+                realizar a comunicação.
+              </p>
+            </div>
+            <div
+              class="text-center p-3"
+              style="min-width: 180px; background: #0d2b2e; border-radius: 12px"
+            >
+              <i
+                class="fas fa-comment-dots fa-3x mb-2"
+                style="color: #4cd964"
+              ></i>
+              <i class="fas fa-arrow-right fa-2x mx-2"></i>
+              <i class="fas fa-signal fa-3x mb-2" style="color: #ffcc00"></i>
+              <i class="fas fa-arrow-right fa-2x mx-2"></i>
+              <i
+                class="fas fa-comment-dots fa-3x mb-2"
+                style="color: #4cd964"
+              ></i>
+              <p class="small mt-2">
+                Mensagem → Sinal → Meio → Sinal → Mensagem
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.1.4 - Estabelecimento de Regras -->
+        <div id="secao-3-1-4" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-gavel me-2"></i>3.1.4 Estabelecimento de Regras
+          </h3>
+          <div class="alert-cisco mb-3">
+            <i class="fas fa-language me-2"></i>
+            <strong>Exemplo de formatação incorreta:</strong> "humans
+            communication between govern rules. It is very difficult to
+            understand messages that are not correctly formatted."
+          </div>
+          <p>
+            Observe como é difícil ler a mensagem porque ela não está formatada
+            corretamente. A versão correta seria:
+            <strong
+              >"Rules govern communication between humans. It is very difficult
+              to understand messages that are not correctly formatted."</strong
+            >
+          </p>
+          <p>
+            Os protocolos devem ter em conta os seguintes requisitos para
+            entregar com êxito uma mensagem compreendida pelo receptor:
+          </p>
+          <ul class="list-unstyled">
+            <li>
+              <i
+                class="fas fa-check-circle me-2"
+                style="color: var(--cisco-green)"
+              ></i>
+              Um emissor e um receptor identificados
+            </li>
+            <li>
+              <i
+                class="fas fa-check-circle me-2"
+                style="color: var(--cisco-green)"
+              ></i>
+              Língua e gramática comum
+            </li>
+            <li>
+              <i
+                class="fas fa-check-circle me-2"
+                style="color: var(--cisco-green)"
+              ></i>
+              Velocidade e ritmo de transmissão
+            </li>
+            <li>
+              <i
+                class="fas fa-check-circle me-2"
+                style="color: var(--cisco-green)"
+              ></i>
+              Requisitos de confirmação ou recepção
+            </li>
+          </ul>
+        </div>
+
+        <!-- 3.1.5 - Requisitos de protocolo de rede -->
+        <div id="secao-3-1-5" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-list-check me-2"></i>3.1.5 Requisitos de protocolo
+            de rede
+          </h3>
+          <p>
+            Os protocolos usados nas comunicações de rede compartilham
+            características fundamentais. Protocolos de computador comuns
+            incluem os seguintes requisitos:
+          </p>
+          <div class="row g-2 mt-2">
+            <div class="col-md-4">
+              <div class="config-step text-center">
+                <i class="fas fa-keyboard me-2"></i> Codificação
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="config-step text-center">
+                <i class="fas fa-envelope me-2"></i> Formatação/Encapsulamento
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="config-step text-center">
+                <i class="fas fa-arrows-alt-h me-2"></i> Tamanho da mensagem
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="config-step text-center">
+                <i class="fas fa-hourglass-half me-2"></i> Temporização
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="config-step text-center">
+                <i class="fas fa-share-alt me-2"></i> Opções de envio
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.1.6 - Codificação de Mensagens -->
+        <div id="secao-3-1-6" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-microchip me-2"></i>3.1.6 Codificação de Mensagens
+          </h3>
+          <p>
+            A codificação é o processo de conversão de informações em outra
+            forma aceitável para a transmissão. A decodificação reverte esse
+            processo para interpretar as informações.
+          </p>
+          <div class="row align-items-center">
+            <div class="col-md-7">
+              <div
+                class="d-flex justify-content-between align-items-center p-3 bg-dark rounded"
+              >
+                <div class="text-center">
+                  <i class="fas fa-user fa-2x"></i><br /><small>Origem</small>
+                </div>
+                <i class="fas fa-arrow-right fa-2x"></i>
+                <div class="text-center">
+                  <i class="fas fa-code fa-2x" style="color: #4cd964"></i
+                  ><br /><small>Codificador</small>
+                </div>
+                <i class="fas fa-arrow-right fa-2x"></i>
+                <div class="text-center">
+                  <i class="fas fa-wifi fa-2x" style="color: #ffcc00"></i
+                  ><br /><small>Canal</small>
+                </div>
+                <i class="fas fa-arrow-right fa-2x"></i>
+                <div class="text-center">
+                  <i class="fas fa-microchip fa-2x" style="color: #4cd964"></i
+                  ><br /><small>Decodificador</small>
+                </div>
+                <i class="fas fa-arrow-right fa-2x"></i>
+                <div class="text-center">
+                  <i class="fas fa-user-check fa-2x"></i><br /><small
+                    >Destino</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="alert-cisco">
+                <i class="fas fa-phone"></i> <strong>Analogia:</strong> Uma
+                pessoa converte pensamentos em palavras (codificação), fala no
+                telefone (canal), e o amigo escuta e interpreta os sons
+                (decodificação).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.1.7 - Formatação e Encapsulamento -->
+        <div id="secao-3-1-7" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-envelope-open-text me-2"></i>3.1.7 Formatação e
+            Encapsulamento
+          </h3>
+          <p>
+            Quando uma mensagem é enviada da origem para o destino, deve usar um
+            formato ou estrutura específica. Os formatos dependem do tipo de
+            mensagem e do canal usado.
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="ios-terminal">
+                <pre><code>+-------------------------------------------------+
+|  CABEÇALHO IPv6 (40 bytes)                     |
+|  Origem: 2001:db8::1                           |
+|  Destino: 2001:db8::2                          |
++-------------------------------------------------+
+|  CARGA ÚTIL (dados da mensagem)                |
++-------------------------------------------------+</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-cisco">
+                <i class="fas fa-envelope"></i>
+                <strong>Analogia do envelope:</strong> A carta é encapsulada no
+                envelope com endereços de remetente e destinatário. O processo
+                inverso (abrir o envelope) é o desencapsulamento.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.1.8 - Tamanho da Mensagem -->
+        <div id="secao-3-1-8" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-arrows-alt-v me-2"></i>3.1.8 Tamanho da Mensagem
+          </h3>
+          <p>
+            Outra regra de comunicação é o <strong>tamanho da mensagem</strong>.
+            Quando uma mensagem longa é enviada, é necessário dividi-la em
+            partes menores. As regras que regem o tamanho das partes (quadros)
+            são rígidas. Quadros muito longos ou muito curtos não são entregues.
+          </p>
+          <div class="d-flex justify-content-center gap-2 flex-wrap my-3">
+            <span class="badge bg-secondary p-3"
+              ><i class="fas fa-file-alt"></i> Pacote 1</span
+            >
+            <i class="fas fa-plus-circle fa-2x" style="color: #4cd964"></i>
+            <span class="badge bg-secondary p-3"
+              ><i class="fas fa-file-alt"></i> Pacote 2</span
+            >
+            <i class="fas fa-plus-circle fa-2x" style="color: #4cd964"></i>
+            <span class="badge bg-secondary p-3"
+              ><i class="fas fa-file-alt"></i> Pacote 3</span
+            >
+            <i class="fas fa-arrow-right fa-2x"></i>
+            <span class="badge bg-success p-3"
+              ><i class="fas fa-gem"></i> Mensagem Original</span
+            >
+          </div>
+        </div>
+
+        <!-- 3.1.9 - Temporização de Mensagem -->
+        <div id="secao-3-1-9" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-clock me-2"></i>3.1.9 Temporização de Mensagem
+          </h3>
+          <p>
+            O tempo de mensagens também é muito importante. A temporização da
+            mensagem inclui:
+          </p>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="text-center p-3 border rounded h-100">
+                <i
+                  class="fas fa-tachometer-alt fa-3x"
+                  style="color: #4cd964"
+                ></i>
+                <h5 class="mt-2">Controle de Fluxo</h5>
+                <p class="small">
+                  Gerencia a taxa de transmissão para evitar sobrecarga do
+                  receptor.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-3 border rounded h-100">
+                <i
+                  class="fas fa-hourglass-end fa-3x"
+                  style="color: #ffcc00"
+                ></i>
+                <h5 class="mt-2">Tempo Limite (Timeout)</h5>
+                <p class="small">
+                  Define quanto tempo esperar por respostas antes de reagir.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-3 border rounded h-100">
+                <i class="fas fa-hand-paper fa-3x" style="color: #ff6b6b"></i>
+                <h5 class="mt-2">Método de Acesso</h5>
+                <p class="small">
+                  Determina quando um dispositivo pode enviar dados (CSMA/CD,
+                  CSMA/CA).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.1.10 - Opções de Envio (Unicast, Multicast, Broadcast) -->
+        <div id="secao-3-1-10" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-exchange-alt me-2"></i>3.1.10 Opções de Envio de
+            Mensagem
+          </h3>
+          <p>
+            Uma mensagem pode ser entregue de diferentes maneiras. As
+            comunicações em rede têm opções de entrega semelhantes:
+          </p>
+
+          <div class="row text-center mt-3">
+            <div class="col-md-4 mb-3">
+              <div class="p-3 rounded" style="background: #0a2a2a">
+                <i class="fas fa-user fa-3x" style="color: #4cd964"></i>
+                <i class="fas fa-arrow-right fa-2x"></i>
+                <i class="fas fa-user fa-3x" style="color: #ffffff"></i>
+                <h4 class="mt-2">Unicast</h4>
+                <p class="small">
+                  Informação transmitida para
+                  <strong>um único</strong> dispositivo final.
+                </p>
+                <div class="alert-cisco mb-0 small">
+                  Ex: Acessar um site específico, enviar e-mail para uma pessoa.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="p-3 rounded" style="background: #0a2a2a">
+                <i class="fas fa-users fa-3x" style="color: #ffcc00"></i>
+                <i class="fas fa-arrow-right fa-2x"></i>
+                <i class="fas fa-user-friends fa-3x" style="color: #ffffff"></i>
+                <h4 class="mt-2">Multicast</h4>
+                <p class="small">
+                  Informação transmitida para
+                  <strong>um grupo específico</strong> de dispositivos.
+                </p>
+                <div class="alert-cisco mb-0 small">
+                  Ex: Streaming de vídeo ao vivo, videoconferência.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="p-3 rounded" style="background: #0a2a2a">
+                <i
+                  class="fas fa-broadcast-tower fa-3x"
+                  style="color: #ff6b6b"
+                ></i>
+                <i class="fas fa-arrow-right fa-2x"></i>
+                <i class="fas fa-globe fa-3x" style="color: #ffffff"></i>
+                <h4 class="mt-2">Broadcast</h4>
+                <p class="small">
+                  Informação transmitida para <strong>todos</strong> os
+                  dispositivos da rede.
+                </p>
+                <div class="alert-cisco mb-0 small">
+                  Ex: ARP Request, DHCP Discover.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Representação visual com ícones de nó (círculos) -->
+          <div class="ios-terminal mt-3">
+            <pre><code>📡 REPRESENTAÇÃO COM ÍCONES DE NÓ:
+
+UNICAST      ●───────►●
+MULTICAST    ●───────►●   ●   ●   (apenas membros do grupo)
+BROADCAST    ●───────►●●●●●●●   (todos os nós da rede)</code></pre>
+          </div>
+        </div>
+
+        <!-- 3.1.11 - Uma Nota Sobre o Ícone de Nó (com representação visual) -->
+        <div id="secao-3-1-11" class="mb-4">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-circle-nodes me-2"></i>3.1.11 Uma Nota Sobre o
+            Ícone de Nó
+          </h3>
+          <p>
+            Documentos e topologias de rede geralmente representam dispositivos
+            de rede e finais usando um <strong>ícone de nó</strong>. Os nós são
+            tipicamente representados como um círculo.
+          </p>
+
+          <div class="row text-center mt-3">
+            <div class="col-md-4">
+              <div class="p-3">
+                <div
+                  class="d-flex justify-content-center gap-4 align-items-center"
+                >
+                  <i class="fas fa-circle fa-2x" style="color: #4cd964"></i>
+                  <i class="fas fa-arrow-right fa-2x"></i>
+                  <i class="fas fa-circle fa-2x" style="color: #4cd964"></i>
+                </div>
+                <p class="mt-2"><strong>Unicast</strong><br />● → ●</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-3">
+                <div
+                  class="d-flex justify-content-center gap-2 align-items-center flex-wrap"
+                >
+                  <i class="fas fa-circle fa-2x" style="color: #ffcc00"></i>
+                  <i class="fas fa-arrow-right fa-2x"></i>
+                  <i class="fas fa-circle fa-2x" style="color: #ffcc00"></i>
+                  <i class="fas fa-circle fa-2x" style="color: #555"></i>
+                  <i class="fas fa-circle fa-2x" style="color: #555"></i>
+                </div>
+                <p class="mt-2">
+                  <strong>Multicast</strong><br />● → ● (grupo)
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-3">
+                <div
+                  class="d-flex justify-content-center gap-1 align-items-center flex-wrap"
+                >
+                  <i class="fas fa-circle fa-2x" style="color: #ff6b6b"></i>
+                  <i class="fas fa-arrow-right fa-2x"></i>
+                  <i class="fas fa-circle fa-2x" style="color: #ff6b6b"></i>
+                  <i class="fas fa-circle fa-2x" style="color: #ff6b6b"></i>
+                  <i class="fas fa-circle fa-2x" style="color: #ff6b6b"></i>
+                  <i class="fas fa-circle fa-2x" style="color: #ff6b6b"></i>
+                </div>
+                <p class="mt-2"><strong>Broadcast</strong><br />● → ●●●●</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.1.12 - Laboratório / Atividade Final -->
+        <div id="secao-3-1-12" class="mb-2">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-laptop-code me-2"></i>3.1.12 Laboratório - Instalar
+            Wireshark
+          </h3>
+          <div class="alert-cisco">
+            <i class="fas fa-download me-2"></i>
+            <strong>Atividade prática:</strong> Instale o Wireshark, capture
+            pacotes da sua interface de rede e identifique os elementos de
+            protocolo: Endereço MAC de origem/destino, endereço IP, tipo de
+            mensagem (unicast/broadcast).
+          </div>
+          <div class="ios-terminal mt-2">
+            <pre><code>$ sudo apt install wireshark   # Linux
+ou acesse: https://www.wireshark.org/download.html
+
+Após captura, filtre por "arp" para ver broadcasts, ou "icmp" para ver unicast (ping).</code></pre>
+          </div>
+          <div class="config-step mt-2">
+            <i class="fas fa-tasks me-2"></i>
+            <strong>Verificação:</strong> Explique como o Wireshark ajuda a
+            visualizar os conceitos de codificação, encapsulamento e
+            temporização.
+          </div>
+        </div>
+        <!-- ================= SEÇÃO 3.2 ================= -->
+        <div id="secao-3-2-1" class="content-card">
+          <span class="section-badge">3.2 Protocolos</span>
+
+          <!-- 3.2.1 Visão geral do protocolo de rede -->
+          <h2 class="cisco-title">3.2.1 Visão geral do protocolo de rede</h2>
+          <p>
+            Você sabe que para que os dispositivos finais possam se comunicar
+            através de uma rede, cada dispositivo deve cumprir o mesmo conjunto
+            de regras. Essas regras são chamadas de
+            <strong>protocolos</strong> e eles têm muitas funções em uma rede.
+            Este tópico fornece uma visão geral dos protocolos de rede.
+          </p>
+          <p>
+            Os protocolos de rede definem um <strong>formato comum</strong> e um
+            <strong>conjunto de regras</strong> para a troca de mensagens entre
+            dispositivos. Os protocolos são implementados por dispositivos
+            finais e dispositivos intermediários em software, hardware ou ambos.
+            Cada protocolo de rede tem sua própria função, formato e regras para
+            comunicações.
+          </p>
+
+          <h3 class="cisco-subtitle">Tipos de protocolos de rede</h3>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Tipo de Protocolo</th>
+                  <th>Descrição</th>
+                  <th>Exemplos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Protocolos de comunicação em rede</strong></td>
+                  <td>
+                    Permitem que dois ou mais dispositivos se comuniquem através
+                    de uma ou mais redes
+                  </td>
+                  <td>Ethernet, IP, TCP, HTTP</td>
+                </tr>
+                <tr>
+                  <td><strong>Protocolos de segurança de rede</strong></td>
+                  <td>
+                    Protegem os dados para fornecer autenticação, integridade
+                    dos dados e criptografia
+                  </td>
+                  <td>SSH, SSL, TLS</td>
+                </tr>
+                <tr>
+                  <td><strong>Protocolos de roteamento</strong></td>
+                  <td>
+                    Permitem que roteadores troquem informações de rota e
+                    selecionem o melhor caminho
+                  </td>
+                  <td>OSPF, BGP</td>
+                </tr>
+                <tr>
+                  <td><strong>Protocolos de descoberta de serviço</strong></td>
+                  <td>
+                    Usados para detecção automática de dispositivos ou serviços
+                  </td>
+                  <td>DHCP, DNS</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Importante:</strong> Protocolos são implementados por
+            dispositivos finais e intermediários em software, hardware ou ambos.
+            Cada protocolo tem sua própria função, formato e regras específicas.
+          </div>
+        </div>
+
+        <!-- 3.2.2 Funções de protocolo de rede -->
+        <div id="secao-3-2-2" class="content-card">
+          <h2 class="cisco-title">3.2.2 Funções de protocolo de rede</h2>
+          <p>
+            Os protocolos de comunicação de rede são responsáveis por uma
+            variedade de funções necessárias para comunicações de rede entre
+            dispositivos finais. Computadores e dispositivos de rede usam
+            <strong>protocolos acordados</strong> para se comunicar.
+          </p>
+
+          <div class="row text-center mb-4">
+            <div class="col-md-4">
+              <div class="bg-dark p-3 rounded">
+                <i
+                  class="fas fa-desktop fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <p class="mb-0"><strong>Computador</strong></p>
+                <p class="small text-dim">
+                  "Enviarei esta mensagem pela rede usando um cabeçalho IPv4"
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="bg-dark p-3 rounded">
+                <i
+                  class="fas fa-network-wired fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <p class="mb-0"><strong>Roteador</strong></p>
+                <p class="small text-dim">
+                  "Posso encaminhar esta mensagem porque entendo o cabeçalho
+                  IPv4"
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="bg-dark p-3 rounded">
+                <i
+                  class="fas fa-server fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <p class="mb-0"><strong>Servidor</strong></p>
+                <p class="small text-dim">
+                  "Posso aceitar esta mensagem porque entendo o IPv4"
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="cisco-subtitle">
+            Principais funções dos protocolos de rede
+          </h3>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Função</th>
+                  <th>Descrição</th>
+                  <th>Protocolos que fornecem</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Endereçamento</strong></td>
+                  <td>
+                    Identifica o remetente e o destinatário pretendido da
+                    mensagem usando um esquema de endereçamento definido
+                  </td>
+                  <td>Ethernet, IPv4, IPv6</td>
+                </tr>
+                <tr>
+                  <td><strong>Confiabilidade</strong></td>
+                  <td>
+                    Fornece mecanismos de entrega garantidos em caso de
+                    mensagens perdidas ou corrompidas
+                  </td>
+                  <td>TCP</td>
+                </tr>
+                <tr>
+                  <td><strong>Controle de fluxo</strong></td>
+                  <td>
+                    Garante que os dados fluam a uma taxa eficiente entre dois
+                    dispositivos de comunicação
+                  </td>
+                  <td>TCP</td>
+                </tr>
+                <tr>
+                  <td><strong>Sequenciamento</strong></td>
+                  <td>
+                    Rotula exclusivamente cada segmento de dados transmitido
+                    para remontagem correta
+                  </td>
+                  <td>TCP</td>
+                </tr>
+                <tr>
+                  <td><strong>Detecção de erros</strong></td>
+                  <td>
+                    Determina se os dados foram corrompidos durante a
+                    transmissão
+                  </td>
+                  <td>Ethernet, IPv4, IPv6, TCP</td>
+                </tr>
+                <tr>
+                  <td><strong>Interface de aplicação</strong></td>
+                  <td>
+                    Contém informações usadas para comunicação processo a
+                    processo entre aplicações
+                  </td>
+                  <td>HTTP, HTTPS</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 3.2.3 Interação de Protocolos -->
+        <div id="secao-3-2-3" class="content-card">
+          <h2 class="cisco-title">3.2.3 Interação de Protocolos</h2>
+          <p>
+            Uma mensagem enviada através de uma rede de computadores normalmente
+            requer o uso de <strong>vários protocolos</strong>, cada um com suas
+            próprias funções e formato. A figura mostra alguns protocolos de
+            rede comuns que são usados quando um dispositivo envia uma
+            solicitação para um servidor Web para sua página da Web.
+          </p>
+
+          <div class="text-center my-4">
+            <div class="d-inline-block bg-dark p-4 rounded">
+              <div class="d-flex flex-column align-items-center gap-3">
+                <div
+                  class="protocol-layer p-2 px-4 rounded"
+                  style="
+                    background: rgba(102, 191, 83, 0.2);
+                    border-left: 3px solid var(--cisco-green);
+                  "
+                >
+                  <i class="fab fa-chrome me-2"></i> <strong>HTTP</strong> -
+                  Protocolo de Transferência de Hipertexto
+                </div>
+                <i class="fas fa-arrow-down"></i>
+                <div
+                  class="protocol-layer p-2 px-4 rounded"
+                  style="
+                    background: rgba(102, 191, 83, 0.15);
+                    border-left: 3px solid var(--cisco-green);
+                  "
+                >
+                  <i class="fas fa-exchange-alt me-2"></i>
+                  <strong>TCP</strong> - Transmission Control Protocol
+                </div>
+                <i class="fas fa-arrow-down"></i>
+                <div
+                  class="protocol-layer p-2 px-4 rounded"
+                  style="
+                    background: rgba(102, 191, 83, 0.1);
+                    border-left: 3px solid var(--cisco-green);
+                  "
+                >
+                  <i class="fas fa-globe me-2"></i> <strong>IP</strong> -
+                  Internet Protocol
+                </div>
+                <i class="fas fa-arrow-down"></i>
+                <div
+                  class="protocol-layer p-2 px-4 rounded"
+                  style="
+                    background: rgba(102, 191, 83, 0.05);
+                    border-left: 3px solid var(--cisco-green);
+                  "
+                >
+                  <i class="fas fa-network-wired me-2"></i>
+                  <strong>Ethernet</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="cisco-subtitle mt-4">Descrição dos protocolos</h3>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div
+                class="protocol-card p-3 rounded mb-3"
+                style="background: rgba(102, 191, 83, 0.1)"
+              >
+                <h4>
+                  <i
+                    class="fab fa-chrome me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  HTTP
+                </h4>
+                <p>
+                  <strong>Protocolo de Transferência de Hipertexto</strong> -
+                  Controla a maneira como um servidor web e um cliente web
+                  interagem. O HTTP define o conteúdo e formatação das
+                  solicitações e respostas trocadas entre o cliente e o
+                  servidor.
+                </p>
+                <p class="text-dim small mb-0">
+                  O HTTP conta com outros protocolos para reger o modo como as
+                  mensagens são transportadas entre cliente e servidor.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="protocol-card p-3 rounded mb-3"
+                style="background: rgba(102, 191, 83, 0.1)"
+              >
+                <h4>
+                  <i
+                    class="fas fa-exchange-alt me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  TCP
+                </h4>
+                <p>
+                  <strong>Transmission Control Protocol</strong> - Gerencia as
+                  conversas individuais. É responsável por garantir a entrega
+                  confiável das informações e gerenciar o controle de fluxo
+                  entre os dispositivos finais.
+                </p>
+                <p class="text-dim small mb-0">
+                  TCP fornece confiabilidade, controle de fluxo e
+                  sequenciamento.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div
+                class="protocol-card p-3 rounded mb-3"
+                style="background: rgba(102, 191, 83, 0.1)"
+              >
+                <h4>
+                  <i
+                    class="fas fa-globe me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  IP
+                </h4>
+                <p>
+                  <strong>Internet Protocol</strong> - Responsável por entregar
+                  mensagens do remetente ao receptor. IP é usado por roteadores
+                  para encaminhar mensagens em várias redes.
+                </p>
+                <p class="text-dim small mb-0">
+                  IP fornece endereçamento lógico e roteamento.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="protocol-card p-3 rounded mb-3"
+                style="background: rgba(102, 191, 83, 0.1)"
+              >
+                <h4>
+                  <i
+                    class="fas fa-network-wired me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  Ethernet
+                </h4>
+                <p>
+                  <strong>Ethernet</strong> - Responsável pela entrega de
+                  mensagens de uma NIC para outra NIC na mesma rede local (LAN)
+                  Ethernet.
+                </p>
+                <p class="text-dim small mb-0">
+                  Ethernet fornece endereçamento físico (MAC) e acesso ao meio.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-layer-group me-2"></i>
+            <strong>Exemplo prático:</strong> Quando você acessa uma página web
+            no seu navegador:
+            <ul class="mt-2 mb-0">
+              <li>
+                <strong>HTTP/HTTPS</strong> - Formata a requisição da página
+              </li>
+              <li>
+                <strong>TCP</strong> - Garante que a página chegue completa e
+                correta
+              </li>
+              <li>
+                <strong>IP</strong> - Roteia os pacotes pela internet até o
+                servidor
+              </li>
+              <li>
+                <strong>Ethernet</strong> - Transporta os dados no seu link
+                local
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3.2.4 Verifique sua compreensão -->
+        <div id="secao-3-2-4" class="content-card">
+          <h2 class="cisco-title">
+            3.2.4 Verifique sua compreensão - Network Protocols
+          </h2>
+
+          <div
+            class="quiz-container p-3 rounded"
+            style="background: rgba(102, 191, 83, 0.05)"
+          >
+            <p>
+              <strong>Pergunta 1:</strong> Qual protocolo é responsável por
+              garantir a entrega confiável das informações e gerenciar o
+              controle de fluxo?
+            </p>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol-1').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol"
+                id="q-protocol-1"
+                value="ip"
+              />
+              <label>IP (Internet Protocol)</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol-2').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol"
+                id="q-protocol-2"
+                value="tcp"
+              />
+              <label>TCP (Transmission Control Protocol)</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol-3').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol"
+                id="q-protocol-3"
+                value="http"
+              />
+              <label>HTTP (Hypertext Transfer Protocol)</label>
+            </div>
+            <button
+              class="btn-cisco-outline mt-3"
+              onclick="checkProtocolQuiz()"
+            >
+              Verificar resposta
+            </button>
+            <div
+              id="quiz-protocol-resposta"
+              class="quiz-answer mt-2"
+              style="display: none"
+            ></div>
+          </div>
+
+          <div
+            class="quiz-container p-3 rounded mt-3"
+            style="background: rgba(102, 191, 83, 0.05)"
+          >
+            <p>
+              <strong>Pergunta 2:</strong> Qual protocolo é usado por roteadores
+              para encaminhar mensagens em diferentes redes?
+            </p>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol2-1').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol2"
+                id="q-protocol2-1"
+                value="ethernet"
+              />
+              <label>Ethernet</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol2-2').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol2"
+                id="q-protocol2-2"
+                value="tcp"
+              />
+              <label>TCP</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol2-3').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol2"
+                id="q-protocol2-3"
+                value="ip"
+              />
+              <label>IP</label>
+            </div>
+            <button
+              class="btn-cisco-outline mt-3"
+              onclick="checkProtocolQuiz2()"
+            >
+              Verificar resposta
+            </button>
+            <div
+              id="quiz-protocol2-resposta"
+              class="quiz-answer mt-2"
+              style="display: none"
+            ></div>
+          </div>
+
+          <div
+            class="quiz-container p-3 rounded mt-3"
+            style="background: rgba(102, 191, 83, 0.05)"
+          >
+            <p>
+              <strong>Pergunta 3:</strong> Qual das seguintes NÃO é uma função
+              fornecida pelo protocolo TCP?
+            </p>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol3-1').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol3"
+                id="q-protocol3-1"
+                value="confiabilidade"
+              />
+              <label>Confiabilidade</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol3-2').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol3"
+                id="q-protocol3-2"
+                value="roteamento"
+              />
+              <label>Roteamento entre redes</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol3-3').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol3"
+                id="q-protocol3-3"
+                value="sequenciamento"
+              />
+              <label>Sequenciamento</label>
+            </div>
+            <button
+              class="btn-cisco-outline mt-3"
+              onclick="checkProtocolQuiz3()"
+            >
+              Verificar resposta
+            </button>
+            <div
+              id="quiz-protocol3-resposta"
+              class="quiz-answer mt-2"
+              style="display: none"
+            ></div>
+          </div>
+
+          <div
+            class="quiz-container p-3 rounded mt-3"
+            style="background: rgba(102, 191, 83, 0.05)"
+          >
+            <p>
+              <strong>Pergunta 4:</strong> Quais protocolos são exemplos de
+              protocolos de segurança de rede?
+            </p>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol4-1').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol4"
+                id="q-protocol4-1"
+                value="http"
+              />
+              <label>HTTP e FTP</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol4-2').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol4"
+                id="q-protocol4-2"
+                value="ssh"
+              />
+              <label>SSH, SSL e TLS</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol4-3').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol4"
+                id="q-protocol4-3"
+                value="ospf"
+              />
+              <label>OSPF e BGP</label>
+            </div>
+            <button
+              class="btn-cisco-outline mt-3"
+              onclick="checkProtocolQuiz4()"
+            >
+              Verificar resposta
+            </button>
+            <div
+              id="quiz-protocol4-resposta"
+              class="quiz-answer mt-2"
+              style="display: none"
+            ></div>
+          </div>
+
+          <div
+            class="quiz-container p-3 rounded mt-3"
+            style="background: rgba(102, 191, 83, 0.05)"
+          >
+            <p>
+              <strong>Pergunta 5:</strong> Qual protocolo formata as requisições
+              e respostas entre um cliente web e um servidor web?
+            </p>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol5-1').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol5"
+                id="q-protocol5-1"
+                value="dns"
+              />
+              <label>DNS</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol5-2').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol5"
+                id="q-protocol5-2"
+                value="dhcp"
+              />
+              <label>DHCP</label>
+            </div>
+            <div
+              class="quiz-option"
+              onclick="document.getElementById('q-protocol5-3').checked = true"
+            >
+              <input
+                type="radio"
+                name="q-protocol5"
+                id="q-protocol5-3"
+                value="http"
+              />
+              <label>HTTP/HTTPS</label>
+            </div>
+            <button
+              class="btn-cisco-outline mt-3"
+              onclick="checkProtocolQuiz5()"
+            >
+              Verificar resposta
+            </button>
+            <div
+              id="quiz-protocol5-resposta"
+              class="quiz-answer mt-2"
+              style="display: none"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER PADRÃO -->
+    <footer class="cisco-footer">
+      <div class="container text-center">
+        <i class="fas fa-skull me-2" style="color: var(--cisco-green)"></i>
+        <strong>Cisco Cyber Docs</strong> · Módulo 3 - Protocolos e modelos
+        (ITN)
+      </div>
+    </footer>
+
     <script>
-      // Função para o quiz principal sobre ARP
       function checkQuizARP() {
-        const radios = document.getElementsByName('quizModelo')
-        let selected = null
+        const radios = document.getElementsByName("quizModelo");
+        let selected = null;
         for (let r of radios) {
           if (r.checked) {
-            selected = r.value
-            break
+            selected = r.value;
+            break;
           }
         }
-        const divResp = document.getElementById('quizRespostaARP')
-        divResp.style.display = 'block'
-        if (selected === 'correta') {
-          divResp.className = 'quiz-answer correct'
+        const divResp = document.getElementById("quizRespostaARP");
+        divResp.style.display = "block";
+        if (selected === "correta") {
+          divResp.className = "quiz-answer correct";
           divResp.innerHTML =
-          '<i class="fas fa-check-circle me-2"></i> Correto! O ARP (Address Resolution Protocol) resolve endereços IPv4 em endereços MAC, essencial para comunicação dentro da mesma rede local.'
-        } else if (selected === 'errada') {
-          divResp.className = 'quiz-answer incorrect'
-          divResp.innerHTML =
-            '<i class="fas fa-times-circle me-2"></i> Incorreto. ARP não realiza roteamento nem controle de multicast; sua única função é mapear endereços lógicos (IP) para físicos (MAC).'
+            '<i class="fas fa-check-circle me-2"></i> Correto! O ARP resolve endereços IPv4 em endereços MAC.';
         } else {
-          divResp.className = 'quiz-answer incorrect'
-          divResp.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta antes de verificar.'
+          divResp.className = "quiz-answer incorrect";
+          divResp.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Selecione uma resposta válida.';
         }
       }
 
-      // Função para o quiz sobre camada OSI
       function checkQuizOSI() {
-        const radiosOsi = document.getElementsByName('quizOsi')
-        let selectedVal = null
+        const radiosOsi = document.getElementsByName("quizOsi");
+        let selectedVal = null;
         for (let r of radiosOsi) {
           if (r.checked) {
-            selectedVal = r.value
-            break
+            selectedVal = r.value;
+            break;
           }
         }
-        const divOsi = document.getElementById('quizRespostaOSI')
-        divOsi.style.display = 'block'
-        if (selectedVal === 'correta') {
-          divOsi.className = 'quiz-answer correct'
+        const divOsi = document.getElementById("quizRespostaOSI");
+        divOsi.style.display = "block";
+        if (selectedVal === "correta") {
+          divOsi.className = "quiz-answer correct";
           divOsi.innerHTML =
-            '<i class="fas fa-check-circle me-2"></i> Correto! A camada de rede (camada 3) é responsável pelo endereçamento lógico (IP) e pelo roteamento dos pacotes entre diferentes redes.'
-        } else if (selectedVal === 'errada') {
-          divOsi.className = 'quiz-answer incorrect'
-          divOsi.innerHTML =
-            '<i class="fas fa-times-circle me-2"></i> Incorreto. A camada de rede (Layer 3) tem essa função, enquanto a camada de transporte lida com segmentação e portas.'
+            '<i class="fas fa-check-circle me-2"></i> Correto! Camada 3 lida com roteamento IP.';
         } else {
-          divOsi.className = 'quiz-answer incorrect'
-          divOsi.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Por favor, selecione uma alternativa.'
+          divOsi.className = "quiz-answer incorrect";
+          divOsi.innerHTML =
+            '<i class="fas fa-exclamation-triangle me-2"></i> Tente novamente.';
+        }
+      }
+    </script>
+    <script>
+      function checkProtocolQuiz() {
+        const radios = document.getElementsByName("q-protocol");
+        let selected = null;
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value;
+            break;
+          }
+        }
+        const div = document.getElementById("quiz-protocol-resposta");
+        div.style.display = "block";
+        if (selected === "tcp") {
+          div.className = "quiz-answer correct";
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! TCP é responsável por entrega confiável, controle de fluxo e sequenciamento.';
+        } else if (selected === "ip") {
+          div.className = "quiz-answer incorrect";
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. IP é responsável por endereçamento e roteamento.';
+        } else {
+          div.className = "quiz-answer incorrect";
+          div.innerHTML =
+            '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.';
+        }
+      }
+
+      function checkProtocolQuiz2() {
+        const radios = document.getElementsByName("q-protocol2");
+        let selected = null;
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value;
+            break;
+          }
+        }
+        const div = document.getElementById("quiz-protocol2-resposta");
+        div.style.display = "block";
+        if (selected === "ip") {
+          div.className = "quiz-answer correct";
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! IP é usado por roteadores para encaminhar mensagens entre redes.';
+        } else {
+          div.className = "quiz-answer incorrect";
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. Ethernet opera apenas na LAN local, TCP gerencia conversas fim-a-fim.';
+        }
+      }
+
+      function checkProtocolQuiz3() {
+        const radios = document.getElementsByName("q-protocol3");
+        let selected = null;
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value;
+            break;
+          }
+        }
+        const div = document.getElementById("quiz-protocol3-resposta");
+        div.style.display = "block";
+        if (selected === "roteamento") {
+          div.className = "quiz-answer correct";
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! Roteamento entre redes é função do IP, não do TCP.';
+        } else {
+          div.className = "quiz-answer incorrect";
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. Confiabilidade e sequenciamento são funções do TCP.';
+        }
+      }
+
+      function checkProtocolQuiz4() {
+        const radios = document.getElementsByName("q-protocol4");
+        let selected = null;
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value;
+            break;
+          }
+        }
+        const div = document.getElementById("quiz-protocol4-resposta");
+        div.style.display = "block";
+        if (selected === "ssh") {
+          div.className = "quiz-answer correct";
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! SSH, SSL e TLS são protocolos de segurança de rede.';
+        } else {
+          div.className = "quiz-answer incorrect";
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. HTTP/FTP são protocolos de aplicação comuns, OSPF/BGP são protocolos de roteamento.';
+        }
+      }
+
+      function checkProtocolQuiz5() {
+        const radios = document.getElementsByName("q-protocol5");
+        let selected = null;
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value;
+            break;
+          }
+        }
+        const div = document.getElementById("quiz-protocol5-resposta");
+        div.style.display = "block";
+        if (selected === "http") {
+          div.className = "quiz-answer correct";
+          div.innerHTML =
+            '<i class="fas fa-check-circle me-2"></i> Correto! HTTP/HTTPS formata requisições e respostas entre cliente e servidor web.';
+        } else {
+          div.className = "quiz-answer incorrect";
+          div.innerHTML =
+            '<i class="fas fa-times-circle me-2"></i> Incorreto. DNS resolve nomes para IPs, DHCP configura endereços automaticamente.';
         }
       }
     </script>
 
-    <!-- Bootstrap JS + dependências (opcional para toggles, mas mantido) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Anime.js está disponível globalmente mas não obrigatório; nenhum CSS inline extra além do permitido -->
   </body>
 </html>
