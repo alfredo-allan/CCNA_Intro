@@ -12,7 +12,12 @@ class CyberSecGlobalSearch {
         path: "../pages/modulo_2.html",
         name: "Módulo 2",
         title: "Acesso ao Cisco IOS",
-      }
+      },
+      {
+        path: "../pages/modulo_3.html",
+        name: "Módulo 2",
+        title: "Protocolos e modelos",
+      },
     ];
 
     this.searchTimeout = null;

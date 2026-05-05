@@ -270,6 +270,11 @@
                   ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>2.9.3 Quiz - Módulo 2</a
                 >
               </li>
+              <li>
+                <a href="#resumo" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>Resumo - Módulo 2</a
+                >
+              </li>
             </ul>
           </div>
         </div>
@@ -2542,6 +2547,197 @@ Desktop  Downloads  lab.support.files  second drive
             <button class="btn-cisco-outline mt-3" onclick="checkIPQuiz5()">Verificar resposta</button>
             <div id="quiz-ip5-resposta" class="quiz-answer mt-2" style="display: none"></div>
           </div>
+        </div>
+      </div>
+      <!-- ================================================================ -->
+      <!-- SEÇÃO FINAL - RESUMO DIDÁTICO COM ANALOGIAS E CASOS DE USO REAL    -->
+      <!-- ================================================================ -->
+      <div class="content-card">
+        <span class="section-badge"><i class="fas fa-graduation-cap me-1"></i> Resumo Final</span>
+        <h2 class="cisco-title">🎯 Resumo: Acesso ao Cisco IOS</h2>
+        <p class="text-dim">
+          Você aprendeu como acessar, navegar e configurar dispositivos Cisco IOS. Agora, vamos consolidar tudo com
+          <strong>analogias do dia a dia</strong> e <strong>casos de uso reais</strong> para fixar definitivamente o conteúdo!
+        </p>
+
+        <!-- Tabela de analogias -->
+        <div class="table-responsive mt-4">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Conceito Técnico</th>
+                <th>🎭 Analogia do Mundo Real</th>
+                <th>💼 Caso de Uso Real</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CLI vs GUI</strong></td>
+                <td>
+                  CLI é como <strong>dirigir um carro manual</strong> (mais controle, exige prática). GUI é como
+                  <strong>dirigir automático</strong> (fácil, mas menos controle).
+                </td>
+                <td>
+                  Administradores de data center usam CLI para scripts e automação. Técnicos de suporte usam GUI para diagnósticos rápidos.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Console, SSH e Telnet</strong></td>
+                <td>
+                  Console = <strong>chave física do carro</strong> (acesso direto). SSH =
+                  <strong>controle remoto criptografado</strong> (seguro). Telnet = <strong>bilhete de papel</strong> (qualquer um pode
+                  ler).
+                </td>
+                <td>
+                  Empresas de segurança exigem SSH em todos os acessos remotos. Telnet é proibido em ambientes bancários e governamentais.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Modos EXEC (usuário/privilegiado)</strong></td>
+                <td>
+                  Usuário = <strong>passageiro do avião</strong> (só vê informações). Privilegiado = <strong>piloto</strong> (controla
+                  tudo).
+                </td>
+                <td>
+                  Estagiários de rede têm acesso apenas ao modo usuário. Engenheiros seniores usam o modo privilegiado com senha secreta.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>startup-config vs running-config</strong></td>
+                <td>
+                  startup-config = <strong>receita de bolo salva na gaveta</strong> (permanente). running-config =
+                  <strong>receita que você está usando agora</strong> (some se a energia acabar).
+                </td>
+                <td>
+                  Antes de uma manutenção programada, técnicos salvam <code>copy run start</code> para não perderem as alterações após
+                  reinicialização.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>SVI (interface VLAN 1)</strong></td>
+                <td>
+                  É como o <strong>painel de controle do prédio</strong> - não é uma porta física, mas permite gerenciar o switch
+                  remotamente, como controlar luzes e câmeras sem sair da sala de segurança.
+                </td>
+                <td>
+                  Escolas e empresas configuram a SVI para gerenciar switches de cada andar sem precisar ir até a sala dos equipamentos.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>DHCP vs IP Manual</strong></td>
+                <td>
+                  DHCP = <strong>estacionamento com manobrista</strong> (ele atribui a vaga). IP Manual =
+                  <strong>garagem marcada com seu nome</strong> (sempre o mesmo lugar).
+                </td>
+                <td>Hotéis usam DHCP para hóspedes (rápido e prático). Servidores críticos usam IP fixo para acesso previsível.</td>
+              </tr>
+              <tr>
+                <td><strong>Banner MOTD</strong></td>
+                <td>
+                  Placa na entrada: <strong>"Área restrita - Câmeras 24h - Sujeito a ação legal"</strong>. Protege juridicamente o
+                  proprietário.
+                </td>
+                <td>Órgãos públicos e empresas exigem banner de aviso antes de qualquer acesso para respaldo legal em caso de invasão.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Resumo visual com ícones -->
+        <div class="row mt-4 g-3" id="resumo">
+          <div class="col-md-4">
+            <div class="p-3 rounded text-center" style="background: rgba(102, 191, 83, 0.1); border-left: 3px solid var(--cisco-green)">
+              <i class="fas fa-shield-alt fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="fw-bold">🔐 Segurança em Camadas</h5>
+              <p class="small text-dim mb-0">
+                Console + enable secret + VTY + service password-encryption + banner = proteção completa contra acessos não autorizados.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 rounded text-center" style="background: rgba(102, 191, 83, 0.1); border-left: 3px solid var(--cisco-green)">
+              <i class="fas fa-save fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="fw-bold">💾 Regra de Ouro</h5>
+              <p class="small text-dim mb-0">
+                Toda configuração é temporária até você digitar: <code class="text-success">copy running-config startup-config</code>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 rounded text-center" style="background: rgba(102, 191, 83, 0.1); border-left: 3px solid var(--cisco-green)">
+              <i class="fas fa-question-circle fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="fw-bold">❓ Seu Melhor Amigo</h5>
+              <p class="small text-dim mb-0">
+                O símbolo <code>?</code> revela todos os comandos disponíveis - use SEMPRE que tiver dúvida na CLI!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analogia Final - CLI é como andar de bicicleta -->
+        <div class="alert-cisco mt-4" style="background: linear-gradient(135deg, #0d1117 0%, #0a0c10 100%)">
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <div class="text-center">
+              <i class="fas fa-bicycle fa-3x" style="color: var(--cisco-green)"></i>
+            </div>
+            <div class="flex-grow-1">
+              <strong class="fs-5">🚴 Analogia Final: CLI é como andar de bicicleta</strong>
+              <p class="mb-0 mt-1 text-dim">
+                No começo parece difícil, você precisa decorar os comandos (equilíbrio), cai algumas vezes (comandos errados), mas com
+                prática vira <strong>automático e natural</strong>. Hoje você não pensa "vou virar o guidão 5 graus à esquerda" — você
+                simplesmente vira. Na CLI é a mesma coisa: <strong>os comandos viram extensão dos seus dedos</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist de conclusão do módulo -->
+        <div class="mt-4 pt-2">
+          <h3 class="cisco-subtitle">
+            <i class="fas fa-check-double me-2" style="color: var(--cisco-green)"></i> ✅ Checklist - Você está pronto para a certificação
+            CCNA se consegue:
+          </h3>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i> Acessar um switch via console usando PuTTY/Tera Term
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i> Navegar entre os modos: usuário → privilegiado → global → interface
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i> Usar o <code>?</code> e <kbd>Tab</kbd> para ajuda e autocompletar
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i> Configurar nome do switch, senhas e banner de segurança
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i> Salvar a configuração com
+                  <code>copy running-config startup-config</code>
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i> Configurar IP na SVI (VLAN 1) para acesso remoto ao switch
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dica de ouro para a prova CCNA -->
+        <div class="text-center mt-4 p-3 rounded" style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3)">
+          <i class="fas fa-trophy fa-2x mb-2" style="color: #ffc107"></i>
+          <p class="mb-0 fw-bold">💡 Dica de Ouro para a prova CCNA:</p>
+          <p class="small text-dim mb-0">
+            A questão quase CERTA vai pedir o comando para salvar configuração:
+            <code class="text-warning">copy running-config startup-config</code> ou para proteger acesso remoto:
+            <code class="text-warning">line vty 0 15</code> + <code class="text-warning">password</code> +
+            <code class="text-warning">login</code>.
+          </p>
         </div>
       </div>
     </main>
