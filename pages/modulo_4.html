@@ -1,0 +1,1398 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NET-ACAD · Módulo 4 | Camada Física</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/global.css" />
+  </head>
+  <body>
+    <!-- NAVBAR (fixa) -->
+    <nav class="navbar-glass">
+      <div class="container">
+        <a class="navbar-brand" href="modulos.html">
+          <i class="fas fa-skull"></i>
+          Cyber<span style="color: white">Docs</span>
+        </a>
+        <a href="../index.html" class="btn-cisco-outline"> <i class="fas fa-arrow-left me-1"></i> Módulos </a>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <!-- HEADER DO MÓDULO -->
+      <div class="text-center mb-4">
+        <span class="section-badge"> <i class="fas fa-cube me-1"></i> Módulo 4 </span>
+        <h1 class="display-6 fw-bold">Camada Física</h1>
+        <p class="text-dim">Introduction to Networks (ITN) · Cisco CCNAv7</p>
+      </div>
+
+      <!-- ÍNDICE RÁPIDO COMPLETO -->
+      <div class="content-card mb-4">
+        <h3 class="cisco-subtitle"><i class="fas fa-list me-2"></i> Navegação rápida</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-4-0-1" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.0.1 Por que devo cursar este módulo?
+                </a>
+              </li>
+              <li>
+                <a href="#secao-4-0-2" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.0.2 O que vou aprender neste módulo?
+                </a>
+              </li>
+              <li>
+                <a href="#secao-4-1" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.1 Propósito da camada física
+                </a>
+              </li>
+              <li>
+                <a href="#secao-4-1-1" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.1.1 A conexão física
+                </a>
+              </li>
+              <li>
+                <a href="#secao-4-1-2" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.1.2 A camada física
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-4-2" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.2 Características da camada física
+                </a>
+              </li>
+              <li>
+                <a href="#secao-4-3" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.3 Cabeamento de cobre
+                </a>
+              </li>
+              <li>
+                <a href="#secao-4-4" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.4 Cabeamento UTP
+                </a>
+              </li>
+              <li>
+                <a href="#secao-4-5" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.5 Cabeamento de fibra óptica
+                </a>
+              </li>
+              <li>
+                <a href="#secao-4-6" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.6 Meios sem fio
+                </a>
+              </li>
+              <li>
+                <a href="#secao-4-7" class="text-dim">
+                  <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>4.7 Módulo Prática e Quiz
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.0.1 - Por que devo cursar este módulo? -->
+      <!-- ============================================ -->
+      <div id="secao-4-0-1" class="content-card">
+        <span class="section-badge">4.0.1</span>
+        <h2 class="cisco-title"><i class="fas fa-question-circle me-2"></i>Por que devo cursar este módulo?</h2>
+        <p>Bem-vindo à Camada Física! ☠️</p>
+        <p>
+          A camada física do modelo OSI fica na parte inferior da pilha. Faz parte da camada de Acesso à Rede do modelo TCP/IP.
+          <strong>Sem a camada física, você não teria uma rede.</strong>
+        </p>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-lightbulb me-2"></i>
+          Este módulo explica, em detalhes, as três maneiras de se conectar à camada física. As atividades e laboratórios do Packet Tracer
+          darão a você a confiança que você precisa para conectar sua própria rede!
+        </div>
+
+        <div class="packet-stack mt-3 p-3" style="background: rgba(102, 191, 83, 0.1); border-radius: 12px; text-align: center">
+          <i class="fas fa-network-wired fa-2x" style="color: var(--cisco-green)"></i>
+          <i class="fas fa-wifi fa-2x mx-3" style="color: var(--cisco-green)"></i>
+          <i class="fas fa-microchip fa-2x" style="color: var(--cisco-green)"></i>
+          <p class="mt-2 text-dim">Conexões com fio · Sem fio · Componentes físicos</p>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.0.2 - O que vou aprender neste módulo? -->
+      <!-- ============================================ -->
+      <div id="secao-4-0-2" class="content-card">
+        <span class="section-badge">4.0.2</span>
+        <h2 class="cisco-title"><i class="fas fa-graduation-cap me-2"></i>O que vou aprender neste módulo?</h2>
+        <p>
+          <strong>Objetivo do módulo:</strong> Explicar como os protocolos de camada física, os serviços e a mídia de rede possibilitam as
+          comunicações em redes de dados.
+        </p>
+
+        <div class="table-responsive mt-3">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Título do Tópico</th>
+                <th>Objetivo do Tópico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Propósito da camada física</strong></td>
+                <td>Descrever a finalidade e as funções da camada física na rede.</td>
+              </tr>
+              <tr>
+                <td><strong>Características da camada física</strong></td>
+                <td>Descrever as características da camada física.</td>
+              </tr>
+              <tr>
+                <td><strong>Cabeamento de cobre</strong></td>
+                <td>Identificar as características básicas do cabeamento de cobre.</td>
+              </tr>
+              <tr>
+                <td><strong>Cabeamento UTP</strong></td>
+                <td>Explicar como o cabo UTP é usado em redes Ethernet.</td>
+              </tr>
+              <tr>
+                <td><strong>Cabeamento de fibra óptica</strong></td>
+                <td>Descrever o cabeamento de fibra óptica e suas principais vantagens em relação a outros meios físicos.</td>
+              </tr>
+              <tr>
+                <td><strong>Mídia sem fio</strong></td>
+                <td>Conectar dispositivos usando meio físico com e sem fio.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.1 - Propósito da camada física -->
+      <!-- ============================================ -->
+      <div id="secao-4-1" class="content-card">
+        <span class="section-badge">4.1</span>
+        <h2 class="cisco-title"><i class="fas fa-layer-group me-2"></i>Propósito da camada física</h2>
+        <p>
+          A camada física do modelo OSI fornece os meios para transportar os bits que formam um quadro da camada de enlace de dados no meio
+          físico de rede.
+        </p>
+
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="config-step">
+              <i class="fas fa-arrow-down me-2" style="color: var(--cisco-green)"></i>
+              <strong>Transmissão</strong>
+              <p class="text-dim mt-1">
+                Aceita um quadro completo da camada de enlace de dados e o codifica como uma série de sinais transmitidos à mídia local.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="config-step">
+              <i class="fas fa-arrow-up me-2" style="color: var(--cisco-green)"></i>
+              <strong>Recepção</strong>
+              <p class="text-dim mt-1">
+                Recupera sinais individuais do meio físico, restaura-os aos bits e passa para a camada de enlace de dados.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.1.1 - A conexão física -->
+      <!-- ============================================ -->
+      <div id="secao-4-1-1" class="content-card">
+        <span class="section-badge">4.1.1</span>
+        <h2 class="cisco-title"><i class="fas fa-plug me-2"></i>A conexão física</h2>
+        <p>
+          Antes que ocorra qualquer comunicação em rede, é necessário estabelecer uma <strong>conexão física</strong> com uma rede local.
+        </p>
+
+        <div class="row mt-4">
+          <div class="col-md-6 mb-3">
+            <div class="text-center p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-ethernet fa-3x" style="color: var(--cisco-green)"></i>
+              <h5 class="mt-2">Conexão com fio</h5>
+              <p class="text-dim small">Usando cabo a um comutador compartilhado. Dados transmitidos por cabo físico.</p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="text-center p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-wifi fa-3x" style="color: var(--cisco-green)"></i>
+              <h5 class="mt-2">Conexão sem fio</h5>
+              <p class="text-dim small">Usando ondas de rádio. Dispositivos conectam a um ponto de acesso (AP) ou roteador sem fio.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-cisco mt-2">
+          <i class="fas fa-building me-2"></i>
+          <strong>Cenário corporativo:</strong> Escritórios combinam conexões com fio (desktops) e sem fio (notebooks, tablets,
+          smartphones).
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.1.2 - A Camada Física (com diagrama) -->
+      <!-- ============================================ -->
+      <div id="secao-4-1-2" class="content-card">
+        <span class="section-badge">4.1.2</span>
+        <h2 class="cisco-title"><i class="fas fa-signal me-2"></i>A Camada Física</h2>
+        <p>
+          A camada física aceita um quadro completo da camada de enlace de dados e o codifica como uma série de sinais que são transmitidos
+          à mídia local.
+        </p>
+
+        <!-- Diagrama de encapsulamento com ícones -->
+        <div class="packet-stack mt-4">
+          <div class="d-flex flex-wrap justify-content-center align-items-center py-3">
+            <div class="text-center mx-2 my-1 p-2" style="background: #2d2d2d; border-radius: 8px; min-width: 100px">
+              <i class="fas fa-user fa-2x" style="color: var(--cisco-green)"></i>
+              <div class="small">Dados do<br />Usuário</div>
+            </div>
+            <i class="fas fa-arrow-right mx-1" style="color: var(--cisco-green)"></i>
+            <div class="text-center mx-2 my-1 p-2" style="background: #2d2d2d; border-radius: 8px; min-width: 100px">
+              <i class="fas fa-layer-group fa-2x" style="color: #ff9800"></i>
+              <div class="small">Segmento<br />TCP</div>
+            </div>
+            <i class="fas fa-arrow-right mx-1" style="color: var(--cisco-green)"></i>
+            <div class="text-center mx-2 my-1 p-2" style="background: #2d2d2d; border-radius: 8px; min-width: 100px">
+              <i class="fas fa-globe fa-2x" style="color: #2196f3"></i>
+              <div class="small">Pacote<br />IP</div>
+            </div>
+            <i class="fas fa-arrow-right mx-1" style="color: var(--cisco-green)"></i>
+            <div class="text-center mx-2 my-1 p-2" style="background: #2d2d2d; border-radius: 8px; min-width: 100px">
+              <i class="fas fa-grip-lines fa-2x" style="color: #9c27b0"></i>
+              <div class="small">Quadro<br />Ethernet</div>
+            </div>
+            <i class="fas fa-arrow-right mx-1" style="color: var(--cisco-green)"></i>
+            <div
+              class="text-center mx-2 my-1 p-2"
+              style="background: #2d2d2d; border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+            >
+              <i class="fas fa-waveform fa-2x" style="color: var(--cisco-green)"></i>
+              <div class="small">Sinais<br />(Camada Física)</div>
+            </div>
+          </div>
+          <div class="text-center text-dim small mt-2">
+            <i class="fas fa-exchange-alt me-1"></i> Processo de encapsulamento · Servidor Web ↔ Cliente Web
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="config-step">
+              <i class="fas fa-microchip me-2"></i>
+              <strong>NIC Ethernet</strong>
+              <p class="text-dim">Placa de interface de rede para conexão com fio. Converte dados em sinais elétricos.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="config-step">
+              <i class="fas fa-wifi me-2"></i>
+              <strong>NIC WLAN</strong>
+              <p class="text-dim">Placa para conexão sem fio. Usada em tablets e smartphones.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.2 - Características da camada física -->
+      <!-- ============================================ -->
+      <div id="secao-4-2" class="content-card">
+        <span class="section-badge">4.2</span>
+        <h2 class="cisco-title"><i class="fas fa-chart-line me-2"></i>Características da camada física</h2>
+        <p>As conexões físicas variam em termos de nível de desempenho. Nem todas as conexões físicas são iguais.</p>
+
+        <div class="table-responsive mt-3">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-tachometer-alt me-2" style="color: var(--cisco-green)"></i>Largura de banda</td>
+                <td>Capacidade máxima de transmissão do meio (medida em bps)</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-clock me-2" style="color: var(--cisco-green)"></i>Latência</td>
+                <td>Atraso na transmissão entre origem e destino</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-arrows-alt-h me-2" style="color: var(--cisco-green)"></i>Distância</td>
+                <td>Alcance máximo do sinal sem perda significativa</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i>Imunidade a ruídos</td>
+                <td>Resistência a interferências eletromagnéticas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.3 - Cabeamento de cobre -->
+      <!-- ============================================ -->
+      <div id="secao-4-3" class="content-card">
+        <span class="section-badge">4.3</span>
+        <h2 class="cisco-title"><i class="fas fa-copper-wire me-2"></i>Cabeamento de cobre</h2>
+        <p>O cabo de cobre é o tipo mais comum de meio físico em redes. Utiliza pulsos elétricos para transmitir dados.</p>
+
+        <div class="row mt-3">
+          <div class="col-md-4 text-center mb-3">
+            <i class="fas fa-charging-station fa-3x" style="color: var(--cisco-green)"></i>
+            <h6 class="mt-2">Sinais elétricos</h6>
+            <p class="text-dim small">Bits codificados como pulsos de voltagem</p>
+          </div>
+          <div class="col-md-4 text-center mb-3">
+            <i class="fas fa-shield-virus fa-3x" style="color: var(--cisco-green)"></i>
+            <h6 class="mt-2">Suscetível a ruídos</h6>
+            <p class="text-dim small">Interferência eletromagnética (EMI)</p>
+          </div>
+          <div class="col-md-4 text-center mb-3">
+            <i class="fas fa-ruler-combined fa-3x" style="color: var(--cisco-green)"></i>
+            <h6 class="mt-2">Limite de distância</h6>
+            <p class="text-dim small">100m para Ethernet (atenuação)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.4 - Cabeamento UTP -->
+      <!-- ============================================ -->
+      <div id="secao-4-4" class="content-card">
+        <span class="section-badge">4.4</span>
+        <h2 class="cisco-title"><i class="fas fa-cable-car me-2"></i>Cabeamento UTP</h2>
+        <p>UTP (Unshielded Twisted Pair) é o cabo mais comum em redes Ethernet. Par trançado reduz interferência eletromagnética.</p>
+
+        <div class="alert-cisco">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Categorias UTP:</strong> Cat5e (1 Gbps), Cat6 (10 Gbps até 55m), Cat6a (10 Gbps até 100m)
+        </div>
+
+        <div class="config-step mt-3">
+          <i class="fas fa-sitemap me-2"></i>
+          <strong>Conector RJ-45</strong>
+          <p class="text-dim mt-1">Conector padrão para cabos UTP. Possui 8 pinos correspondentes aos 4 pares trançados.</p>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.5 - Fibra óptica -->
+      <!-- ============================================ -->
+      <div id="secao-4-5" class="content-card">
+        <span class="section-badge">4.5</span>
+        <h2 class="cisco-title"><i class="fas fa-fiber-optic me-2"></i>Cabeamento de fibra óptica</h2>
+        <p>Utiliza pulsos de luz (LED ou laser) para transmitir dados. Oferece vantagens significativas sobre o cobre.</p>
+
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <div class="table-responsive">
+              <table class="table table-cisco">
+                <thead>
+                  <tr>
+                    <th>Vantagem</th>
+                    <th>Descrição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><i class="fas fa-tachometer-alt me-1"></i> Largura de banda</td>
+                    <td>Muito superior ao cobre</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-ruler me-1"></i> Distância</td>
+                    <td>Kilômetros sem repetidores</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-bolt me-1"></i> Imunidade</td>
+                    <td>Sem interferência eletromagnética</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-lock me-1"></i> Segurança</td>
+                    <td>Difícil de interceptar sinal</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="packet-stack p-3 text-center">
+              <i class="fas fa-lightbulb fa-3x" style="color: #ffc107"></i>
+              <i class="fas fa-arrow-right fa-2x mx-2" style="color: var(--cisco-green)"></i>
+              <i class="fas fa-eye fa-3x" style="color: var(--cisco-green)"></i>
+              <p class="mt-2 text-dim">
+                LED/Laser → Pulso de luz → Fotodetector<br /><small>Compatível com multimodo (LED) e monomodo (Laser)</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.6 - Meios sem fio -->
+      <!-- ============================================ -->
+      <div id="secao-4-6" class="content-card">
+        <span class="section-badge">4.6</span>
+        <h2 class="cisco-title"><i class="fas fa-broadcast-tower me-2"></i>Meios sem fio</h2>
+        <p>Dispositivos se conectam à rede usando ondas de rádio, sem cabos físicos.</p>
+
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <div class="text-center p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-wifi fa-3x" style="color: var(--cisco-green)"></i>
+              <h5 class="mt-2">Ponto de Acesso (AP)</h5>
+              <p class="text-dim small">Dispositivo que permite conexões sem fio à rede com fio</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-center p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-home fa-3x" style="color: var(--cisco-green)"></i>
+              <h5 class="mt-2">Roteador sem fio doméstico</h5>
+              <p class="text-dim small">Combina: antenas sem fio + portas Ethernet + porta Internet</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-mobile-alt me-2"></i>
+          Dispositivos como tablets e smartphones possuem apenas NIC WLAN — devem usar conexão sem fio obrigatoriamente.
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.7 - Quiz -->
+      <!-- ============================================ -->
+      <div id="secao-4-7" class="content-card">
+        <h3 class="cisco-subtitle"><i class="fas fa-quiz me-2"></i> Verifique seu aprendizado</h3>
+
+        <p><strong>1. Qual das seguintes afirmações descreve CORRETAMENTE a função da camada física?</strong></p>
+        <div class="quiz-option" onclick="document.getElementById('q1_correta').checked = true">
+          <input type="radio" name="quiz_q1" id="q1_correta" value="correta" />
+          <label>Aceita um quadro da camada de enlace de dados e o codifica como sinais para transmissão no meio físico</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q1_errada1').checked = true">
+          <input type="radio" name="quiz_q1" id="q1_errada1" value="errada" />
+          <label>Responsável pelo roteamento de pacotes entre redes diferentes</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q1_errada2').checked = true">
+          <input type="radio" name="quiz_q1" id="q1_errada2" value="errada" />
+          <label>Gerencia sessões de comunicação entre aplicações</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q1_errada3').checked = true">
+          <input type="radio" name="quiz_q1" id="q1_errada3" value="errada" />
+          <label>Compacta dados para transmissão eficiente</label>
+        </div>
+
+        <button
+          class="btn-check-answer mt-3"
+          onclick="
+            checkQuiz(
+              'quiz_q1',
+              'quizResposta1',
+              'A camada física recebe o quadro da camada de enlace, codifica os bits em sinais elétricos, ópticos ou de rádio e os transmite pelo meio físico.'
+            )
+          "
+        >
+          Verificar resposta
+        </button>
+        <div id="quizResposta1" class="quiz-answer mt-2" style="display: none"></div>
+      </div>
+
+      <div class="content-card">
+        <p><strong>2. Qual tipo de NIC é obrigatório para um tablet ou smartphone se conectar à rede?</strong></p>
+        <div class="quiz-option" onclick="document.getElementById('q2_correta').checked = true">
+          <input type="radio" name="quiz_q2" id="q2_correta" value="correta" />
+          <label>NIC WLAN (sem fio)</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q2_errada1').checked = true">
+          <input type="radio" name="quiz_q2" id="q2_errada1" value="errada" />
+          <label>NIC Ethernet (com fio)</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q2_errada2').checked = true">
+          <input type="radio" name="quiz_q2" id="q2_errada2" value="errada" />
+          <label>NIC Fibra Óptica</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q2_errada3').checked = true">
+          <input type="radio" name="quiz_q2" id="q2_errada3" value="errada" />
+          <label>NIC Coaxial</label>
+        </div>
+
+        <button
+          class="btn-check-answer mt-3"
+          onclick="
+            checkQuiz(
+              'quiz_q2',
+              'quizResposta2',
+              'Tablets e smartphones geralmente possuem apenas NIC WLAN integrada, não possuem porta Ethernet para conexão com fio.'
+            )
+          "
+        >
+          Verificar resposta
+        </button>
+        <div id="quizResposta2" class="quiz-answer mt-2" style="display: none"></div>
+      </div>
+
+      <div class="content-card">
+        <p><strong>3. Qual é a principal vantagem da fibra óptica sobre o cabo de cobre?</strong></p>
+        <div class="quiz-option" onclick="document.getElementById('q3_correta').checked = true">
+          <input type="radio" name="quiz_q3" id="q3_correta" value="correta" />
+          <label>Imunidade a interferência eletromagnética e maiores distâncias</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q3_errada1').checked = true">
+          <input type="radio" name="quiz_q3" id="q3_errada1" value="errada" />
+          <label>Menor custo de instalação</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q3_errada2').checked = true">
+          <input type="radio" name="quiz_q3" id="q3_errada2" value="errada" />
+          <label>Mais fácil de emendar e conectar</label>
+        </div>
+        <div class="quiz-option" onclick="document.getElementById('q3_errada3').checked = true">
+          <input type="radio" name="quiz_q3" id="q3_errada3" value="errada" />
+          <label>Utiliza corrente elétrica de baixa voltagem</label>
+        </div>
+
+        <button
+          class="btn-check-answer mt-3"
+          onclick="
+            checkQuiz(
+              'quiz_q3',
+              'quizResposta3',
+              'A fibra óptica não sofre interferência eletromagnética (EMI/RFI), permite distâncias muito maiores (kilômetros) e oferece maior largura de banda que cabos de cobre.'
+            )
+          "
+        >
+          Verificar resposta
+        </button>
+        <div id="quizResposta3" class="quiz-answer mt-2" style="display: none"></div>
+      </div>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.2 - Características da camada física -->
+      <!-- ============================================ -->
+      <div id="secao-4-2" class="content-card">
+        <span class="section-badge">4.2</span>
+        <h2 class="cisco-title"><i class="fas fa-chart-line me-2"></i>Características da camada física</h2>
+        <p>
+          Os protocolos e operações das camadas OSI superiores são executados usando software. Já a camada física consiste em
+          <strong>circuitos eletrônicos, meios físicos e conectores</strong> desenvolvidos por engenheiros.
+        </p>
+
+        <!-- Pilha OSI destacando camada física -->
+        <div class="packet-stack mt-3 mb-4">
+          <div class="d-flex flex-wrap justify-content-center">
+            <div class="text-center mx-1 my-1 p-2" style="background: #2d2d2d; border-radius: 6px; min-width: 80px">
+              <i class="fas fa-code"></i>
+              <div class="small">Aplicação</div>
+            </div>
+            <div class="text-center mx-1 my-1 p-2" style="background: #2d2d2d; border-radius: 6px; min-width: 80px">
+              <i class="fas fa-palette"></i>
+              <div class="small">Apresentação</div>
+            </div>
+            <div class="text-center mx-1 my-1 p-2" style="background: #2d2d2d; border-radius: 6px; min-width: 80px">
+              <i class="fas fa-comments"></i>
+              <div class="small">Sessão</div>
+            </div>
+            <div class="text-center mx-1 my-1 p-2" style="background: #2d2d2d; border-radius: 6px; min-width: 80px">
+              <i class="fas fa-truck"></i>
+              <div class="small">Transporte</div>
+            </div>
+            <div class="text-center mx-1 my-1 p-2" style="background: #2d2d2d; border-radius: 6px; min-width: 80px">
+              <i class="fas fa-globe"></i>
+              <div class="small">Rede</div>
+            </div>
+            <div class="text-center mx-1 my-1 p-2" style="background: #2d2d2d; border-radius: 6px; min-width: 80px">
+              <i class="fas fa-link"></i>
+              <div class="small">Enlace</div>
+            </div>
+            <div
+              class="text-center mx-1 my-1 p-2"
+              style="background: var(--cisco-green); border-radius: 6px; min-width: 80px; color: #121212"
+            >
+              <i class="fas fa-microchip"></i>
+              <div class="small fw-bold">Física ⚡</div>
+            </div>
+          </div>
+          <div class="text-center text-dim small mt-3">
+            <i class="fas fa-crown me-1"></i> Padrões TCP/IP: software (IETF) · Padrões Camada Física: hardware
+          </div>
+        </div>
+
+        <div class="alert-cisco">
+          <i class="fas fa-building me-2"></i>
+          <strong>Organizações de padronização:</strong> ISO, EIA/TIA, ITU-T, ANSI, IEEE, FCC (EUA), ETSI (Europa), CSA (Canadá), CENELEC,
+          JSA/JIS (Japão)
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.2.2 - Componentes Físicos -->
+      <!-- ============================================ -->
+      <div id="secao-4-2-2" class="content-card">
+        <span class="section-badge">4.2.2</span>
+        <h2 class="cisco-title"><i class="fas fa-microchip me-2"></i>Componentes Físicos</h2>
+        <p>Os padrões da camada física abordam três áreas funcionais: <strong>Componentes Físicos, Codificação e Sinalização</strong>.</p>
+
+        <div class="row mt-4">
+          <div class="col-md-4 text-center mb-3">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-plug fa-3x" style="color: var(--cisco-green)"></i>
+              <h6 class="mt-2">Componentes Físicos</h6>
+              <p class="text-dim small">Dispositivos de hardware eletrônico, mídia e conectores que transmitem sinais</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center mb-3">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-qrcode fa-3x" style="color: var(--cisco-green)"></i>
+              <h6 class="mt-2">Codificação</h6>
+              <p class="text-dim small">Método para converter fluxo de bits em código predefinido</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center mb-3">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-waveform fa-3x" style="color: var(--cisco-green)"></i>
+              <h6 class="mt-2">Sinalização</h6>
+              <p class="text-dim small">Como os bits são representados fisicamente no meio</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="config-step mt-2">
+          <i class="fas fa-server me-2"></i>
+          <strong>Exemplos de componentes físicos:</strong>
+          <p class="text-dim mt-1">
+            NICs (placas de rede), interfaces, conectores RJ-45, materiais de cabo, portas em roteadores Cisco 1941.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.2.3 - Codificação -->
+      <!-- ============================================ -->
+      <div id="secao-4-2-3" class="content-card">
+        <span class="section-badge">4.2.3</span>
+        <h2 class="cisco-title"><i class="fas fa-qrcode me-2"></i>Codificação (Line Coding)</h2>
+        <p>
+          A codificação é um método para converter um fluxo de bits de dados em um "código" predefinido, criando um padrão previsível
+          reconhecido por emissor e receptor.
+        </p>
+
+        <div class="alert-cisco">
+          <i class="fas fa-code-morse me-2"></i>
+          <strong>Analogia com código Morse:</strong> Assim como pontos e traços representam letras, a codificação Manchester representa
+          bits com transições de voltagem.
+        </div>
+
+        <!-- Diagrama de codificação Manchester -->
+        <div class="packet-stack mt-3 p-3">
+          <h6 class="text-center mb-3"><i class="fas fa-chart-line me-1"></i> Codificação Manchester (Ethernet 10BASE-T)</h6>
+          <div class="d-flex justify-content-center align-items-end" style="height: 120px">
+            <!-- Bit 1 (transição baixo → alto) -->
+            <div class="text-center mx-2">
+              <div style="width: 40px; height: 60px; position: relative">
+                <div style="position: absolute; bottom: 0; width: 20px; height: 20px; background: var(--cisco-green); left: 0"></div>
+                <div style="position: absolute; bottom: 0; width: 20px; height: 40px; background: #ff9800; left: 20px"></div>
+              </div>
+              <div class="small mt-1">Bit 1</div>
+              <div class="small text-dim">↑ baixo→alto</div>
+            </div>
+            <!-- Bit 0 (transição alto → baixo) -->
+            <div class="text-center mx-2">
+              <div style="width: 40px; height: 60px; position: relative">
+                <div style="position: absolute; bottom: 0; width: 20px; height: 40px; background: #ff9800; left: 0"></div>
+                <div style="position: absolute; bottom: 0; width: 20px; height: 20px; background: var(--cisco-green); left: 20px"></div>
+              </div>
+              <div class="small mt-1">Bit 0</div>
+              <div class="small text-dim">↓ alto→baixo</div>
+            </div>
+          </div>
+          <div class="text-center text-dim small mt-3">
+            <i class="fas fa-arrow-right me-1"></i> Transição no meio de cada período de bit
+          </div>
+        </div>
+
+        <div class="table-responsive mt-3">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Padrão Ethernet</th>
+                <th>Codificação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10BASE-T</td>
+                <td>Manchester</td>
+              </tr>
+              <tr>
+                <td>100BASE-TX (Fast Ethernet)</td>
+                <td>4B/5B</td>
+              </tr>
+              <tr>
+                <td>1000BASE-T (Gigabit Ethernet)</td>
+                <td>8B/10B</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.2.4 - Sinalização -->
+      <!-- ============================================ -->
+      <div id="secao-4-2-4" class="content-card">
+        <span class="section-badge">4.2.4</span>
+        <h2 class="cisco-title"><i class="fas fa-waveform me-2"></i>Sinalização</h2>
+        <p>
+          A camada física deve gerar os sinais <strong>elétricos, ópticos ou de rádio</strong> que representam os valores "1" e "0" no meio
+          físico.
+        </p>
+
+        <div class="row mt-4">
+          <!-- Cabo de Cobre -->
+          <div class="col-md-4 mb-3">
+            <div class="text-center p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-bolt fa-3x" style="color: #ff9800"></i>
+              <h6 class="mt-2">Cabo de Cobre</h6>
+              <div class="mt-2"><i class="fas fa-charging-station"></i> Sinais Elétricos</div>
+              <div class="mt-2 small text-dim">
+                <span style="display: inline-block; width: 20px; height: 2px; background: #ff9800"></span> Pulso longo = 1<br />
+                <span style="display: inline-block; width: 10px; height: 2px; background: #ff9800"></span> Pulso curto = 0
+              </div>
+            </div>
+          </div>
+          <!-- Fibra Óptica -->
+          <div class="col-md-4 mb-3">
+            <div class="text-center p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-lightbulb fa-3x" style="color: #00bcd4"></i>
+              <h6 class="mt-2">Fibra Óptica</h6>
+              <div class="mt-2"><i class="fas fa-eye"></i> Pulsos de Luz</div>
+              <div class="mt-2 small text-dim">
+                <i class="fas fa-circle" style="font-size: 0.6rem"></i> Pulso de luz = 1<br />
+                <i class="far fa-circle"></i> Ausência de luz = 0
+              </div>
+            </div>
+          </div>
+          <!-- Mídia sem Fio -->
+          <div class="col-md-4 mb-3">
+            <div class="text-center p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-broadcast-tower fa-3x" style="color: var(--cisco-green)"></i>
+              <h6 class="mt-2">Mídia sem Fio</h6>
+              <div class="mt-2"><i class="fas fa-wifi"></i> Ondas de Rádio</div>
+              <div class="mt-2 small text-dim">
+                <i class="fas fa-waveform"></i> Modulação de frequência<br />
+                <i class="fas fa-chart-simple"></i> Modulação de amplitude
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-cisco mt-2">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Analogia com código Morse:</strong> Assim como o código Morse usa tons liga/desliga, luzes ou cliques para enviar texto, a
+          sinalização na camada física usa variações de voltagem, luz ou ondas de rádio.
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.2.5 - Largura de Banda -->
+      <!-- ============================================ -->
+      <div id="secao-4-2-5" class="content-card">
+        <span class="section-badge">4.2.5</span>
+        <h2 class="cisco-title"><i class="fas fa-tachometer-alt me-2"></i>Largura de Banda (Bandwidth)</h2>
+        <p>
+          <strong>Largura de banda</strong> é a capacidade na qual um meio pode transportar dados. Mede a quantidade de dados que podem
+          fluir de um lugar para outro durante um determinado tempo.
+        </p>
+
+        <div class="alert-cisco">
+          <i class="fas fa-lightbulb me-2"></i>
+          <strong>Atenção!</strong> Largura de banda NÃO é a velocidade em que os bits viajam. Na Ethernet 10 Mbps e 100 Mbps, os bits
+          viajam na velocidade da eletricidade. A diferença é o <strong>número de bits transmitidos por segundo</strong>.
+        </div>
+
+        <div class="table-responsive mt-3">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Unidade</th>
+                <th>Sigla</th>
+                <th>Equivalência</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bits por segundo</td>
+                <td>bps</td>
+                <td>Unidade fundamental</td>
+              </tr>
+              <tr>
+                <td>Quilobits por segundo</td>
+                <td>Kbps</td>
+                <td>1.000 bps = 10³ bps</td>
+              </tr>
+              <tr>
+                <td>Megabits por segundo</td>
+                <td>Mbps</td>
+                <td>1.000.000 bps = 10⁶ bps</td>
+              </tr>
+              <tr>
+                <td>Gigabits por segundo</td>
+                <td>Gbps</td>
+                <td>1.000.000.000 bps = 10⁹ bps</td>
+              </tr>
+              <tr>
+                <td>Terabits por segundo</td>
+                <td>Tbps</td>
+                <td>1.000.000.000.000 bps = 10¹² bps</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="config-step mt-3">
+          <i class="fas fa-microscope me-2"></i>
+          <strong>Fatores que determinam a largura de banda prática:</strong>
+          <ul class="text-dim mt-2">
+            <li><i class="fas fa-cube me-1"></i> Propriedades do meio físico</li>
+            <li><i class="fas fa-chart-line me-1"></i> Tecnologias de sinalização e detecção</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.2.6 - Latência, Throughput e Goodput -->
+      <!-- ============================================ -->
+      <div id="secao-4-2-6" class="content-card">
+        <span class="section-badge">4.2.6</span>
+        <h2 class="cisco-title"><i class="fas fa-gauge-high me-2"></i>Terminologia de largura de banda</h2>
+        <p>
+          Os termos usados para medir a qualidade da largura de banda incluem:
+          <strong>Latência, Taxa de transferência (Throughput) e Dados úteis (Goodput)</strong>.
+        </p>
+
+        <!-- 1. LATÊNCIA -->
+        <div class="config-step mt-4">
+          <i class="fas fa-hourglass-half me-2" style="color: #ff9800"></i>
+          <strong class="fs-5">Latência</strong>
+          <p class="text-dim mt-2">
+            O termo latência se refere ao <strong>tempo necessário para os dados viajarem de um ponto a outro, incluindo atrasos</strong>.
+          </p>
+          <div class="alert-cisco mt-2" style="background: rgba(255, 152, 0, 0.1); border-left-color: #ff9800">
+            <i class="fas fa-exclamation-triangle me-2" style="color: #ff9800"></i>
+            <strong>Atenção:</strong> Em uma internetwork ou rede com vários segmentos, a taxa de transferência
+            <strong>não pode ser mais rápida que o link mais lento</strong> no caminho da origem ao destino. Mesmo que todos ou a maioria
+            dos segmentos tenham alta largura de banda, será necessário apenas
+            <strong>um segmento com baixa taxa de transferência para criar um gargalo</strong> na taxa de transferência de toda a rede.
+          </div>
+        </div>
+
+        <!-- 2. TAXA DE TRANSFERÊNCIA (THROUGHPUT) -->
+        <div class="config-step mt-4">
+          <i class="fas fa-arrow-trend-down me-2" style="color: var(--cisco-green)"></i>
+          <strong class="fs-5">Taxa de transferência (Throughput)</strong>
+          <p class="text-dim mt-2">
+            Taxa de transferência é a medida da <strong>transferência de bits através da mídia durante um determinado período</strong>.
+          </p>
+
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Fatores que influenciam a taxa de transferência:</strong>
+            <ul class="mt-2 mb-0">
+              <li><i class="fas fa-car me-1"></i> A quantidade de tráfego</li>
+              <li><i class="fas fa-tag me-1"></i> O tipo de tráfego</li>
+              <li>
+                <i class="fas fa-clock me-1"></i> A latência criada pelo número de dispositivos de rede encontrados entre a origem e o
+                destino
+              </li>
+            </ul>
+          </div>
+
+          <!-- Teste de velocidade - fiel à imagem -->
+          <div class="text-center mt-3 p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 16px">
+            <h6><i class="fas fa-tachometer-alt me-1"></i> Exemplo de teste de velocidade online</h6>
+            <div class="row mt-3">
+              <div class="col-6">
+                <div class="small text-dim">Velocidade de download</div>
+                <div class="display-6 fw-bold" style="color: var(--cisco-green); font-size: 2rem">80.78</div>
+                <div class="small">Mbps</div>
+                <!-- Barra de progresso simulando o medidor da imagem -->
+                <div class="progress mt-2" style="height: 8px; background: #333">
+                  <div class="progress-bar" style="width: 80%; background: var(--cisco-green)"></div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="small text-dim">Velocidade de upload</div>
+                <div class="display-6 fw-bold" style="color: #ff9800; font-size: 2rem">8.78</div>
+                <div class="small">Mbps</div>
+                <div class="progress mt-2" style="height: 8px; background: #333">
+                  <div class="progress-bar" style="width: 8%; background: #ff9800"></div>
+                </div>
+              </div>
+            </div>
+            <div class="text-dim small mt-3">
+              <i class="fas fa-chart-line me-1"></i> Escala: 0 — 512k — 1M — 5M — 10M — 25M — 50M — 100M+
+            </div>
+          </div>
+
+          <div class="text-dim small mt-2 p-2" style="background: #2d2d2d; border-radius: 8px">
+            <i class="fas fa-quote-left me-1" style="color: var(--cisco-green)"></i>
+            Devido a alguns fatores, geralmente a <strong>taxa de transferência NÃO corresponde à largura de banda especificada</strong> nas
+            implementações da camada física. A taxa de transferência geralmente é <strong>menor que a largura de banda</strong>.
+          </div>
+        </div>
+
+        <!-- 3. DADOS ÚTEIS (GOODPUT) -->
+        <div class="config-step mt-4">
+          <i class="fas fa-filter-circle-dollar me-2" style="color: #00bcd4"></i>
+          <strong class="fs-5">Dados úteis (Goodput)</strong>
+          <p class="text-dim mt-2">Há uma terceira medida para avaliar a transferência de dados utilizáveis: o <strong>goodput</strong>.</p>
+
+          <div class="alert-cisco mt-2" style="background: rgba(0, 188, 212, 0.1); border-left-color: #00bcd4">
+            <i class="fas fa-chart-pie me-2" style="color: #00bcd4"></i>
+            <strong>Goodput</strong> é a medida de <strong>dados úteis do usuário transferidos</strong> em um determinado período. É a
+            <strong>taxa de transferência MENOS a sobrecarga</strong> de tráfego para:
+            <ul class="mt-2 mb-0">
+              <li><i class="fas fa-handshake me-1"></i> Estabelecer sessões</li>
+              <li><i class="fas fa-check-double me-1"></i> Reconhecimentos (ACKs)</li>
+              <li><i class="fas fa-box me-1"></i> Encapsulamento (headers)</li>
+              <li><i class="fas fa-rotate-left me-1"></i> Bits retransmitidos</li>
+            </ul>
+          </div>
+
+          <!-- Relação hierárquica -->
+          <div class="packet-stack mt-3 p-3 text-center">
+            <h6 class="mb-3"><i class="fas fa-chart-line me-1"></i> Relação entre as métricas</h6>
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-2">
+              <div class="text-center p-2" style="background: #2d2d2d; border-radius: 8px; min-width: 140px">
+                <i class="fas fa-chart-line fa-2x" style="color: #ccc"></i>
+                <div class="fw-bold">Largura de Banda</div>
+                <div class="small text-dim">Capacidade teórica máxima</div>
+              </div>
+              <i class="fas fa-greater-than fa-2x" style="color: var(--cisco-green)"></i>
+              <div class="text-center p-2" style="background: #2d2d2d; border-radius: 8px; min-width: 140px">
+                <i class="fas fa-chart-simple fa-2x" style="color: var(--cisco-green)"></i>
+                <div class="fw-bold">Throughput</div>
+                <div class="small text-dim">Transferência real medida</div>
+              </div>
+              <i class="fas fa-greater-than fa-2x" style="color: var(--cisco-green)"></i>
+              <div class="text-center p-2" style="background: #2d2d2d; border-radius: 8px; min-width: 140px">
+                <i class="fas fa-filter fa-2x" style="color: #00bcd4"></i>
+                <div class="fw-bold">Goodput</div>
+                <div class="small text-dim">Dados úteis do usuário</div>
+              </div>
+            </div>
+            <div class="text-dim small mt-3">
+              <i class="fas fa-arrow-down me-1"></i> O goodput é sempre <strong>menor</strong> que a taxa de transferência, que geralmente é
+              <strong>menor</strong> do que a largura de banda.
+            </div>
+          </div>
+        </div>
+
+        <!-- RESUMO COMPARATIVO -->
+        <div class="table-responsive mt-4">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Métrica</th>
+                <th>Definição</th>
+                <th>Comparação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-hourglass-half me-1" style="color: #ff9800"></i> <strong>Latência</strong></td>
+                <td>Tempo total (ida + atrasos) que um dado leva para ir da origem ao destino</td>
+                <td>Quanto menor, melhor; alto impacto em aplicações real-time (VoIP, videoconferência)</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-arrow-trend-down me-1" style="color: var(--cisco-green)"></i> <strong>Throughput</strong></td>
+                <td>Bits reais transferidos por segundo através da mídia</td>
+                <td>Sempre ≤ Largura de Banda; afetado por tráfego, latência e dispositivos intermediários</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-filter-circle-dollar me-1" style="color: #00bcd4"></i> <strong>Goodput</strong></td>
+                <td>Dados úteis do usuário transferidos por segundo (exclui overhead)</td>
+                <td>Sempre ≤ Throughput; perde bits em headers, ACKs e retransmissões</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-microphone-alt me-2"></i>
+          <strong>📌 Resumo prático:</strong>
+          <p class="mt-2 mb-0">
+            A <strong>largura de banda</strong> é o que você <em>contrata</em> do provedor (ex: 100 Mbps). O <strong>throughput</strong> é o
+            que você <em>mede</em> no speed test (ex: 80.78 Mbps). O <strong>goodput</strong> é o que você <em>realmente aproveita</em> após
+            descontar cabeçalhos, confirmações e retransmissões (ex: 75 Mbps). A <strong>latência</strong> é o atraso que você
+            <em>sente</em> em jogos ou chamadas de vídeo.
+          </p>
+        </div>
+      </div>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.3 - Cabeamento de Cobre -->
+      <!-- ============================================ -->
+
+      <!-- 4.3.1 Características do Cabeamento de Cobre -->
+      <div id="secao-4-3-1" class="content-card">
+        <span class="section-badge">4.3.1</span>
+        <h2 class="cisco-title"><i class="fas fa-copper-wire me-2"></i>Características do Cabeamento de Cobre</h2>
+        <p>
+          O cabeamento de cobre é o tipo mais comum de cabeamento usado nas redes hoje em dia. Existem
+          <strong>três tipos diferentes</strong> de cabeamento de cobre usados em situações específicas.
+        </p>
+
+        <div class="alert-cisco">
+          <i class="fas fa-hand-holding-usd me-2"></i>
+          <strong>Vantagens do cobre:</strong> barato, fácil de instalar, baixa resistência à corrente elétrica
+        </div>
+
+        <div class="alert-cisco mt-2" style="background: rgba(255, 152, 0, 0.1); border-left-color: #ff9800">
+          <i class="fas fa-ruler-combined me-2" style="color: #ff9800"></i>
+          <strong>Limitação por distância:</strong> quanto mais o sinal viaja, mais ele se deteriora — isso se chama
+          <strong>atenuação de sinal</strong>. Todas as mídias de cobre devem seguir limitações de distância rigorosas conforme especificado
+          nos padrões.
+        </div>
+
+        <h3 class="cisco-subtitle mt-4"><i class="fas fa-bolt me-2"></i>Suscetibilidade a interferências</h3>
+        <p>A temporização e a voltagem dos pulsos elétricos são suscetíveis à interferência de duas fontes:</p>
+
+        <div class="row mt-3">
+          <div class="col-md-6 mb-3">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-tower-broadcast fa-2x" style="color: #ff9800"></i>
+              <h6 class="mt-2">EMI / RFI</h6>
+              <p class="text-dim small">
+                Interferência eletromagnética ou de radiofrequência. Fontes: luzes fluorescentes, motores elétricos, dispositivos de rádio.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-phone-slash fa-2x" style="color: #ff9800"></i>
+              <h6 class="mt-2">Diafonia (Crosstalk)</h6>
+              <p class="text-dim small">
+                Perturbação causada pelo campo magnético de um sinal em um fio para o sinal em um fio adjacente. Ex: ouvir outra conversa no
+                telefone (linha cruzada).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagrama de interferência (fiel à imagem) -->
+        <div class="packet-stack mt-3 p-3">
+          <h6 class="text-center mb-3"><i class="fas fa-diagram-project me-1"></i> Como a interferência afeta o sinal digital</h6>
+          <div class="row g-2">
+            <div class="col-md-3 text-center">
+              <div class="small text-dim">1. Sinal digital puro</div>
+              <div class="mt-1 p-2" style="background: #2d2d2d; border-radius: 8px">
+                <i class="fas fa-chart-line fa-2x" style="color: var(--cisco-green)"></i>
+                <div class="small mt-1">___/-‾‾‾\___/-‾‾‾\___</div>
+                <div class="small text-dim">Voltagem ↑ · Tempo →</div>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div class="small text-dim">2. Sinal de Interferência</div>
+              <div class="mt-1 p-2" style="background: #2d2d2d; border-radius: 8px">
+                <i class="fas fa-waveform fa-2x" style="color: #ff9800"></i>
+                <div class="small mt-1">~~~~~~/‾\~~~~~/‾\~~~~~</div>
+                <div class="small text-dim">Ruído externo</div>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div class="small text-dim">3. Sinal com Interferência</div>
+              <div class="mt-1 p-2" style="background: #2d2d2d; border-radius: 8px">
+                <i class="fas fa-chart-line fa-2x" style="color: #ff4444"></i>
+                <div class="small mt-1">__/‾‾/\___/‾‾‾\___/‾\_</div>
+                <div class="small text-dim">Sinal corrompido</div>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div class="small text-dim">4. O que o computador lê</div>
+              <div class="mt-1 p-2" style="background: #2d2d2d; border-radius: 8px">
+                <i class="fas fa-microchip fa-2x" style="color: #ff4444"></i>
+                <div class="small mt-1">Bit 0 → Bit 1 (erro)</div>
+                <div class="small text-dim">Sinal alterado</div>
+              </div>
+            </div>
+          </div>
+          <div class="text-dim small mt-3 text-center">
+            <i class="fas fa-info-circle me-1"></i> Um sinal digital puro é transmitido → No meio, há um sinal de interferência → O sinal
+            digital é corrompido → O receptor lê um sinal alterado (bit 0 vira 1)
+          </div>
+        </div>
+
+        <h3 class="cisco-subtitle mt-4"><i class="fas fa-shield-alt me-2"></i>Recomendações para limitar ruído</h3>
+        <ul class="text-dim">
+          <li>
+            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>Selecionar o tipo ou categoria de cabo mais adequado
+            para o ambiente
+          </li>
+          <li>
+            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>Projetar infraestrutura para evitar fontes conhecidas
+            de interferência
+          </li>
+          <li>
+            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>Usar técnicas de manuseio e terminação adequadas dos
+            cabos
+          </li>
+        </ul>
+
+        <div class="alert-cisco mt-2">
+          <i class="fas fa-microscope me-2"></i>
+          <strong>Para contrabalançar EMI/RFI:</strong> cabos com blindagem metálica + conexões devidamente aterradas.<br />
+          <strong>Para contrabalançar crosstalk:</strong> pares de cabos de circuitos opostos trançados juntos (cancelamento).
+        </div>
+      </div>
+
+      <!-- 4.3.2 Tipos de cabeamento de cobre -->
+      <div id="secao-4-3-2" class="content-card">
+        <span class="section-badge">4.3.2</span>
+        <h2 class="cisco-title"><i class="fas fa-cable-car me-2"></i>Tipos de cabeamento de cobre</h2>
+        <p>Há <strong>três tipos principais</strong> de mídias de cobre usadas em redes:</p>
+
+        <div class="row mt-3">
+          <div class="col-md-4 text-center mb-3">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-plug fa-3x" style="color: var(--cisco-green)"></i>
+              <h5 class="mt-2">UTP</h5>
+              <p class="text-dim small">Par trançado não blindado<br />Mais comum em LANs</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center mb-3">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-shield-virus fa-3x" style="color: var(--cisco-green)"></i>
+              <h5 class="mt-2">STP</h5>
+              <p class="text-dim small">Par trançado blindado<br />Maior proteção contra ruído</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center mb-3">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-satellite-dish fa-3x" style="color: var(--cisco-green)"></i>
+              <h5 class="mt-2">Coaxial</h5>
+              <p class="text-dim small">Dois condutores mesmo eixo<br />Antenas e internet a cabo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.3.3 Par trançado não blindado (UTP) -->
+      <div id="secao-4-3-3" class="content-card">
+        <span class="section-badge">4.3.3</span>
+        <h2 class="cisco-title"><i class="fas fa-plug me-2"></i>Par trançado não blindado (UTP)</h2>
+        <p>
+          O cabeamento UTP é o <strong>meio físico de rede mais comum</strong>. Terminado com conectores RJ-45, é usado para interconectar
+          hosts de rede com dispositivos intermediários (computadores e roteadores).
+        </p>
+
+        <div class="alert-cisco">
+          <i class="fas fa-palette me-2"></i>
+          <strong>Estrutura do cabo UTP:</strong> quatro pares de cabos codificados por cores, trançados e colocados em uma capa plástica
+          flexível.
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-4 text-center mb-3">
+            <div class="p-3" style="background: #2d2d2d; border-radius: 12px">
+              <i class="fas fa-box fa-2x" style="color: var(--cisco-green)"></i>
+              <h6>1. Capa externa</h6>
+              <p class="text-dim small">Protege os fios de cobre contra danos físicos</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center mb-3">
+            <div class="p-3" style="background: #2d2d2d; border-radius: 12px">
+              <i class="fas fa-random fa-2x" style="color: var(--cisco-green)"></i>
+              <h6>2. Pares trançados</h6>
+              <p class="text-dim small">Protegem o sinal contra interferências (crosstalk)</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center mb-3">
+            <div class="p-3" style="background: #2d2d2d; border-radius: 12px">
+              <i class="fas fa-fill-drip fa-2x" style="color: var(--cisco-green)"></i>
+              <h6>3. Isolamento plástico</h6>
+              <p class="text-dim small">Código de cores: isola eletricamente os fios e identifica cada par</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="config-step mt-2">
+          <i class="fas fa-microchip me-2"></i>
+          <strong>Processo de trançamento:</strong> fios de circuitos opostos são trançados juntos, o que efetivamente cancela o crosstalk.
+        </div>
+      </div>
+
+      <!-- 4.3.4 Par trançado blindado (STP) -->
+      <div id="secao-4-3-4" class="content-card">
+        <span class="section-badge">4.3.4</span>
+        <h2 class="cisco-title"><i class="fas fa-shield-alt me-2"></i>Par trançado blindado (STP)</h2>
+        <p>O STP oferece <strong>maior proteção contra ruído</strong> do que o cabeamento UTP.</p>
+
+        <div class="alert-cisco" style="background: rgba(255, 152, 0, 0.1); border-left-color: #ff9800">
+          <i class="fas fa-exclamation-triangle me-2" style="color: #ff9800"></i>
+          <strong>Desvantagens:</strong> significativamente mais caro e difícil instalação em comparação com UTP.
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <div class="packet-stack p-3">
+              <h6><i class="fas fa-layer-group me-1"></i> Estrutura do cabo STP (4 números na figura)</h6>
+              <ul class="text-dim mt-2">
+                <li>
+                  <i class="fas fa-1 me-2" style="color: var(--cisco-green)"></i> <strong>Revestimento exterior</strong> - proteção física
+                </li>
+                <li>
+                  <i class="fas fa-2 me-2" style="color: var(--cisco-green)"></i> <strong>Escudo trançado ou laminado</strong> - blindagem
+                  metálica geral
+                </li>
+                <li>
+                  <i class="fas fa-3 me-2" style="color: var(--cisco-green)"></i> <strong>Escudos de alumínio</strong> - blindagem
+                  individual dos pares
+                </li>
+                <li>
+                  <i class="fas fa-4 me-2" style="color: var(--cisco-green)"></i> <strong>Pares trançados</strong> - quatro pares de cabos
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert-cisco mt-2">
+              <i class="fas fa-bolt me-2"></i>
+              <strong>Cuidado com aterramento:</strong> se o cabo não estiver devidamente aterrado, a blindagem poderá atuar como uma
+              <strong>antena</strong> e captar sinais indesejados.
+            </div>
+            <div class="text-dim small mt-3 p-2" style="background: #2d2d2d; border-radius: 8px">
+              <i class="fas fa-plug me-1"></i> Assim como o UTP, o STP usa conector <strong>RJ-45</strong>, mas requer conectores STP
+              blindados especiais para aproveitar totalmente a blindagem.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.3.5 Cabo coaxial -->
+      <div id="secao-4-3-5" class="content-card">
+        <span class="section-badge">4.3.5</span>
+        <h2 class="cisco-title"><i class="fas fa-satellite-dish me-2"></i>Cabo coaxial</h2>
+        <p>O cabo coaxial (coax) recebeu esse nome porque tem <strong>dois condutores que compartilham o mesmo eixo</strong>.</p>
+
+        <div class="row mt-3">
+          <div class="col-md-7">
+            <div class="packet-stack p-3">
+              <h6><i class="fas fa-diagram-project me-1"></i> Estrutura do cabo coaxial (4 camadas)</h6>
+              <ul class="text-dim mt-2">
+                <li>
+                  <i class="fas fa-1 me-2" style="color: var(--cisco-green)"></i> <strong>Revestimento exterior</strong> - proteção contra
+                  danos físicos
+                </li>
+                <li>
+                  <i class="fas fa-2 me-2" style="color: var(--cisco-green)"></i> <strong>Blindagem de cobre trançado</strong> - segunda
+                  camada (circuito + proteção EMI)
+                </li>
+                <li>
+                  <i class="fas fa-3 me-2" style="color: var(--cisco-green)"></i> <strong>Isolante plástico</strong> - separa condutor da
+                  blindagem
+                </li>
+                <li>
+                  <i class="fas fa-4 me-2" style="color: var(--cisco-green)"></i> <strong>Condutor de cobre</strong> - transmite os sinais
+                  eletrônicos
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="text-center p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <i class="fas fa-plug fa-3x" style="color: var(--cisco-green)"></i>
+              <h6 class="mt-2">Conectores Coaxiais</h6>
+              <div class="d-flex justify-content-center gap-3 mt-2">
+                <span class="badge" style="background: #2d2d2d">BNC</span>
+                <span class="badge" style="background: #2d2d2d">Tipo N</span>
+                <span class="badge" style="background: #2d2d2d">Tipo F</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="cisco-subtitle mt-4"><i class="fas fa-broadcast-tower me-2"></i>Usos atuais do cabo coaxial</h3>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="config-step">
+              <i class="fas fa-wifi me-2"></i>
+              <strong>Instalações sem fio</strong>
+              <p class="text-dim mt-1">
+                Cabos coaxiais conectam antenas a dispositivos sem fio. Transportam energia de radiofrequência (RF) entre antenas e
+                equipamento de rádio.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="config-step">
+              <i class="fas fa-globe me-2"></i>
+              <strong>Instalações de Internet a cabo</strong>
+              <p class="text-dim mt-1">
+                Provedores de serviço a cabo fornecem internet substituindo partes do coaxial por fibra óptica, mas o cabeamento
+                <strong>dentro das instalações do cliente ainda é coaxial</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-cisco mt-2">
+          <i class="fas fa-history me-2"></i>
+          <strong>Nota:</strong> Embora o cabo UTP tenha substituído essencialmente o cabo coaxial nas modernas instalações Ethernet, o
+          design coaxial ainda é usado nas situações acima.
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER PADRÃO -->
+    <footer class="cisco-footer">
+      <div class="container text-center">
+        <i class="fas fa-skull me-2" style="color: var(--cisco-green)"></i>
+        <strong>Cisco Cyber Docs</strong> · Módulo 4 - Camada Física
+      </div>
+    </footer>
+
+    <!-- SCRIPT DO QUIZ -->
+    <script>
+      function checkQuiz(radioGroupName, resultDivId, explanation) {
+        const radios = document.getElementsByName(radioGroupName)
+        let selected = null
+        for (let r of radios) {
+          if (r.checked) {
+            selected = r.value
+            break
+          }
+        }
+        const div = document.getElementById(resultDivId)
+        div.style.display = 'block'
+
+        if (selected === 'correta') {
+          div.className = 'quiz-answer correct'
+          div.innerHTML = '<i class="fas fa-check-circle me-2"></i> Correto! ' + explanation
+        } else if (selected) {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. ' + explanation
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma resposta.'
+        }
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
