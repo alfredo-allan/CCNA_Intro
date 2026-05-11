@@ -1,0 +1,1285 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NET-ACAD · Módulo 5 | Sistemas de Números</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
+    <link rel="stylesheet" href="../css/global.css" />
+    <style>
+      /* Estilos complementares específicos para tabelas de conversão */
+      .conversion-table {
+        overflow-x: auto;
+      }
+      .conversion-table table {
+        min-width: 600px;
+      }
+      .bit-position {
+        font-family: 'Courier New', monospace;
+        font-weight: 700;
+        text-align: center;
+      }
+      .network-icon {
+        font-size: 3rem;
+        color: var(--cisco-green);
+        margin-bottom: 1rem;
+      }
+      .ip-binary {
+        font-family: 'Courier New', monospace;
+        background: #0d0d0d;
+        padding: 0.5rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        word-break: break-all;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR (fixa) -->
+    <nav class="navbar-glass">
+      <div class="container">
+        <a class="navbar-brand" href="modulos.html">
+          <i class="fas fa-skull"></i>
+          Cyber<span style="color: white">Docs</span>
+        </a>
+        <a href="../index.html" class="btn-cisco-outline"> <i class="fas fa-arrow-left me-1"></i> Módulos </a>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <!-- HEADER DO MÓDULO -->
+      <div class="text-center mb-4 reveal">
+        <span class="section-badge"> <i class="fas fa-cube me-1"></i> Módulo 5 </span>
+        <h1 class="display-6 fw-bold">Sistemas de Números</h1>
+        <p class="text-dim">Introduction to Networks (ITN) · Cisco CCNAv7</p>
+      </div>
+
+      <!-- ÍNDICE RÁPIDO -->
+      <div class="content-card mb-4 reveal">
+        <h3 class="cisco-subtitle"><i class="fas fa-list me-2"></i> Navegação rápida</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-5-0-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>5.0.1 Por que estudar sistemas numéricos?</a
+                >
+              </li>
+              <li>
+                <a href="#secao-5-1-1" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>5.1.1 Endereços Binários e IPv4</a
+                >
+              </li>
+              <li>
+                <a href="#secao-5-1-3" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>5.1.3 Notação Posicional Binária</a
+                >
+              </li>
+              <li>
+                <a href="#secao-5-1-5" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>5.1.5 Converter Binário para Decimal</a
+                >
+              </li>
+              <li>
+                <a href="#secao-5-1-7" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>5.1.7 Converter Decimal para Binário</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#secao-5-1-11" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>5.1.11 Endereços IPv4 na Prática</a
+                >
+              </li>
+              <li>
+                <a href="#secao-hexadecimal" class="text-dim"
+                  ><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>5.2 Sistema Hexadecimal</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5.0.1 - Por que estudar -->
+      <div id="secao-5-0-1" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-question-circle me-1"></i> 5.0.1</span>
+        <h2 class="cisco-title">Por que devo cursar este módulo?</h2>
+
+        <div class="alert-cisco mb-3">
+          <i class="fas fa-microchip me-2"></i>
+          <strong>Binário vs. Decimal:</strong> Este é um endereço IPv4 de 32 bits:
+          <code>11000000.10101000.00001010.00001010</code> (binário) = <code>192.168.10.10</code> (decimal pontilhado)
+        </div>
+
+        <p>
+          Como administrador de rede, você deve saber como converter endereços binários em decimais pontilhados e vice-versa. Endereços IPv6
+          são 128 bits! Para torná-los mais gerenciáveis, o IPv6 utiliza o sistema hexadecimal (0-9 e letras A-F).
+        </p>
+
+        <div class="row mt-4">
+          <div class="col-md-4 text-center">
+            <i class="fas fa-exchange-alt network-icon"></i>
+            <h5 class="cisco-subtitle">Conversão Binário ⇄ Decimal</h5>
+            <p class="small text-dim">Base para endereçamento IPv4</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <i class="fas fa-code network-icon"></i>
+            <h5 class="cisco-subtitle">Conversão Decimal ⇄ Hexadecimal</h5>
+            <p class="small text-dim">Essencial para IPv6 e MAC addresses</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <i class="fas fa-gamepad network-icon"></i>
+            <h5 class="cisco-subtitle">Jogo Binário</h5>
+            <p class="small text-dim">Aprenda de forma interativa</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5.1.1 - Endereços Binários e IPv4 -->
+      <div id="secao-5-1-1" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-network-wired me-1"></i> 5.1.1</span>
+        <h2 class="cisco-title">Endereços Binários e IPv4</h2>
+
+        <p>
+          Os endereços IPv4 começam como binários (sequências de 0s e 1s). Embora difícil para humanos, hosts e dispositivos de rede
+          utilizam este formato para se identificarem.
+        </p>
+
+        <!-- Representação visual da rede com ícones -->
+        <div class="table-responsive mb-4">
+          <table class="table table-cisco text-center">
+            <thead>
+              <tr>
+                <th colspan="4">Rede Exemplo com Endereços Binários</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-dark">
+                <td>
+                  <i class="fas fa-server fa-2x text-success"></i><br /><strong>R1 (Gateway)</strong><br /><small class="ip-binary d-block"
+                    >11000000.10101000.00001010.00000001</small
+                  >
+                </td>
+                <td><i class="fas fa-arrow-right fa-2x text-dim"></i></td>
+                <td>
+                  <i class="fas fa-desktop fa-2x text-info"></i><br /><strong>PC1</strong><br /><small class="ip-binary d-block"
+                    >11000000.10101000.00001010.00001010</small
+                  >
+                </td>
+                <td>
+                  <i class="fas fa-desktop fa-2x text-info"></i><br /><strong>PC2</strong><br /><small class="ip-binary d-block"
+                    >11000000.10101000.00001011.00001010</small
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2"><i class="fas fa-globe"></i> LAN A: 11000000.10101000.00001010.00000000/24</td>
+                <td colspan="2"><i class="fas fa-globe"></i> LAN B: 11000000.10101000.00001011.00000000/24</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-cisco">
+          <i class="fas fa-lightbulb me-2"></i>
+          <strong>Nota:</strong> Para facilitar o uso humano, os endereços IPv4 são geralmente expressos em notação decimal pontilhada. PC1
+          = 192.168.10.10 | Gateway = 192.168.10.1
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5.1.3 - Notação Posicional Binária -->
+      <div id="secao-5-1-3" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-calculator me-1"></i> 5.1.3</span>
+        <h2 class="cisco-title">Notação Posicional Binária</h2>
+
+        <p>
+          Aprender a converter binário em decimal requer a compreensão da notação posicional, onde um dígito representa valores diferentes
+          dependendo da posição que ocupa.
+        </p>
+
+        <h5 class="cisco-subtitle mt-3"><i class="fas fa-chart-line me-2"></i>Sistema Decimal (Base 10)</h5>
+        <div class="conversion-table">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Raiz (Base)</th>
+                <th>10</th>
+                <th>10</th>
+                <th>10</th>
+                <th>10</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Posição no número</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Cálculo</td>
+                <td>10³</td>
+                <td>10²</td>
+                <td>10¹</td>
+                <td>10⁰</td>
+              </tr>
+              <tr>
+                <td>Valor da posição</td>
+                <td>1000</td>
+                <td>100</td>
+                <td>10</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <div class="ios-terminal">
+              <pre><code>Exemplo Decimal: 1234
+1 × 1000 = 1000
+2 × 100  = 200
+3 × 10   = 30
+4 × 1    = 4
+SOMA = 1234</code></pre>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="ios-terminal">
+              <pre><code>Exemplo Binário: 11000001
+1 × 128 = 128
+1 × 64  = 64
+0 × 32  = 0
+0 × 16  = 0
+0 × 8   = 0
+0 × 4   = 0
+0 × 2   = 0
+1 × 1   = 1
+SOMA = 193</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="cisco-subtitle mt-3"><i class="fas fa-chart-bar me-2"></i>Sistema Binário (Base 2)</h5>
+        <div class="conversion-table">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Raiz (Base)</th>
+                <th>2</th>
+                <th>2</th>
+                <th>2</th>
+                <th>2</th>
+                <th>2</th>
+                <th>2</th>
+                <th>2</th>
+                <th>2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Posição</td>
+                <td>7</td>
+                <td>6</td>
+                <td>5</td>
+                <td>4</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Cálculo</td>
+                <td>2⁷</td>
+                <td>2⁶</td>
+                <td>2⁵</td>
+                <td>2⁴</td>
+                <td>2³</td>
+                <td>2²</td>
+                <td>2¹</td>
+                <td>2⁰</td>
+              </tr>
+              <tr>
+                <td>Valor</td>
+                <td>128</td>
+                <td>64</td>
+                <td>32</td>
+                <td>16</td>
+                <td>8</td>
+                <td>4</td>
+                <td>2</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Nota:</strong> n⁰ = 1 sempre. O valor posicional representa potências de 2.
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5.1.5 - Converter Binário para Decimal -->
+      <div id="secao-5-1-5" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-exchange-alt me-1"></i> 5.1.5</span>
+        <h2 class="cisco-title">Converter Binário para Decimal</h2>
+
+        <p>Para converter um número binário em decimal, multiplique cada bit pelo seu valor posicional e some os resultados.</p>
+
+        <div class="ios-terminal mb-3">
+          <pre><code>Exemplo: 11000000 (binário) → Decimal
+
+Bit:  1   1   0   0   0   0   0   1
+Valor: 128 64  32  16  8   4   2   1
+Mult:  128 64  0   0   0   0   0   1
+Soma:  128 + 64 + 0 + 0 + 0 + 0 + 0 + 1 = 193</code></pre>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="alert-cisco">
+              <i class="fas fa-check-circle me-2"></i>
+              <strong>Exemplo Prático:</strong> 10101000 (binário) = 168 (decimal)
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert-cisco">
+              <i class="fas fa-check-circle me-2"></i>
+              <strong>Exemplo Prático:</strong> 11111111 (binário) = 255 (decimal)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5.1.7 - Converter Decimal para Binário -->
+      <div id="secao-5-1-7" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-sync-alt me-1"></i> 5.1.7</span>
+        <h2 class="cisco-title">Conversão de Decimal para Binário</h2>
+
+        <p>
+          Existem dois métodos principais: divisões sucessivas por 2 (do resto para o primeiro bit) ou subtração dos valores posicionais.
+        </p>
+
+        <h5 class="cisco-subtitle">Método 1: Divisões Sucessivas</h5>
+        <div class="ios-terminal">
+          <pre><code>Converter 192 para binário:
+
+192 ÷ 2 = 96 (resto 0) ← bit menos significativo
+96  ÷ 2 = 48 (resto 0)
+48  ÷ 2 = 24 (resto 0)
+24  ÷ 2 = 12 (resto 0)
+12  ÷ 2 = 6  (resto 0)
+6   ÷ 2 = 3  (resto 0)
+3   ÷ 2 = 1  (resto 1)
+1   ÷ 2 = 0  (resto 1) ← bit mais significativo
+
+Lendo os restos de baixo para cima: 11000000</code></pre>
+        </div>
+
+        <h5 class="cisco-subtitle mt-3">Método 2: Subtração (Tabela Posicional)</h5>
+        <div class="conversion-table">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Valor Posicional</th>
+                <th>128</th>
+                <th>64</th>
+                <th>32</th>
+                <th>16</th>
+                <th>8</th>
+                <th>4</th>
+                <th>2</th>
+                <th>1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Subtrair (192)</td>
+                <td>192-128=64 → 1</td>
+                <td>64-64=0 → 1</td>
+                <td>0-32? Não → 0</td>
+                <td>0-16? Não → 0</td>
+                <td>0-8? Não → 0</td>
+                <td>0-4? Não → 0</td>
+                <td>0-2? Não → 0</td>
+                <td>0-1? Não → 0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-center"><strong>Resultado: 11000000</strong></p>
+      </div>
+
+      <!-- SEÇÃO 5.1.11 - Endereços IPv4 na Prática -->
+      <div id="secao-5-1-11" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-globe me-1"></i> 5.1.11</span>
+        <h2 class="cisco-title">Endereços IPv4 na Prática</h2>
+
+        <p>Cada endereço IPv4 é composto por 32 bits divididos em quatro octetos (8 bits cada), separados por pontos.</p>
+
+        <!-- Diagrama de rede com ícones -->
+        <div class="table-responsive mb-3">
+          <table class="table table-cisco text-center">
+            <thead>
+              <tr>
+                <th colspan="5">Topologia de Rede Exemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-cloud fa-3x text-secondary"></i><br />Internet<br /><small>209.165.200.225</small></td>
+                <td><i class="fas fa-arrow-right fa-2x text-dim"></i></td>
+                <td>
+                  <i class="fas fa-router fa-3x text-success"></i><br /><strong>R1</strong><br /><small
+                    >G0/0/0: 192.168.10.1<br />G0/0/1: 192.168.11.1</small
+                  >
+                </td>
+                <td><i class="fas fa-arrow-right fa-2x text-dim"></i><br /><i class="fas fa-arrow-right fa-2x text-dim"></i></td>
+                <td>
+                  <i class="fas fa-desktop fa-2x text-info"></i><br />PC1<br /><small>192.168.10.10</small><br /><br />
+                  <i class="fas fa-desktop fa-2x text-info"></i><br />PC2<br /><small>192.168.11.10</small>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <span class="badge bg-dark">LAN A: 192.168.10.0/24</span>
+                  <i class="fas fa-long-arrow-alt-right mx-2"></i>
+                  <span class="badge bg-dark">LAN B: 192.168.11.0/24</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ios-terminal">
+          <pre><code>Endereço IPv4 do PC1 em binário: 11000000.10101000.00001010.00001010
+Endereço IPv4 do PC1 em decimal: 192.168.10.10
+
+Gateway padrão (R1 G0/0/0): 11000000.10101000.00001010.00000001 = 192.168.10.1</code></pre>
+        </div>
+      </div>
+
+      <!-- SEÇÃO HEXADECIMAL (5.2) -->
+      <div id="secao-hexadecimal" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-hashtag me-1"></i> 5.2</span>
+        <h2 class="cisco-title">Sistema de Numeração Hexadecimal</h2>
+
+        <p>
+          O sistema hexadecimal (base 16) utiliza dígitos de 0-9 e letras A-F (A=10, B=11, C=12, D=13, E=14, F=15). É amplamente utilizado
+          em endereços IPv6 e MAC addresses.
+        </p>
+
+        <div class="table-responsive">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Decimal</th>
+                <th>Binário</th>
+                <th>Hexadecimal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>0000</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>0001</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>1001</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>1010</td>
+                <td>A</td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td>1111</td>
+                <td>F</td>
+              </tr>
+              <tr>
+                <td>255</td>
+                <td>11111111</td>
+                <td>FF</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ios-terminal mt-3">
+          <pre><code>Exemplo de endereço IPv6 (128 bits em hexadecimal):
+2001:0DB8:ACAD:0000:0000:0000:0000:0001
+
+Cada grupo hexadecimal representa 16 bits (4 dígitos hexa × 4 bits = 16 bits)</code></pre>
+        </div>
+      </div>
+
+      <!-- QUIZ INTERATIVO -->
+      <div class="content-card reveal">
+        <h3 class="cisco-subtitle"><i class="fas fa-quiz me-2"></i> Verifique seu aprendizado</h3>
+
+        <div class="quiz-container mb-4">
+          <p><strong>1. Qual é o valor decimal do número binário 10101000?</strong></p>
+          <div class="quiz-option" onclick="document.getElementById('q1a').checked = true">
+            <input type="radio" name="quiz1" id="q1a" value="errada" />
+            <label>128</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q1b').checked = true">
+            <input type="radio" name="quiz1" id="q1b" value="errada" />
+            <label>160</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q1c').checked = true">
+            <input type="radio" name="quiz1" id="q1c" value="correta" />
+            <label>168</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q1d').checked = true">
+            <input type="radio" name="quiz1" id="q1d" value="errada" />
+            <label>192</label>
+          </div>
+        </div>
+
+        <div class="quiz-container mb-4">
+          <p><strong>2. Quantos bits possui um endereço IPv4?</strong></p>
+          <div class="quiz-option" onclick="document.getElementById('q2a').checked = true">
+            <input type="radio" name="quiz2" id="q2a" value="errada" />
+            <label>16 bits</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q2b').checked = true">
+            <input type="radio" name="quiz2" id="q2b" value="correta" />
+            <label>32 bits</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q2c').checked = true">
+            <input type="radio" name="quiz2" id="q2c" value="errada" />
+            <label>64 bits</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q2d').checked = true">
+            <input type="radio" name="quiz2" id="q2d" value="errada" />
+            <label>128 bits</label>
+          </div>
+        </div>
+
+        <div class="quiz-container mb-4">
+          <p><strong>3. Em hexadecimal, qual letra representa o valor decimal 12?</strong></p>
+          <div class="quiz-option" onclick="document.getElementById('q3a').checked = true">
+            <input type="radio" name="quiz3" id="q3a" value="errada" />
+            <label>A</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q3b').checked = true">
+            <input type="radio" name="quiz3" id="q3b" value="errada" />
+            <label>B</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q3c').checked = true">
+            <input type="radio" name="quiz3" id="q3c" value="correta" />
+            <label>C</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('q3d').checked = true">
+            <input type="radio" name="quiz3" id="q3d" value="errada" />
+            <label>D</label>
+          </div>
+        </div>
+
+        <button class="btn-check-answer mt-2" onclick="checkAllQuizzes()">
+          <i class="fas fa-check-circle me-1"></i> Verificar todas as respostas
+        </button>
+        <div id="quizRespostaGlobal" class="quiz-answer mt-2" style="display: none"></div>
+      </div>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 5.2 - SISTEMA DE NUMERAÇÃO HEXADECIMAL -->
+      <!-- ============================================ -->
+
+      <!-- SEÇÃO 5.2.1 - Endereços hexadecimal e IPv6 -->
+      <div id="secao-5-2-1" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-code me-1"></i> 5.2.1</span>
+        <h2 class="cisco-title">Endereços Hexadecimal e IPv6</h2>
+
+        <p>
+          Assim como decimal é um sistema numérico de base dez, hexadecimal é um sistema de base dezesseis. O sistema hexadecimal usa os
+          dígitos 0 a 9 e as letras A a F. Para entender endereços IPv6, você deve ser capaz de converter hexadecimal para decimal e
+          vice-versa.
+        </p>
+
+        <div class="table-responsive">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Decimal</th>
+                <th>Binário</th>
+                <th>Hexadecimal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>0000</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>0001</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>0010</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>0011</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>0100</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>0101</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>0110</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>0111</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>1000</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>1001</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>1010</td>
+                <td>A</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>1011</td>
+                <td>B</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>1100</td>
+                <td>C</td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>1101</td>
+                <td>D</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>1110</td>
+                <td>E</td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td>1111</td>
+                <td>F</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>Nota:</strong> Binário e hexadecimal funcionam bem juntos porque é mais fácil expressar um valor como um único dígito
+          hexadecimal do que como quatro bits binários.
+        </div>
+      </div>
+
+      <!-- SEÇÃO - Explicação Hextet (parte da 5.2.1) -->
+      <div id="secao-5-2-1-hextet" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-vector-square me-1"></i> Hextet</span>
+        <h2 class="cisco-title">Estrutura do Endereço IPv6</h2>
+
+        <p>
+          Os endereços IPv6 têm 128 bits de comprimento e a cada 4 bits é representado por um único dígito hexadecimal, totalizando 32
+          valores hexadecimais. O formato preferido para escrever um endereço IPv6 é <code>x:x:x:x:x:x:x:x</code>, com cada "x" consistindo
+          em quatro valores hexadecimais.
+        </p>
+
+        <div class="ios-terminal text-center">
+          <pre><code>Formato:    X : X : X : X : X : X : X : X
+Min:        0000:0000:0000:0000:0000:0000:0000:0000
+Max:        ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+
+4 dígitos hexadecimais = 16 dígitos binários (1 hextet)</code></pre>
+        </div>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-graduation-cap me-2"></i>
+          <strong>Terminologia:</strong> No IPv4 usamos "octeto" (8 bits). No IPv6, "hextet" é o termo não oficial para um segmento de 16
+          bits ou quatro valores hexadecimais.
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5.2.3 - Conversões decimal para hexadecimal -->
+      <div id="secao-5-2-3" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-arrow-right me-1"></i> 5.2.3</span>
+        <h2 class="cisco-title">Conversões Decimal para Hexadecimal</h2>
+
+        <p>Converter números decimais em hexadecimais é simples. Siga as etapas:</p>
+
+        <div class="config-step mb-3">
+          <div class="step-item">
+            <span class="step-number">1</span>
+            <strong>Converta o número decimal para binário (8 bits)</strong>
+          </div>
+          <div class="step-item">
+            <span class="step-number">2</span>
+            <strong>Divida o binário em grupos de 4 bits (da direita para esquerda)</strong>
+          </div>
+          <div class="step-item">
+            <span class="step-number">3</span>
+            <strong>Converta cada grupo de 4 bits para seu equivalente hexadecimal</strong>
+          </div>
+        </div>
+
+        <div class="ios-terminal">
+          <pre><code>Exemplo: Converter 168 para hexadecimal
+
+1. 168 em binário = 10101000
+2. Separando em grupos de 4: 1010 | 1000
+3. 1010 = A (em hexadecimal)
+   1000 = 8 (em hexadecimal)
+
+Resposta: 168 decimal = A8 hexadecimal</code></pre>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5.2.4 - Conversão hexadecimal em decimal -->
+      <div id="secao-5-2-4" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-arrow-left me-1"></i> 5.2.4</span>
+        <h2 class="cisco-title">Conversão Hexadecimal para Decimal</h2>
+
+        <p>Converter números hexadecimais em decimais também é simples. Siga as etapas:</p>
+
+        <div class="config-step mb-3">
+          <div class="step-item">
+            <span class="step-number">1</span>
+            <strong>Converta cada dígito hexadecimal para binário (4 bits)</strong>
+          </div>
+          <div class="step-item">
+            <span class="step-number">2</span>
+            <strong>Agrupe os binários em grupos de 8 bits (da direita para esquerda)</strong>
+          </div>
+          <div class="step-item">
+            <span class="step-number">3</span>
+            <strong>Converta cada grupo de 8 bits para decimal</strong>
+          </div>
+        </div>
+
+        <div class="ios-terminal">
+          <pre><code>Exemplo: Converter D2 para decimal
+
+1. D = 1101 (binário de 4 bits)
+   2 = 0010 (binário de 4 bits)
+
+2. Juntando: 1101 0010 = 11010010 (8 bits)
+
+3. 11010010 em decimal = 210
+
+Resposta: D2 hexadecimal = 210 decimal</code></pre>
+        </div>
+      </div>
+
+      <!-- SEÇÃO - Topologia IPv6 (figura) -->
+      <div id="secao-5-2-topologia" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-project-diagram me-1"></i> Topologia IPv6</span>
+        <h2 class="cisco-title">Exemplo de Topologia com IPv6</h2>
+
+        <div class="table-responsive mb-4">
+          <table class="table table-cisco text-center">
+            <thead>
+              <tr>
+                <th colspan="5">Rede com Endereçamento IPv6 Hexadecimal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-desktop fa-3x text-info"></i><br /><strong>PC1</strong><br /><small>2001:db8:acad:1::10/64</small></td>
+                <td><i class="fas fa-arrow-right fa-2x text-dim"></i></td>
+                <td>
+                  <i class="fas fa-router fa-3x text-success"></i><br /><strong>R1</strong><br />
+                  <small>G0/0: 2001:db8:acad:1::1<br />S0/0/0: 2001:db8:acad:3::1</small>
+                </td>
+                <td><i class="fas fa-arrow-right fa-2x text-dim"></i></td>
+                <td><i class="fas fa-desktop fa-3x text-info"></i><br /><strong>PC2</strong><br /><small>2001:db8:acad:2::10/64</small></td>
+              </tr>
+              <tr>
+                <td colspan="2"><i class="fas fa-globe"></i> Rede: 2001:db8:acad:1::/64</td>
+                <td><i class="fas fa-globe"></i> Rede: 2001:db8:acad:3::/64</td>
+                <td colspan="2"><i class="fas fa-globe"></i> Rede: 2001:db8:acad:2::/64</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ios-terminal">
+          <pre><code>Exemplo de endereço IPv6 completo:
+2001:0db8:acad:0001:0000:0000:0000:0010
+
+Forma abreviada (sem zeros à esquerda):
+2001:db8:acad:1::10</code></pre>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5.3.1 - O que eu aprendi neste módulo -->
+      <div id="secao-5-3-1" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-graduation-cap me-1"></i> 5.3.1</span>
+        <h2 class="cisco-title">O que eu aprendi neste módulo?</h2>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="cisco-subtitle"><i class="fas fa-database me-2"></i> Sistema de Numeração Binária</h3>
+            <p>
+              Binário é um sistema numérico que consiste nos números 0 e 1 chamados de <strong>bits</strong>. O sistema decimal consiste em
+              10 dígitos (0 a 9).
+            </p>
+            <p>
+              O binário é importante porque hosts, servidores e dispositivos de rede usam endereçamento binário, especificamente endereços
+              IPv4 binários, para se identificar.
+            </p>
+            <div class="alert-cisco mt-2">
+              <i class="fas fa-check-circle me-2"></i>
+              Você deve saber converter entre endereços IPv4 binários e decimais pontilhados.
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h3 class="cisco-subtitle"><i class="fas fa-hashtag me-2"></i> Sistema de Numeração Hexadecimal</h3>
+            <p>Assim como decimal é base 10, o <strong>hexadecimal é base 16</strong>, usando os números 0 a 9 e as letras A a F.</p>
+            <p>
+              O sistema hexadecimal é usado em rede para representar <strong>endereços IPv6</strong> e
+              <strong>endereços MAC Ethernet</strong>.
+            </p>
+            <div class="alert-cisco mt-2">
+              <i class="fas fa-check-circle me-2"></i>
+              IPv6 tem 128 bits → cada 4 bits = 1 dígito hexadecimal → total de 32 valores hexadecimais.
+            </div>
+          </div>
+        </div>
+
+        <div class="ios-terminal mt-3">
+          <pre><code>Resumo das conversões:
+
+Binário → Decimal: Multiplique cada bit pelo valor posicional (128,64,32,16,8,4,2,1)
+Decimal → Binário: Divisões sucessivas por 2 ou subtração dos valores posicionais
+
+Decimal → Hexadecimal: Decimal → Binário → Separe em grupos de 4 → Converta para Hex
+Hexadecimal → Decimal: Hex → Binário (4 bits cada) → Agrupe em 8 bits → Converta para Decimal</code></pre>
+        </div>
+      </div>
+
+      <!-- SEÇÃO Módulo Prática e Quiz -->
+      <div id="secao-5-3-modulo-pratica" class="content-card reveal">
+        <span class="section-badge"><i class="fas fa-puzzle-piece me-1"></i> Módulo Prática e Quiz</span>
+        <h2 class="cisco-title">Teste seus conhecimentos</h2>
+
+        <div class="quiz-container mb-4">
+          <p><strong>1. Qual é o valor hexadecimal do número decimal 168?</strong></p>
+          <div class="quiz-option" onclick="document.getElementById('hq1a').checked = true">
+            <input type="radio" name="quizHex1" id="hq1a" value="errada" /> <label>B8</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('hq1b').checked = true">
+            <input type="radio" name="quizHex1" id="hq1b" value="correta" /> <label>A8</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('hq1c').checked = true">
+            <input type="radio" name="quizHex1" id="hq1c" value="errada" /> <label>8A</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('hq1d').checked = true">
+            <input type="radio" name="quizHex1" id="hq1d" value="errada" /> <label>88</label>
+          </div>
+        </div>
+
+        <div class="quiz-container mb-4">
+          <p><strong>2. Qual é o valor decimal do hexadecimal D2?</strong></p>
+          <div class="quiz-option" onclick="document.getElementById('hq2a').checked = true">
+            <input type="radio" name="quizHex2" id="hq2a" value="errada" /> <label>200</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('hq2b').checked = true">
+            <input type="radio" name="quizHex2" id="hq2b" value="correta" /> <label>210</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('hq2c').checked = true">
+            <input type="radio" name="quizHex2" id="hq2c" value="errada" /> <label>220</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('hq2d').checked = true">
+            <input type="radio" name="quizHex2" id="hq2d" value="errada" /> <label>230</label>
+          </div>
+        </div>
+
+        <div class="quiz-container mb-4">
+          <p><strong>3. Quantos bits tem um endereço IPv6?</strong></p>
+          <div class="quiz-option" onclick="document.getElementById('hq3a').checked = true">
+            <input type="radio" name="quizHex3" id="hq3a" value="errada" /> <label>32 bits</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('hq3b').checked = true">
+            <input type="radio" name="quizHex3" id="hq3b" value="errada" /> <label>64 bits</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('hq3c').checked = true">
+            <input type="radio" name="quizHex3" id="hq3c" value="correta" /> <label>128 bits</label>
+          </div>
+          <div class="quiz-option" onclick="document.getElementById('hq3d').checked = true">
+            <input type="radio" name="quizHex3" id="hq3d" value="errada" /> <label>256 bits</label>
+          </div>
+        </div>
+
+        <button class="btn-check-answer mt-2" onclick="checkHexQuiz()"><i class="fas fa-check-circle me-1"></i> Verificar respostas</button>
+        <div id="quizHexResposta" class="quiz-answer mt-2" style="display: none"></div>
+      </div>
+      <!-- ============================================ -->
+      <!-- SEÇÃO FINAL - RESUMO DIDÁTICO COM ANALOGIAS   -->
+      <!-- ============================================ -->
+      <div id="secao-resumo-final-didatico" class="content-card reveal">
+        <span class="section-badge"> <i class="fas fa-brain me-1"></i> Resumo Master </span>
+        <h2 class="cisco-title">🎯 Resumo: Por que isso importa na vida real?</h2>
+
+        <!-- Analogia Principal -->
+        <div class="alert-cisco mb-4" style="background: rgba(102, 191, 83, 0.1); border-left-color: var(--cisco-green)">
+          <i class="fas fa-lightbulb fa-2x me-3 float-start"></i>
+          <div>
+            <h5 class="mb-2" style="color: var(--cisco-green)">🔑 Analogia Central: O Caixa Eletrônico</h5>
+            <p class="mb-0">
+              Computadores são como caixas eletrônicos: <strong>só entendem "0" (sem corrente) e "1" (com corrente)</strong> - o BINÁRIO.
+              Nós, humanos, entendemos DECIMAL (0-9). O HEXADECIMAL é como um "atalho" que os engenheiros criaram para conversar mais rápido
+              com as máquinas. Cada dígito hexadecimal vale 4 bits binários - é como usar palavras de 4 letras para descrever 16 coisas
+              diferentes!
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Coluna 1 - Binário -->
+          <div class="col-lg-4 mb-3">
+            <div class="content-card h-100" style="background: rgba(0, 0, 0, 0.3)">
+              <div class="text-center mb-3">
+                <i class="fas fa-microchip fa-3x" style="color: var(--cisco-green)"></i>
+                <h3 class="cisco-subtitle mt-2">BINÁRIO</h3>
+                <span class="badge bg-dark">Base 2</span>
+              </div>
+              <p><strong>📖 Definição:</strong> Linguagem nativa dos computadores. Cada dígito (0 ou 1) é um <strong>bit</strong>.</p>
+
+              <div class="mt-3">
+                <strong>🏠 Analogia (Interruptores):</strong>
+                <p class="small text-dim mt-1">
+                  Imagine 8 interruptores de luz em uma parede. Cada um pode estar <strong>LIGADO (1)</strong> ou
+                  <strong>DESLIGADO (0)</strong>. A posição de cada interruptor tem um "peso" diferente: o primeiro vale 1, o segundo vale
+                  2, o terceiro vale 4... até o oitavo valer 128. Binário é exatamente isso!
+                </p>
+              </div>
+
+              <div class="mt-3">
+                <strong>🌐 Caso de Uso Real:</strong>
+                <div class="ios-terminal mt-2 p-2">
+                  <pre style="margin: 0; font-size: 0.75rem"><code>Seu roteador Wi-Fi recebe o endereço:
+192.168.1.1 (decimal)
+↓
+O roteador enxerga como:
+11000000.10101000.00000001.00000001 (binário)
+
+É assim que ele sabe para onde enviar seus dados!</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coluna 2 - Decimal -->
+          <div class="col-lg-4 mb-3">
+            <div class="content-card h-100" style="background: rgba(0, 0, 0, 0.3)">
+              <div class="text-center mb-3">
+                <i class="fas fa-calculator fa-3x" style="color: var(--cisco-green)"></i>
+                <h3 class="cisco-subtitle mt-2">DECIMAL</h3>
+                <span class="badge bg-dark">Base 10</span>
+              </div>
+              <p><strong>📖 Definição:</strong> O sistema que usamos no dia a dia (0,1,2,3,4,5,6,7,8,9).</p>
+
+              <div class="mt-3">
+                <strong>🏠 Analogia (Contar dinheiro):</strong>
+                <p class="small text-dim mt-1">
+                  Quando você conta dinheiro, usa notas de 1, 10, 100, 1000... Sempre multiplicando por 10. O sistema decimal funciona
+                  igual: cada posição vale 10x a anterior! Binário seria como usar notas de 1, 2, 4, 8, 16... (sempre dobrando).
+                </p>
+              </div>
+
+              <div class="mt-3">
+                <strong>🌐 Caso de Uso Real:</strong>
+                <div class="alert-cisco py-2 px-3 mt-2" style="font-size: 0.85rem">
+                  <i class="fas fa-user-friends me-2"></i>
+                  <strong>Para humanos:</strong> Quando você digita "192.168.1.1" no navegador, está usando decimal. O computador converte
+                  para binário automaticamente para processar o endereço.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coluna 3 - Hexadecimal -->
+          <div class="col-lg-4 mb-3">
+            <div class="content-card h-100" style="background: rgba(0, 0, 0, 0.3)">
+              <div class="text-center mb-3">
+                <i class="fas fa-code fa-3x" style="color: var(--cisco-green)"></i>
+                <h3 class="cisco-subtitle mt-2">HEXADECIMAL</h3>
+                <span class="badge bg-dark">Base 16</span>
+              </div>
+              <p><strong>📖 Definição:</strong> Sistema compacto que usa 0-9 e A-F (A=10, B=11, C=12, D=13, E=14, F=15).</p>
+
+              <div class="mt-3">
+                <strong>🏠 Analogia (Placa de carro):</strong>
+                <p class="small text-dim mt-1">
+                  Imagine que você precisa anotar um número enorme como "1101001010111001" (16 dígitos). É muito chato! O hexadecimal é como
+                  um código de 4 letras que representa tudo isso de forma compacta - igual as placas de carro que usam letras + números para
+                  identificar cada veículo único.
+                </p>
+              </div>
+
+              <div class="mt-3">
+                <strong>🌐 Caso de Uso Real:</strong>
+                <div class="ios-terminal mt-2 p-2">
+                  <pre style="margin: 0; font-size: 0.75rem"><code>Seu endereço MAC do celular (único no mundo):
+MAC = 3C:15:C2:D4:8A:9F (hexadecimal)
+São 48 bits em apenas 12 caracteres hexa!
+
+IPv6: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+Se fosse binário seriam 128 bits de 0s e 1s!</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela Resumo Rápida -->
+        <div class="mt-4">
+          <h3 class="cisco-subtitle"><i class="fas fa-table me-2"></i> Tabela Resumo: Como converter rápido</h3>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr class="text-center">
+                  <th>Operação</th>
+                  <th>Passo a Passo</th>
+                  <th>Exemplo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center"><strong>Binário → Decimal</strong></td>
+                  <td>Multiplique cada bit pelo valor posicional (128,64,32,16,8,4,2,1) e some</td>
+                  <td><code>11000000 = 128+64 = 192</code></td>
+                </tr>
+                <tr>
+                  <td class="text-center"><strong>Decimal → Binário</strong></td>
+                  <td>Divida sucessivamente por 2 e leia os restos de baixo pra cima</td>
+                  <td><code>192 → 11000000</code></td>
+                </tr>
+                <tr>
+                  <td class="text-center"><strong>Decimal → Hexadecimal</strong></td>
+                  <td>Converta para binário → Separe em grupos de 4 bits → Converta cada grupo</td>
+                  <td><code>168 → 10101000 → 1010|1000 → A8</code></td>
+                </tr>
+                <tr>
+                  <td class="text-center"><strong>Hexadecimal → Decimal</strong></td>
+                  <td>Cada hex → 4 bits binários → Junte → Converta 8 bits para decimal</td>
+                  <td><code>D2 → 1101|0010 → 11010010 → 210</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Dica de Memorização -->
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="ios-terminal">
+              <pre><code>📌 MACETE PARA MEMORIZAR:
+
+Pesos do Binário (DECORE):
+128 | 64 | 32 | 16 | 8 | 4 | 2 | 1
+"1-2-4-8-16-32-64-128"
+(Pense: 1, dobra, dobra, dobra...)
+
+Hexa Fácil:
+A=10, B=11, C=12, D=13, E=14, F=15
+"AB CD EF" = "10 11 12 13 14 15"</code></pre>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert-cisco h-100 d-flex flex-column justify-content-center">
+              <i class="fas fa-quote-left me-2" style="font-size: 1.5rem"></i>
+              <p class="mb-2"><strong>💡 Pensamento Final:</strong></p>
+              <p class="small mb-0">
+                Todo administrador de rede <strong>precisa</strong> dominar essas conversões. Quando você configurar uma VLAN, uma sub-rede
+                ou um firewall, estará trabalhando com endereços IP. Entender como eles funcionam "por dentro" (binário) é o que separa um
+                operador de um <strong>especialista</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pergunta de Reflexão -->
+        <div class="text-center mt-4 pt-3" style="border-top: 1px solid rgba(102, 191, 83, 0.2)">
+          <i class="fas fa-question-circle fa-2x mb-2" style="color: var(--cisco-green)"></i>
+          <h5 class="cisco-subtitle">Pergunta para fixação:</h5>
+          <p class="text-dim">"Se um endereço IPv4 tem 32 bits, quantos endereços únicos podemos ter no total?"</p>
+          <div class="ios-terminal d-inline-block text-start" style="background: #0a0a0a">
+            <pre style="margin: 0"><code>Resposta: 2³² = 4.294.967.296 endereços!
+(É por isso que estamos migrando para IPv6 - 2¹²⁸ endereços)</code></pre>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER PADRÃO -->
+    <footer class="cisco-footer">
+      <div class="container text-center">
+        <i class="fas fa-skull me-2" style="color: var(--cisco-green)"></i>
+        <strong>Cisco Cyber Docs</strong> · Módulo 5 - Sistemas de Números
+      </div>
+    </footer>
+
+    <!-- SCRIPT DO QUIZ E ANIMAÇÕES -->
+    <script>
+      function checkAllQuizzes() {
+        // Quiz 1
+        const radios1 = document.getElementsByName('quiz1')
+        let selected1 = null
+        for (let r of radios1)
+          if (r.checked) {
+            selected1 = r.value
+            break
+          }
+
+        // Quiz 2
+        const radios2 = document.getElementsByName('quiz2')
+        let selected2 = null
+        for (let r of radios2)
+          if (r.checked) {
+            selected2 = r.value
+            break
+          }
+
+        // Quiz 3
+        const radios3 = document.getElementsByName('quiz3')
+        let selected3 = null
+        for (let r of radios3)
+          if (r.checked) {
+            selected3 = r.value
+            break
+          }
+
+        let correctCount = 0
+        let total = 3
+
+        if (selected1 === 'correta') correctCount++
+        if (selected2 === 'correta') correctCount++
+        if (selected3 === 'correta') correctCount++
+
+        const div = document.getElementById('quizRespostaGlobal')
+        div.style.display = 'block'
+
+        if (correctCount === total) {
+          div.className = 'quiz-answer correct'
+          div.innerHTML = `<i class="fas fa-trophy me-2"></i> Parabéns! Você acertou todas as ${total} questões!`
+        } else if (correctCount > 0) {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = `<i class="fas fa-chart-line me-2"></i> Você acertou ${correctCount} de ${total} questões. Revise os conteúdos de conversão binária e hexadecimal.`
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = `<i class="fas fa-exclamation-triangle me-2"></i> Nenhuma resposta selecionada. Tente novamente!`
+        }
+      }
+
+      // Anime.js animações para elementos .reveal
+      document.addEventListener('DOMContentLoaded', function () {
+        const reveals = document.querySelectorAll('.reveal')
+        reveals.forEach((el, index) => {
+          anime({
+            targets: el,
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 600,
+            delay: index * 100,
+            easing: 'easeOutCubic'
+          })
+        })
+      })
+    </script>
+    <script>
+      function checkHexQuiz() {
+        // Quiz 1
+        const radios1 = document.getElementsByName('quizHex1')
+        let selected1 = null
+        for (let r of radios1)
+          if (r.checked) {
+            selected1 = r.value
+            break
+          }
+
+        // Quiz 2
+        const radios2 = document.getElementsByName('quizHex2')
+        let selected2 = null
+        for (let r of radios2)
+          if (r.checked) {
+            selected2 = r.value
+            break
+          }
+
+        // Quiz 3
+        const radios3 = document.getElementsByName('quizHex3')
+        let selected3 = null
+        for (let r of radios3)
+          if (r.checked) {
+            selected3 = r.value
+            break
+          }
+
+        let correctCount = 0
+        let total = 3
+
+        if (selected1 === 'correta') correctCount++
+        if (selected2 === 'correta') correctCount++
+        if (selected3 === 'correta') correctCount++
+
+        const div = document.getElementById('quizHexResposta')
+        div.style.display = 'block'
+
+        if (correctCount === total) {
+          div.className = 'quiz-answer correct'
+          div.innerHTML = '<i class="fas fa-trophy me-2"></i> Excelente! Você domina as conversões hexadecimal!'
+        } else if (correctCount > 0) {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = `<i class="fas fa-chart-line me-2"></i> Você acertou ${correctCount} de ${total}. Revise as tabelas de conversão!`
+        } else {
+          div.className = 'quiz-answer incorrect'
+          div.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione as respostas antes de verificar.'
+        }
+      }
+    </script>
+  </body>
+</html>

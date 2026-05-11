@@ -18,6 +18,16 @@ class CyberSecGlobalSearch {
         name: "Módulo 2",
         title: "Protocolos e modelos",
       },
+      {
+        path: "../pages/modulo_4.html",
+        name: "Módulo 4",
+        title: "Camada física",
+      },
+      {
+        path: "../pages/modulo_5.html",
+        name: "Módulo 5",
+        title: "Sistemas de números",
+      },
     ];
 
     this.searchTimeout = null;
